@@ -427,4 +427,12 @@
 
 ---
 
+# === Команды для фиксации изменений в Git ===
+# Выполнить после подтверждения содержимого файла:
+
+cd /opt/polymarket-orchestrator
+git add FACTORY_MEMORY.md
+git commit -m "ARIA-memory: финальная версия FACTORY_MEMORY.md — только улучшающие инциденты (#1–#564)"
+git push origin main
+
 **Конец файла. Версия от 11 мая 2026.**
