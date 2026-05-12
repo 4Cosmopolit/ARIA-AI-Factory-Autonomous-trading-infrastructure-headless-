@@ -564,3 +564,5 @@
 git add FACTORY_MEMORY.md
 git commit -m "ARIA-memory: унифицированный FACTORY_MEMORY.md — все инциденты #1–#580 с полями Причина/Решение/Результат"
 git push origin main
+
+ARIA v8.0: Self-Referat, полная архитектура, 100+ инцидентов, готовность к деплою
