@@ -1,39 +1,148 @@
-# Полная архитектура ARIA AI‑Factory v13.01
+# ARCHITECTURE.md — Полная архитектура ARIA AI‑Factory v13.01
 
-## Контуры
-1. Core – стратегия, память, R&D
-   - Сверх‑ядро: Aria‑Cognitive‑Core (Trinity, Macro, EBM, Bias‑Firewall, Deep‑Research, Expert‑Panel)
-2. Trading – охота на MEV/манипуляторов
-   - Сверх‑ядро: Aria‑Sentinel‑Core (MEV‑Scanner, Market‑Maker‑Hunter, Coordinated‑Attack‑Detector)
-3. CI/CD & Security – детерминированные гарантии
-   - Overfit‑Auditor, Crypto‑Guardian, Agentic‑Security‑Engine, Zero‑Trust‑Policy‑Engine
-4. Interface – командный центр, HITL
-   - Telegram‑MCP, Interaction‑Model, Visual‑Insight, Dify‑Visualizer, Excalidraw, CopilotKit
-5. Cryptographic Security – квантово‑устойчивая защита
-   - AES‑256‑GCM, RSA, Kyber, ZKP, MPC
-6. Quantum Hub – квантовые вычисления (резерв)
-   - Quantum‑Defender, Quantum‑Synth, HHL‑Solver
+## 1. Архитектурные контуры
 
-## Сверх‑ядра
-- Aria‑Cognitive‑Core – все инструменты рассуждения, анализа и принятия решений
-- Aria‑Memory‑Core – динамический граф знаний (Graphiti + Beads + Cognee + LanceDB)
-- Aria‑Sentinel‑Core – унифицированный детектор рыночных угроз
-- Aria‑Interface‑Hub – унифицированный HITL‑интерфейс
+ARIA организована в 7 контуров (с выделением квантового хаба):
 
-## Ключевые MCP‑серверы (активные)
-- GOAT (единый финансовый on‑chain уровень)
-- Bifrost (AI‑шлюз, 50x быстрее LiteLLM)
-- vLLM Semantic Router (семантический отбор инструментов)
-- fast‑agent (высокоуровневая оркестрация)
-- Langroid (Actor‑модель)
-- mcp‑agent (ReAct + AugmentedLLM)
-- Dify, LangFlow, n8n (визуальная оркестрация)
-- Playwright, Steel Browser, Cua (веб/GUI‑автоматизация)
-- Microsandbox (аппаратная изоляция)
-- Cloudflare MCP (глобальная serverless‑инфраструктура)
-- GitHub MCP (управление кодовой базой)
-- Firecrawl, Exa, U14 (веб‑разведка)
-- RAGFlow, Cognee, Airweave (RAG и знания)
-- PPTAgent, AntV, Excalidraw (визуализация)
-- VIPER, MISP, HexStrike (безопасность)
-- Fonoster, WhatsApp, OpenClaw (коммуникации)
+- **Core** — стратегия, память, R&D.
+- **Trading** — охота на MEV/манипуляторов.
+- **CI/CD & Security** — детерминированные гарантии.
+- **Interface** — командный центр, HITL.
+- **Cryptographic Security** — квантово‑устойчивая защита.
+- **Quantum Hub** — квантовые вычисления (резерв).
+- **Autonomous Reproduction** — автономное воспроизводство кода.
+
+## 2. Сверх‑ядра (консолидированные модули)
+
+| Сверх‑ядро | Назначение | Ключевые компоненты |
+|:---|:---|:---|
+| **Aria‑Cognitive‑Core** | Все инструменты рассуждения, анализа и принятия решений | Trinity, Macro, EBM, Bias‑Firewall, Deep‑Research, Expert‑Panel |
+| **Aria‑Memory‑Core** | Динамический граф знаний и память | Graphiti, Beads, Cognee, LanceDB, Tradememory‑Engine |
+| **Aria‑Sentinel‑Core** | Унифицированный детектор рыночных угроз | MEV‑Scanner, Market‑Maker‑Hunter, Coordinated‑Attack‑Detector |
+| **Aria‑Interface‑Hub** | Унифицированный HITL‑интерфейс | Telegram‑MCP, Interaction‑Model, Visual‑Insight, Dify‑Visualizer, Excalidraw, CopilotKit |
+
+## 3. Ключевые MCP‑серверы (активные)
+
+### Финансовый On‑Chain и Трейдинг
+- **GOAT** — единый финансовый on‑chain уровень (200+ протоколов, 10+ блокчейнов, MCP-интеграция).
+- **dispatch** — исполнение ордеров с HITL‑блокировкой.
+- **contest‑engine** — внутренний конкурентный отбор стратегий.
+- **defi‑quant‑engine** — DeFi‑математика (AMM, MEV‑аукционы, Flashbots).
+- **capital‑safety‑automation** — автоматическая проверка безопасности капитала.
+
+### AI‑Шлюзы и Маршрутизация
+- **Bifrost** — высокопроизводительный AI‑шлюз (50x быстрее LiteLLM, автоматическое переключение).
+- **vLLM Semantic Router** — семантический отбор инструментов (сокращение контекста на 99.1%).
+- **Higress** — AI‑Native API Gateway (маршрутизация, WAF, Wasm‑плагины).
+- **Klavis AI** — универсальный MCP‑маршрутизатор (Strata) с OAuth.
+
+### Оркестрация и Агентные Фреймворки
+- **fast‑agent** — высокоуровневая операционная система для агентов (chain, parallel, orchestrator).
+- **Langroid** — Actor‑модель мультиагентной оркестрации.
+- **mcp‑agent** — ReAct + AugmentedLLM фреймворк.
+- **PraisonAI** — микросекундная агентная инициализация (<4μs).
+- **Genkit** — production‑фреймворк AI‑инженерии (Google).
+- **LangChain** — ядро экосистемы агентов (стандарт де‑факто).
+
+### Визуальная Оркестрация
+- **Dify** — визуальная операционная система AI (141k звёзд, MCP, RAG, агенты).
+- **LangFlow** — визуальный AI‑конструктор (14.7k звёзд).
+- **n8n** — универсальная платформа автоматизации (70.6k звёзд, 400+ интеграций, MCP).
+- **Lemonade** — легковесный AI‑SDK для агентов.
+
+### Веб/GUI‑Автоматизация
+- **Playwright** — официальный MCP‑сервер Microsoft для браузерной автоматизации.
+- **Steel Browser** — облачная браузерная песочница с anti‑detection.
+- **Cua** — универсальный GUI‑агент (любые десктопные приложения).
+- **DesktopCommanderMCP** — CLI‑интеграция и управление процессами.
+- **Windows MCP** — управление окнами и приложениями Windows.
+- **Mobile MCP** — универсальный мобильный сенсор (iOS, Android, эмуляторы).
+
+### Песочницы и Выполнение Кода
+- **Microsandbox** — аппаратная изоляция (KVM, запуск <100ms, MCP-сервер).
+- **Dagger** — MCP‑управление контейнерами и CI/CD.
+- **Code Interpreter API** — песочница для анализа данных (Python).
+- **HttpRunner** — AI‑управляемое тестирование API/UI/производительности.
+
+### Глобальная Serverless‑Инфраструктура
+- **Cloudflare MCP** — универсальный serverless‑провайдер (Workers, KV, R2, D1, Queues, Durable Objects). Обеспечивает глобальное развёртывание агентов, хранение данных и управление состоянием.
+
+### Управление Кодовой Базой и CI/CD
+- **GitHub MCP** — официальный сервер GitHub (репозитории, PR, issues, CI/CD, security scanning).
+- **Spec Workflow MCP** — структурированная среда разработки на основе спецификаций.
+- **Task Master** — AI‑управление задачами (Claude Task Master, 26.1k звёзд).
+- **Beads** — версионируемая графовая память (Dolt‑powered).
+- **kubefwd** — локальный мост к Kubernetes.
+
+### Веб‑Разведка и Данные
+- **Firecrawl MCP** — превращение любой веб‑страницы в чистый markdown.
+- **Exa MCP** — нейронный семантический поиск с автономными multi‑agent исследователями.
+- **U14 Deep Research** — расширенный исследовательский MCP‑сервер с 11 поисковыми движками.
+- **Trafilatura** — легковесное извлечение текста и метаданных без браузера.
+- **YouTube Transcript API** — извлечение транскриптов YouTube для анализа.
+- **Xiaohongshu MCP** — мост к крупнейшей китайской социальной платформе (300M+ пользователей).
+- **TrendRadar** — глобальный пульс технологий (GitHub, Hacker News).
+- **GPT Researcher** — автономное глубокое исследование (21.6k звёзд).
+
+### RAG и Управление Знаниями
+- **RAGFlow** — enterprise‑grade RAG с глубоким пониманием документов (DeepDoc).
+- **Cognee** — самообучающаяся память (ECL‑конвейер).
+- **Airweave** — универсальный контекстно‑поисковый слой (50+ коннекторов).
+- **UltraRAG** — MCP‑нативный исследовательский RAG (Tsinghua University).
+- **NotebookLM MCP** — source‑grounded ответы с цитатами.
+- **Context7** — живая, версионная документация как оружие против галлюцинаций API.
+- **GitMCP** — живая документация любого GitHub‑проекта.
+
+### Память и Хранение
+- **Graphiti** — динамический темпоральный граф знаний с автоматическим разрешением противоречий.
+- **Beads** — версионируемая память задач (Dolt‑powered, cell‑level merge).
+- **LanceDB** — мультимодальное озеро данных (векторы, метаданные, изображения, zero‑copy).
+- **GreptimeDB** — единый фундамент наблюдаемости (метрики, логи, трейсы, 50x снижение затрат).
+- **SEmble** — эффективное сжатие эмбеддингов (40‑60% без потери точности).
+- **OpenMetadata** — единый каталог данных (80+ коннекторов, lineage, quality).
+
+### Визуализация и Отчётность
+- **PPTAgent** — агентная среда генерации презентаций с визуальной саморефлексией.
+- **AntV MCP** — специализированная визуализация данных (26+ типов диаграмм, Ant Group/Alibaba).
+- **Excalidraw MCP** — интерактивная визуальная доска (официальный MCP-сервер).
+- **draw.io** — генерация диаграмм на естественном языке.
+- **Figma (Cursor Talk)** — полный контроль дизайна Figma через MCP (40+ инструментов).
+- **Penpot** — открытая дизайн‑платформа (47.4k звёзд, MCP-сервер).
+- **Magic MCP** — мгновенная генерация React‑компонентов (shadcn/ui).
+- **CopilotKit** — интерактивные AI‑интерфейсы и ко‑агенты в React.
+- **Excel MCP** — работа с финансовыми таблицами без Microsoft Excel.
+
+### 3D‑Моделирование и Симуляция
+- **FreeCAD MCP** — параметрическое 3D‑моделирование и FEM‑анализ.
+- **Godot MCP** — 3D‑среды и симуляции на открытом игровом движке.
+- **BlenderMCP** — профессиональное 3D‑моделирование и анимация (21.9k звёзд).
+- **Pollinations** — легковесная генерация AI‑медиа (изображения, аудио, 3D, видео).
+
+### Безопасность и Threat Intelligence
+- **VIPER** — проактивная имитация атак (Red Team, 100+ модулей MITRE ATT&CK, MCP).
+- **MISP** — глобальная threat intelligence платформа (6.1k звёзд, MCP-сервер).
+- **HexStrike** — AI‑агент для аудита безопасности смарт‑контрактов.
+- **Ghidra MCP** + **IDA Pro MCP** — реверс‑инжиниринг бинарного кода.
+- **Agentic Radar** — SAST/DAST для агентных рабочих процессов.
+- **ENScan_GO** — OSINT по китайским юридическим лицам (MCP-сервер).
+- **Notion MCP** — удалённый OAuth, Schema Quality Gate, уроки безопасности (CVE‑2025‑68143/68144).
+
+### Коммуникации и HITL
+- **Fonoster** — программируемые телекоммуникации и голосовой HITL (24k звёзд).
+- **WhatsApp MCP** — коммуникационный мост к WhatsApp (2B пользователей).
+- **OpenClaw** — персональный AI‑ассистент (361k+ звёзд, 22+ каналов, Canvas).
+- **Open WebUI** — self‑hosted AI интерфейс (128k+ звёзд, MCP, RAG, плагины).
+- **RealChar** — real‑time мультимодальный HITL с аватаром.
+
+### Локальный AI и Модели
+- **Ollama** — стандарт де‑факто для локального запуска LLM (250k+ звёзд, MCP-сервер).
+- **DeepSeek‑V3** — фундаментальное нейронное ядро ARIA (стратегическое мышление).
+- **Gemini CLI** — терминальный AI‑агент с 104k звёзд GitHub (суб‑агенты, 1M‑токенный контекст).
+- **Codex CLI** — терминальный MCP‑клиент и Sandbox (273k звёзд).
+- **Hermes Agent** — self‑evolving agent с learning loop (144k звёзд).
+
+### Квантовый Хаб (Стратегический Резерв)
+- **Quantum‑Defender** — квантовый хаб (PennyLane, Qiskit, Julia/Yao).
+- **Quantum‑Synth** — квантовый синтез данных (LSTM‑QGAN, Dual‑PQC, Stylized‑Facts).
+- **Ising‑Quantum‑Bridge** — мост к квантовому превосходству (NVIDIA Ising).
+- **Market‑Hamiltonian‑Estimator** — оценка гамильтониана рынка.
