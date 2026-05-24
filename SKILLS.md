@@ -1,4 +1,4 @@
-# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01
+# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01 (обновлён 05.06.2026)
 
 ## Категория 1: Качество данных (Data Quality)
 
@@ -92,6 +92,8 @@
 | spec-workflow-structured | L2 | Структурированная среда с панелью реального времени и системой утверждения. | Spec Workflow MCP |
 | httprunner-testing | L2 | AI-управляемое тестирование API/UI/производительности. | HttpRunner |
 | dagger-ci-cd | L2 | MCP-управление контейнерами и CI/CD. | Dagger |
+| task-master | L2 | AI-управление задачами, планирование спринтов и распределение ресурсов. | Task Master |
+| self-modification-engine | L2 | Автономная само‑модификация кода с тройным слепым ревью и автоматическим откатом. | Self‑Modification Engine |
 
 ## Категория 6: Трейдинг и Охота (ARIA Trading)
 
@@ -128,6 +130,9 @@
 | langroid-actor | L2 | Actor-модель мультиагентной оркестрации. | Langroid |
 | fastagent-highlevel | L2 | Высокоуровневая операционная система для агентов. | fast-agent |
 | copilotkit-ui | L2 | Интерактивные AI-интерфейсы и ко-агенты в React. | CopilotKit |
+| mcp-agent | L2 | ReAct‑агент с AugmentedLLM и инструментами MCP. | mcp-agent |
+| praisonai-microagents | L2 | Микросекундные агенты (Python) с параллельными задачами. | PraisonAI |
+| swarm-orchestration | L2 | Enterprise‑оркестрация роев с heartbeat, TTL и failure recovery. | Swarms, Cyrus Agents, Agent Swarm Resilience |
 
 ## Категория 8: Мультимодальные и HITL навыки (Multimodal & HITL)
 
@@ -155,6 +160,10 @@
 | langflow-visual | L2 | Визуальный AI-конструктор (14.7k звёзд). | LangFlow |
 | n8n-automation | L2 | Универсальная платформа автоматизации (70.6k звёзд, 400+ интеграций). | n8n |
 | osaurus-community | L2 | Community-driven MCP-совместимая AI-платформа. | Osaurus |
+| interactive-feedback-loop | L2 | Интерактивный цикл обратной связи ИИ‑человек с Web UI и десктоп‑приложением. | mcp-feedback-enhanced |
+| playwright-automation | L2 | Кросс‑браузерная автоматизация и тестирование через Playwright. | Playwright MCP |
+| steel-browser-sandbox | L2 | Изолированная браузерная песочница для безопасного веб‑скрапинга. | Steel Browser |
+| desktop-commander | L2 | Управление терминалом, файловой системой и приложениями через MCP. | DesktopCommanderMCP |
 
 ## Категория 9: Исследовательские навыки (Research)
 
@@ -170,6 +179,16 @@
 | trendradar-pulse | L2 | Глобальный пульс технологий (GitHub, Hacker News). | TrendRadar |
 | misp-correlation | L2 | Автоматическая корреляция событий безопасности. | MISP |
 | ultrarag-experiments | L2 | MCP-нативный исследовательский RAG с встроенными бенчмарками. | UltraRAG |
+
+## Категория 10: Наблюдаемость и мониторинг (Observability)
+
+| Навык | Уровень | Описание | Источник |
+|:---|:---|:---|:---|
+| greptimedb-observability | L2 | Единый фундамент для метрик, логов и трейсов с SQL‑интерфейсом. | GreptimeDB |
+| phoenix-llm-traces | L2 | Трассировка и оценка LLM‑вызовов (Arize Phoenix). | Phoenix |
+| kubeshark-network | L2 | Глубокая сетевая наблюдаемость с eBPF (перехват трафика, анализ пакетов). | Kubeshark |
+| context-integrity-daemon | L1 | (см. Категорию 3) Фоновая проверка целостности ключевых параметров сессии. | ARIA Core |
+| auto-memory-audit | L2 | (см. Категорию 3) Ежедневный аудит памяти. | ARIA Core |
 
 ---
 
