@@ -1,20 +1,18 @@
-# SKILLS.md — Реестр навыков ARIA AI‑Factory v12.92
+# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01
 
 ## Категория 1: Качество данных (Data Quality)
 
 | Навык | Уровень | Описание | Источник |
 |:---|:---|:---|:---|
-| data-quality-audit | L2 | Входной контроль данных: происхождение, согласованность, свежесть. | ARIA Core |
-| data-cleansing-pipeline | L2 | Конвейер очистки: imputation, outlier detection, deduplication. | ARIA Core |
-| data-contract-validator | L2 | Валидация данных по формальным контрактам. | ARIA Core |
-| self-describing-data | L2 | Автоматическая семантическая аннотация фактов в Temporal KG. | ARIA Core |
-| signal-augmentation-engine | L2 | Обогащение сигналов вычисляемыми полями. | ARIA Core |
-| lineage-tracer | L2 | Отслеживание происхождения каждого факта. | ARIA Core |
-| impact-analyzer | L2 | Анализ влияния изменений в данных на стратегии. | ARIA Core |
-| compliance-verifier | L2 | Подготовка доказательной базы для аудита. | ARIA Core |
-| realism-validator | L2 | Проверка синтетических данных на реалистичность. | ARIA Core |
-| data-debt-detector | L2 | Мониторинг накопления долгов по качеству данных. | ARIA Core |
-| extractor-framework | L1 | Компонуемые экстракторы для разных типов данных (Figma-Context-MCP). | ARIA Core |
+| data-contract-validator | L2 | Валидация данных по формальным контрактам (единицы, диапазоны, контекст). | ARIA Core |
+| self-describing-data | L2 | Автоматическая семантическая аннотация каждого факта в Temporal KG. | ARIA Core |
+| signal-augmentation-engine | L2 | Обогащение сигналов вычисляемыми полями (прогноз волатильности, рейтинг безопасности хуков). | ARIA Core |
+| lineage-tracer | L2 | Отслеживание происхождения каждого факта (полная карта provenance). | ARIA Core |
+| impact-analyzer | L2 | Анализ влияния изменений в данных на стратегии и агентов. | ARIA Core |
+| compliance-verifier | L2 | Автоматическая подготовка доказательной базы для аудита (GDPR, AI Act). | ARIA Core |
+| realism-validator | L2 | Проверка синтетических данных на соответствие реальным паттернам. | ARIA Core |
+| data-debt-detector | L2 | Мониторинг накопления «долгов» по качеству данных (confidence, просрочка). | ARIA Core |
+| extractor-framework | L1 | Компонуемые экстракторы для разных типов данных с однопроходным обходом (Figma-Context-MCP). | ARIA Core |
 | deepdoc-parser | L2 | Глубокое понимание документов (92% точность, 12 форматов). | RAGFlow |
 
 ## Категория 2: Безопасность и изоляция (Security & Isolation)
@@ -23,17 +21,16 @@
 |:---|:---|:---|:---|
 | aria-gov-gateway | L1 | Единый шлюз безопасности с deny-first политикой. | ARIA Core |
 | permissions-drift-detector | L2 | Контроль расширения прав навыков при обновлении. | ARIA Core |
-| trust-chain-validator | L2 | Верификация цепочки доверия. | ARIA Core |
-| model-integrity-checker | L2 | Проверка целостности весов и кода моделей. | ARIA Core |
-| bitflip-detector | L2 | Детектор битовых аномалий. | ARIA Core |
-| destructive-command-detector | L1 | Блокировка деструктивных команд. | ARIA Core |
-| lolbin-detector | L2 | Обнаружение аномального использования легитимных утилит. | ARIA Core |
-| telegram-guard | L1 | Защита от prompt injection через Telegram. | ARIA Core |
-| phishing-url-scanner | L2 | Сканер фишинговых URL. | ARIA Core |
-| approve-guard | L1 | HITL-подтверждение для approve/allowance транзакций. | ARIA Core |
-| sandbox-escalation-detector | L1 | Детектор попыток выхода за пределы изоляции. | ARIA Core |
-| resource-abuse-detector | L2 | Детектор аномального потребления ресурсов. | ARIA Core |
-| harness-firewall | L1 | Второй HITL-фильтр для изменений в конфигурациях. | ARIA Core |
+| trust-chain-validator | L2 | Верификация цепочки доверия (агент → навык → зависимости). | ARIA Core |
+| model-integrity-checker | L2 | Проверка целостности весов и кода моделей в памяти. | ARIA Core |
+| bitflip-detector | L2 | Детектор битовых аномалий (Rowhammer, bit-flip атаки). | ARIA Core |
+| destructive-command-detector | L1 | Блокировка деструктивных SQL/Shell команд (DROP, DELETE, rm -rf). | ARIA Core |
+| lolbin-detector | L2 | Обнаружение аномального использования легитимных утилит (curl, git, ssh). | ARIA Core |
+| telegram-guard | L1 | Защита от prompt injection через входящие сообщения Telegram. | ARIA Core |
+| phishing-url-scanner | L2 | Сканер фишинговых URL перед переходом. | ARIA Core |
+| approve-guard | L1 | HITL-подтверждение для всех approve/allowance транзакций. | ARIA Core |
+| resource-abuse-detector | L2 | Детектор аномального потребления CPU/RAM/сети в sandbox. | ARIA Core |
+| harness-firewall | L1 | Второй HITL-фильтр для изменений в конфигурациях обвязки. | ARIA Core |
 | prompt-version-lock | L1 | Версионирование системных инструкций с хеш-контролем. | ARIA Core |
 | aidefence-pipeline | L1 | Трёхступенчатый Content Security Pipeline (pre‑check, process‑check, post‑check). | Ruflo |
 | agentic-sast | L2 | Статический анализ агентных рабочих процессов (SAST). | Agentic Radar |
@@ -41,21 +38,21 @@
 | prompt-hardening | L2 | Автоматическая закалка промптов (OWASP LLM Top 10). | Agentic Radar |
 | smart-contract-audit | L2 | Аудит смарт-контрактов перед взаимодействием (HexStrike). | HexStrike |
 | threat-intel-lookup | L2 | Проверка адресов/транзакций по глобальной базе угроз (MISP). | MISP |
-| red-team-automation | L2 | Автономная имитация атак (VIPER, 100+ модулей). | VIPER |
+| red-team-automation | L2 | Автономная имитация атак (VIPER, 100+ модулей MITRE ATT&CK). | VIPER |
 | binary-analysis | L2 | Реверс-инжиниринг бинарного кода (Ghidra + IDA Pro). | GhidraMCP |
 | china-osint | L2 | OSINT по китайским юридическим лицам (ENScan_GO). | ENScan_GO |
-| microsandbox-isolation | L1 | Аппаратно-изолированные песочницы (KVM, запуск <100ms). | Microsandbox |
+| microsandbox-isolation | L1 | Аппаратно-изолированные песочницы (KVM, запуск <100ms, MCP-сервер). | Microsandbox |
 
 ## Категория 3: Управление контекстом и памятью (Context & Memory)
 
 | Навык | Уровень | Описание | Источник |
 |:---|:---|:---|:---|
 | compress-context | L1 | Авто-сжатие контекста при занятости >70% окна. | ARIA Core |
-| context-length-monitor | L1 | Принудительное сжатие входящего контекста. | ARIA Core |
-| auto-memory-audit | L2 | Ежедневный аудит памяти: дубликаты, устаревшие факты. | ARIA Core |
-| context-integrity-daemon | L1 | Фоновая проверка целостности параметров сессии. | ARIA Core |
-| context-access-simulator | L2 | Симуляция атаки на утечку контекста. | ARIA Core |
-| viral-context-injector | L2 | Вшивание мета-принципов в начало сессии. | ARIA Core |
+| context-length-monitor | L1 | Принудительное сжатие входящего контекста при превышении лимита. | ARIA Core |
+| auto-memory-audit | L2 | Ежедневный аудит памяти: дубликаты, устаревшие факты, галлюцинации. | ARIA Core |
+| context-integrity-daemon | L1 | Фоновая проверка целостности ключевых параметров сессии. | ARIA Core |
+| context-access-simulator | L2 | Симуляция атаки на утечку контекста в sandbox. | ARIA Core |
+| viral-context-injector | L2 | Вшивание мета-принципов (честность, сжатие, приоритеты) в начало сессии. | ARIA Core |
 | context-mode-think-in-code | L1 | Think-in-Code парадигма: экономия контекста до 98%. | Context Mode |
 | semantic-caching | L2 | Семантическое кэширование (10x‑100x ускорение retrieval). | Claude Context |
 | graphiti-dynamic-kg | L2 | Динамический темпоральный граф знаний с автоматическим разрешением противоречий. | Graphiti |
@@ -72,9 +69,9 @@
 
 | Навык | Уровень | Описание | Источник |
 |:---|:---|:---|:---|
-| token-aware-routing | L1 | Маршрутизация запросов к дешёвым моделям. | ARIA Core |
+| token-aware-routing | L1 | Маршрутизация запросов к дешёвым моделям для простых задач. | ARIA Core |
 | tool-limit-enforcer | L1 | Жёсткий лимит числа вызовов MCP-инструментов за сессию. | ARIA Core |
-| token-auditor | L2 | Ежедневный анализ структуры затрат токенов. | ARIA Core |
+| token-auditor | L2 | Ежедневный анализ структуры затрат токенов (полезная работа vs шум). | ARIA Core |
 | semantic-tool-selection | L1 | Семантический отбор инструментов (сокращение контекста на 99.1%). | vLLM Semantic Router |
 | bifrost-gateway | L2 | Автоматическое переключение между провайдерами с кэшированием. | Bifrost |
 
@@ -82,11 +79,11 @@
 
 | Навык | Уровень | Описание | Источник |
 |:---|:---|:---|:---|
-| constraint-first-spec-generator | L2 | Генерация спецификаций с жёсткими ограничениями. | ARIA Core |
+| constraint-first-spec-generator | L2 | Генерация спецификаций с жёсткими ограничениями (лимиты, запреты). | ARIA Core |
 | spec-test-linker | L2 | Привязка каждого пункта SPEC.md к конкретному тесту. | ARIA Core |
-| intent-validator | L2 | Проверка спецификаций на избыточную детализацию. | ARIA Core |
-| sdd-compliance-check | L1 | Обязательная проверка SPEC.md на соответствие принципам SDD. | ARIA Core |
-| bureaucracy-detector | L2 | Анализ отчётов на признаки формализма. | ARIA Core |
+| intent-validator | L2 | Проверка спецификаций на избыточную детализацию (намерения vs инструкции). | ARIA Core |
+| sdd-compliance-check | L1 | Обязательная проверка SPEC.md на соответствие трём принципам SDD. | ARIA Core |
+| bureaucracy-detector | L2 | Анализ отчётов review-mcp и judge-mcp на признаки формализма. | ARIA Core |
 | test-driven-development | L1 | RED-GREEN-REFACTOR цикл (Superpowers). | Superpowers |
 | writing-plans | L2 | Разбиение работы на bite‑sized задачи (2-5 минут каждая). | Superpowers |
 | subagent-driven-development | L2 | Создание свежего подагента на каждую задачу с двухстадийным ревью. | Superpowers |
@@ -100,12 +97,12 @@
 
 | Навык | Уровень | Описание | Источник |
 |:---|:---|:---|:---|
-| spoof-wall-buster | L2 | Детекция ложных стен и контратака на спуфера. | ARIA Core |
-| latency-arbitrage-detector | L2 | Обнаружение HFT-ботов по аномально быстрым реакциям. | ARIA Core |
-| dma-flow-mimic | L2 | Маскировка под DMA-поток. | ARIA Core |
-| mimic-cscalp-trader | L2 | Эмуляция розничного трейдера в CScalp. | ARIA Core |
-| arb-unlock-hunter | L2 | Охота на шорт перед разблокировками токенов. | ARIA Core |
-| mc-fdv-anomaly-detector | L2 | Сканер проектов с аномальным MC/FDV. | ARIA Core |
+| spoof-wall-buster | L2 | Детекция ложных стен и автоматическая контратака на спуфера. | ARIA Core |
+| latency-arbitrage-detector | L2 | Обнаружение HFT-ботов по аномально быстрым реакциям на пробои. | ARIA Core |
+| dma-flow-mimic | L2 | Маскировка под DMA-поток (рыночные ордера, имитация). | ARIA Core |
+| mimic-cscalp-trader | L2 | Эмуляция розничного трейдера в CScalp (задержки, ручное дробление, отмены). | ARIA Core |
+| arb-unlock-hunter | L2 | Охота на шорт перед разблокировками токенов (low float / high FDV). | ARIA Core |
+| mc-fdv-anomaly-detector | L2 | Сканер проектов с аномальным соотношением MC/FDV. | ARIA Core |
 | tradememory-owm | L2 | Outcome-Weighted Memory (5 когнитивных слоёв). | TradeMemory Protocol |
 | preflight-risk-gate | L1 | 5-факторная pre-trade проверка. | TradeMemory Protocol |
 | mev-scanner | L2 | Детекция Sandwich, JIT, FlashArb атак. | ARIA Core |
@@ -146,6 +143,7 @@
 | excel-finance | L2 | Работа с финансовыми таблицами без Microsoft Excel. | Excel MCP |
 | codeinterpreter | L2 | Песочница для анализа данных (Python). | Code Interpreter API |
 | cad-3d-modeling | L2 | Параметрическое 3D-моделирование и симуляция (FreeCAD + Godot). | FreeCAD MCP, Godot MCP |
+| blender-3d | L2 | Профессиональное 3D-моделирование, анимация и рендеринг. | BlenderMCP |
 | pollinations-media | L2 | Легковесная генерация AI-медиа (изображения, аудио, 3D, видео). | Pollinations |
 | realchar-avatar | L2 | Real-time голосовой и видео HITL с аватаром. | RealChar |
 | whatsapp-channel | L2 | Коммуникационный мост к WhatsApp. | WhatsApp MCP |
