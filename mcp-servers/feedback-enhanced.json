@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "feedback-enhanced": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@minidoracat/mcp-feedback-enhanced"
+      ],
+      "env": {
+        "MCP_FEEDBACK_INTERFACE": "web",
+        "MCP_FEEDBACK_PORT": "4000",
+        "MCP_FEEDBACK_AUTO_APPROVE": "false",
+        "MCP_FEEDBACK_TIMEOUT": "0",
+        "MCP_FEEDBACK_AUTO_COMMANDS": "aria-sentinel-core --scan"
+      }
+    }
+  }
+}
