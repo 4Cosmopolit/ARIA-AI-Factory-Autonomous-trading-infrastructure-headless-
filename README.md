@@ -1,4 +1,4 @@
-# Polymarket AI-Factory — Autonomous trading infrastructure
+# ARIA-AI-Factory — Autonomous trading infrastructure
 
 **Статус:** v.14.05.2026. Полностью автономная MCP-сеть (30+ серверов), агентная память с эволюцией, контролируемое забывание, мутационное тестирование, self-healing CI/CD, Telegram as MCP Arena.
 
