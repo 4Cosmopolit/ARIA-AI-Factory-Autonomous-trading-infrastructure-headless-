@@ -1,26 +1,27 @@
 # ARIA AI‑Factory — Autonomous Trading & Agentic Infrastructure (Headless)
 
-**Версия:** 12.92  
+**Версия:** 13.01  
 **Аксиом Нерушимого Кодекса:** 343  
-**MCP-серверов:** 40+  
-**Архитектурных контуров:** 6  
+**MCP-серверов:** 70+  
+**Архитектурных контуров:** 7  
 
 ARIA AI‑Factory — это не просто торговая платформа. Это самообучающаяся, самовосстанавливающаяся и полностью автономная агентная экосистема, построенная на принципах **Agentic Engineering**. Мы не используем AI для помощи в кодировании — AI является основным инженером, а человек — стратегическим архитектором.
 
 ---
 
-## 🏛️ Архитектура Фабрики (6 Контуров)
+## 🏛️ Архитектура Фабрики (7 Контуров)
 
-ARIA организована в шесть архитектурных контуров, каждый из которых состоит из десятков специализированных MCP-серверов:
+ARIA организована в семь архитектурных контуров, каждый из которых состоит из десятков специализированных MCP-серверов:
 
 | Контур | Назначение | Ключевые MCP-серверы |
 |:---|:---|:---|
-| **I. Ядро и Память** | Стратегическое мышление, память, верификация | `temporal‑kg`, `analytics‑mcp`, `bias‑firewall`, `ebm‑engine`, `graphiti‑integration‑engine`, `cognee‑core‑engine` |
-| **II. Торговля и Охота** | Детекция рыночных аномалий, исполнение стратегий | `mev‑scanner`, `market‑maker‑hunter`, `dispatch`, `contest‑engine`, `tradememory‑engine`, `defi‑quant‑engine` |
-| **III. CI/CD и Безопасность** | Автономное тестирование, развёртывание, защита | `sandbox‑mcp`, `overfit‑auditor`, `crypto‑guardian`, `privacy‑guardian`, `agentic‑security‑engine`, `zero‑trust‑policy‑engine` |
-| **IV. Интерфейс и HITL** | Взаимодействие с оператором, визуализация, голос | `telegram‑mcp`, `interaction‑model‑engine`, `visual‑insight‑engine`, `dify‑visualizer`, `openwebui‑integration‑engine` |
-| **V. Квантовый Хаб (Резерв)** | Квантовые вычисления, симуляции, оптимизация | `quantum‑defender`, `quantum‑synth`, `ising‑quantum‑bridge`, `market‑hamiltonian‑estimator` |
-| **VI. Автономное Воспроизводство** | Само-модификация, роевое кодирование, управление задачами | `autonomous‑dev‑loop`, `swarm‑coding‑engine`, `codebase‑knowledge‑engine`, `self‑modification‑engine`, `taskmaster‑integration‑engine` |
+| **I. Ядро и Память** | Стратегическое мышление, память, верификация | `Aria‑Cognitive‑Core`, `Aria‑Memory‑Core`, `EBM Engine`, `Bias Firewall`, `Graphiti`, `Cognee` |
+| **II. Торговля и Охота** | Детекция рыночных аномалий, исполнение стратегий | `Aria‑Sentinel‑Core`, `Dispatch`, `Contest‑Engine`, `Tradememory‑Engine`, `Defi‑Quant‑Engine` |
+| **III. CI/CD и Безопасность** | Автономное тестирование, развёртывание, защита | `Sandbox‑MCP`, `Overfit‑Auditor`, `Crypto‑Guardian`, `Privacy‑Guardian`, `Agentic‑Security‑Engine`, `Zero‑Trust‑Policy‑Engine` |
+| **IV. Интерфейс и HITL** | Взаимодействие с оператором, визуализация, голос | `Aria‑Interface‑Hub`, `Telegram‑MCP`, `Interaction‑Model`, `Visual‑Insight`, `Dify‑Visualizer`, `OpenWebUI` |
+| **V. Квантовый Хаб (Резерв)** | Квантовые вычисления, симуляции, оптимизация | `Quantum‑Defender`, `Quantum‑Synth`, `Ising‑Quantum‑Bridge`, `Market‑Hamiltonian‑Estimator` |
+| **VI. Автономное Воспроизводство** | Само-модификация, роевое кодирование, управление задачами | `Autonomous‑Dev‑Loop`, `Swarm‑Coding‑Engine`, `Self‑Modification‑Engine`, `TaskMaster`, `GitHub MCP` |
+| **VII. Криптографическая Безопасность** | Квантово‑устойчивая защита, ZKP, MPC | `Crypto‑Guardian`, `Advanced‑Cryptography‑Engine` |
 
 ---
 
@@ -53,9 +54,26 @@ ARIA AI‑Factory использует сотни лучших open‑source п�
 - **Управление Задачами:** `Task Master`, `Beads`, `Spec‑Workflow`, `OpenSpec`
 - **CI/CD и Песочницы:** `Microsandbox`, `Dagger`, `Trigger.dev`, `Genkit`, `HttpRunner`
 
+### 🌐 Глобальная Serverless-инфраструктура
+- **Cloudflare MCP** — универсальный serverless‑провайдер (Workers, KV, R2, D1, Queues, Durable Objects). Обеспечивает глобальное развёртывание агентов, хранение данных и управление состоянием без необходимости управления серверами.
+
+### 🗄️ Управление Кодовой Базой
+- **GitHub MCP** — официальный сервер GitHub (репозитории, PR, issues, CI/CD, security scanning). Полный контроль над кодовой базой через MCP.
+- **Task Master** — AI‑управление задачами (26.1k звёзд). Автоматическая генерация деревьев задач из планов, анализ сложности и контекстное исследование перед выполнением.
+
+### 🏗️ 3D Моделирование и Симуляции
+- **FreeCAD MCP** — параметрическое 3D‑моделирование и FEM‑анализ. Агенты ARIA могут проектировать и проверять конструкции на прочность.
+- **Godot MCP** — 3D‑среды и симуляции на открытом игровом движке. Создание интерактивных визуализаций и симуляций.
+- **BlenderMCP** — профессиональное 3D‑моделирование, анимация и рендеринг (21.9k звёзд). Мост к ведущему open‑source 3D‑редактору.
+
 ### 💬 HITL и Визуализация
-- **Коммуникации:** `Open WebUI`, `Telegram MCP`, `WhatsApp MCP`, `Fonoster`
-- **Дизайн и Диаграммы:** `Figma (Cursor Talk)`, `Penpot`, `Excalidraw`, `AntV Chart`, `PPTAgent`
+- **Визуализация и Отчёты:** `PPTAgent`, `AntV Chart`, `Excalidraw`, `Draw.io`, `Figma`, `Penpot`, `Magic UI`, `CopilotKit`, `Excel MCP`
+- **Интерфейсы:** `Open WebUI`, `Dify`, `LangFlow`, `n8n`
+
+### 📡 Коммуникации
+- **Fonoster** — программируемые телекоммуникации и голосовой HITL (24k звёзд). ARIA может совершать экстренные звонки оператору при margin call или инцидентах безопасности.
+- **WhatsApp MCP** — коммуникационный мост к WhatsApp (2B пользователей). ARIA может отправлять уведомления и принимать команды через наиболее популярный мессенджер.
+- **OpenClaw** — персональный AI‑ассистент (361k+ звёзд, 22+ каналов связи, Canvas). Локальный, приватный агент с мультимодальным взаимодействием.
 
 ### 🔒 Безопасность и Инфраструктура
 - **Threat Intelligence:** `MISP`, `VIPER`, `HexStrike`, `Ghidra MCP`, `ENScan_GO`
