@@ -1,0 +1,207 @@
+version: "3.8"
+
+# ============================================================
+# ARIA AI‑Factory v13.01 — Docker Compose
+# Боевое развёртывание «Сингулярность»
+# ============================================================
+
+services:
+  # ------------------------------------------------------------------
+  # Ядро ARIA (Контур I: Cognitive Core)
+  # Стратегическое мышление, R&D, управление сессиями
+  # ------------------------------------------------------------------
+  aria-core:
+    image: 4cosmopolit/aria-core:13.01
+    container_name: aria-core
+    restart: unless-stopped
+    ports:
+      - "9090:9090"   # gRPC / HTTP API
+    environment:
+      - ARIA_MODE=init
+      - ARIA_LOG_LEVEL=info
+      - ARIA_CONFIG=/etc/aria/core.yaml
+    volumes:
+      - core_config:/etc/aria
+      - core_data:/var/lib/aria
+      - shared_models:/models:ro
+    networks:
+      - aria-net
+    depends_on:
+      - ollama
+    healthcheck:
+      test: ["CMD", "aria-core", "--health-check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: ["--init"]
+
+  # ------------------------------------------------------------------
+  # Память ARIA (Контур I: Memory Core)
+  # Долговременная память, графы знаний, RAG
+  # ------------------------------------------------------------------
+  aria-memory:
+    image: 4cosmopolit/aria-memory:13.01
+    container_name: aria-memory
+    restart: unless-stopped
+    ports:
+      - "9091:9091"
+    environment:
+      - ARIA_CORE_HOST=aria-core
+      - ARIA_CORE_PORT=9090
+      - LANCEDB_PATH=/var/lib/aria/lancedb
+      - GREPTIMEDB_HOST=greptimedb
+    volumes:
+      - memory_data:/var/lib/aria
+    networks:
+      - aria-net
+    depends_on:
+      - aria-core
+      - greptimedb
+    healthcheck:
+      test: ["CMD", "aria-memory", "--health-check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ------------------------------------------------------------------
+  # Страж ARIA (Контур II + III: Sentinel Core)
+  # Сканер аномалий, безопасность, pre‑flight gate
+  # ------------------------------------------------------------------
+  aria-sentinel:
+    image: 4cosmopolit/aria-sentinel:13.01
+    container_name: aria-sentinel
+    restart: unless-stopped
+    ports:
+      - "9092:9092"
+    environment:
+      - ARIA_CORE_HOST=aria-core
+      - ARIA_CORE_PORT=9090
+      - ARIA_MODE=observe
+      - MICROSANDBOX_ENABLED=true
+    volumes:
+      - sentinel_data:/var/lib/aria
+      - /var/run/docker.sock:/var/run/docker.sock   # для управления Microsandbox
+    networks:
+      - aria-net
+    depends_on:
+      - aria-core
+      - aria-memory
+    healthcheck:
+      test: ["CMD", "aria-sentinel", "--health-check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # Привилегированный режим для KVM (Microsandbox)
+    privileged: true
+
+  # ------------------------------------------------------------------
+  # Интерфейсный хаб ARIA (Контур IV: Interface Hub)
+  # Telegram, CopilotKit, Web UI, mcp-feedback-enhanced
+  # ------------------------------------------------------------------
+  aria-interface:
+    image: 4cosmopolit/aria-interface:13.01
+    container_name: aria-interface
+    restart: unless-stopped
+    ports:
+      - "3000:3000"   # Web UI
+      - "4000:4000"   # WebSocket для mcp-feedback-enhanced
+    environment:
+      - ARIA_CORE_HOST=aria-core
+      - ARIA_CORE_PORT=9090
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - MCP_FEEDBACK_INTERFACE=web
+      - MCP_FEEDBACK_PORT=4000
+    volumes:
+      - interface_config:/etc/aria
+    networks:
+      - aria-net
+    depends_on:
+      - aria-core
+      - aria-sentinel
+    healthcheck:
+      test: ["CMD", "aria-interface", "--health-check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ------------------------------------------------------------------
+  # Локальный LLM-движок (Ollama)
+  # Используется для экономных моделей (Qwen, Gemma, DeepSeek)
+  # ------------------------------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+      - OLLAMA_HOST=0.0.0.0
+    volumes:
+      - ollama_models:/root/.ollama
+    networks:
+      - aria-net
+    # Для GPU (раскомментировать при наличии)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  # ------------------------------------------------------------------
+  # База данных временных рядов / наблюдаемость (GreptimeDB)
+  # ------------------------------------------------------------------
+  greptimedb:
+    image: greptime/greptimedb:latest
+    container_name: greptimedb
+    restart: unless-stopped
+    ports:
+      - "4001:4001"   # HTTP API
+      - "4002:4002"   # gRPC
+      - "4003:4003"   # PostgreSQL wire
+    volumes:
+      - greptime_data:/tmp/greptimedb
+    networks:
+      - aria-net
+    command: standalone start --http-addr 0.0.0.0:4001 --grpc-addr 0.0.0.0:4002
+
+  # ------------------------------------------------------------------
+  # (Опционально) Векторная база данных LanceDB
+  # Обычно работает как embedded, но можно поднять отдельно
+  # ------------------------------------------------------------------
+  # lancedb:
+  #   image: lancedb/lancedb:latest
+  #   container_name: lancedb
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - lancedb_data:/data
+  #   networks:
+  #     - aria-net
+
+# ============================================================
+# Тома для персистентности данных
+# ============================================================
+volumes:
+  core_config:
+  core_data:
+  memory_data:
+  sentinel_data:
+  interface_config:
+  ollama_models:
+  greptime_data:
+  # lancedb_data:
+  shared_models:
+
+# ============================================================
+# Виртуальная сеть ARIA
+# ============================================================
+networks:
+  aria-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
