@@ -1,4 +1,4 @@
-# AXIOMS.md — Полный Нерушимый Кодекс ARIA AI‑Factory (v12.92)
+# AXIOMS.md — Полный Нерушимый Кодекс ARIA AI‑Factory (v13.01)
 
 ## Категория 0: Квантовая Природа Рынка (Первоаксиома)
 0. **Quantum Market Hypothesis** — Рынки проявляют квантово‑подобные свойства. Адекватное моделирование возможно только на квантовых компьютерах (Lloyd, 1996).
@@ -74,6 +74,7 @@
 312. **Klavis MCP Unification** — Универсальный MCP‑маршрутизатор и песочница.
 330. **mcpo Bridge** — Универсальный MCP‑to‑OpenAPI прокси.
 335. **MCP Universal Catalog** — Awesome MCP Servers как де‑факто каталог.
+341. **Cloudflare MCP Mandate** — Глобальная serverless‑инфраструктура (Workers, KV, R2, D1, Queues, Durable Objects) как стандартный провайдер для развёртывания агентов ARIA.
 
 ## Категория VII: Квантовые Вычисления (Стратегический Резерв)
 28. **Quantum Generation** — QGAN для синтеза финансовых данных.
