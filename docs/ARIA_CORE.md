@@ -8,16 +8,20 @@ ARIA (Autonomous Recursive Intelligent Architecture) — AGI‑ядро AI‑Fac
 Модель: DeepSeek‑V3 + Gemma 4 MTP (Гибридный Роутер).
 
 ## Архитектура (6 контуров, 4 сверх‑ядра)
-1. ARIA Core (стратегия, память, R&D)
-2. ARIA Trading (охота на MEV/манипуляторов)
-3. ARIA CI/CD & Security (детерминированные гарантии)
-4. ARIA Interface (командный центр, HITL)
-5. Cryptographic Security (квантово‑устойчивая защита)
-6. Quantum Hub (квантовые вычисления, резерв)
+1. **Core** — стратегия, память, R&D.
+   - Сверх‑ядра: Aria‑Cognitive‑Core (рассуждения), Aria‑Memory‑Core (память).
+2. **Trading** — охота на MEV/манипуляторов.
+   - Сверх‑ядро: Aria‑Sentinel‑Core (детекция угроз).
+3. **CI/CD & Security** — детерминированные гарантии, автономное развёртывание.
+4. **Interface** — командный центр, HITL.
+   - Сверх‑ядро: Aria‑Interface‑Hub (визуализация, коммуникации).
+5. **Cryptographic Security** — квантово‑устойчивая защита (AES‑256‑GCM, RSA, Kyber, ZKP, MPC).
+6. **Quantum Hub** — квантовые вычисления (резерв).
 
 ## Ключевые метрики
-- 352 аксиомы Нерушимого Кодекса
-- 580+ разобранных инцидентов
-- 300+ MCP‑инструментов (консолидированы в 4 сверх‑ядра)
-- Zero‑Error Tolerance
-- Mutation Coverage ≥85%
+- **352 аксиомы** Нерушимого Кодекса
+- **580+** разобранных инцидентов
+- **300+** MCP‑инструментов (консолидированы в 4 сверх‑ядра)
+- **Zero‑Error Tolerance**
+- **Mutation Coverage ≥85%**
+- **Continuous Learning:** 1000+ проанализированных источников, 150+ интегрированных open‑source проектов
