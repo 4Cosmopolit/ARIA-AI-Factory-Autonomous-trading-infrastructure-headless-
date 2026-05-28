@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "unla": {
+      "command": "docker",
+      "args": ["compose", "-f", "/opt/aria-factory/mcp-servers/unla/docker-compose.yml", "up", "-d"]
+    }
+  }
+}
