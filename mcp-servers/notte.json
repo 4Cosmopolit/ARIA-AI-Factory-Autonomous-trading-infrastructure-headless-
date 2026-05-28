@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "notte": {
+      "command": "uvx",
+      "args": ["notte-mcp"],
+      "env": {
+        "NOTTE_API_KEY": "${NOTTE_API_KEY}"
+      }
+    }
+  }
+}
