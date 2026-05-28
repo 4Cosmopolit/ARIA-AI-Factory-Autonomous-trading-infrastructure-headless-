@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jadx": {
+      "command": "uvx",
+      "args": ["jadx-ai-mcp"]
+    }
+  }
+}
