@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "falcon": {
+      "command": "uvx",
+      "args": ["crowdstrike-falcon-mcp"],
+      "env": {
+        "FALCON_CLIENT_ID": "${FALCON_CLIENT_ID}",
+        "FALCON_CLIENT_SECRET": "${FALCON_CLIENT_SECRET}"
+      }
+    }
+  }
+}
