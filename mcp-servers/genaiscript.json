@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "genaiscript": {
+      "command": "npx",
+      "args": ["genaiscript", "serve"]
+    }
+  }
+}
