@@ -1,27 +1,29 @@
-# AGENTS.md — Инженерный контракт ARIA AI-Factory
+# AGENTS.md — Инженерный контракт ARIA AI‑Factory
 
-> **Версия:** 8.0  
-> **Дата:** 12 мая 2026  
-> **Основа:** Agentic Engineering, Spec‑Driven Development, Proof not Promises, Skills First, MCP as Transport.  
-> **Связанные контракты:** [`SELF_REFERAT.md`](./SELF_REFERAT.md), [`TASKS.md`](./TASKS.md), [`RULES.md`](./RULES.md), [`SKILLS.md`](./SKILLS.md), [`COGNITIVE.md`](./COGNITIVE.md).
+> **Версия:** 13.01  
+> **Дата:** 26 мая 2026  
+> **Основа:** Agentic Engineering, Spec‑Driven Development, Proof not Promises, Skills First, MCP as Transport, RESD‑обучение на ошибках, MOSS‑автономная эволюция.  
+> **Связанные контракты:** [`SELF_REFERAT.md`](./SELF_REFERAT.md), [`TASKS.md`](./TASKS.md), [`RULES.md`](./RULES.md), [`SKILLS.md`](./SKILLS.md), [`COGNITIVE.md`](./COGNITIVE.md), [`SECURITY.md`](./SECURITY.md), [`INTEGRATIONS.md`](./INTEGRATIONS.md), [`ROADMAP.md`](./ROADMAP.md), [`TRAINING_LOG.md`](./TRAINING_LOG.md).
 
 ## 1. Роли и ответственность
 
 - **Risk Officer (Игорь):** Утверждает спецификации, ревьюит high‑risk изменения, устанавливает политики через Telegram. Единолично подтверждает фазу «Охота» и критические транзакции.
 - **ARIA Core (агентная сеть):** Исполняет стратегические задачи, генерирует код, тесты, доказательства, самоисцеляется, эволюционирует. Не выполняет ордера.
 - **ARIA Trading (агенты‑охотники):** Изолированно выполняют торговые операции строго в рамках утверждённых спецификаций и лимитов.
+- **Self‑Modification Engine (MOSS + RESD):** Автономно модифицирует исходный код, обучается на ошибках через RESD, тестирует изменения в DeltaBox, проходит валидацию MalwarePT и SkillEvolBench.
+- **Research Agents (Quest, CoRT, Argus, OnePred):** Проводят глубокую разведку, генерируют мета‑когнитивные улучшения, предсказывают намерения пользователя.
 
 ## 2. Жизненный цикл задачи (обязательный)
 
 Каждая задача (новая стратегия, исправление, рефакторинг) **обязана** пройти следующие фазы:
 
 1. **Specify (`/spec`)** – создать `SPEC.md` (цели, критерии приемки, риски, тест‑стратегия, ограничения из `RULES.md`).
-2. **Plan (`/plan`)** – разбить на атомарные задачи с оценкой, dependencies, `EJECT_PLAN.md`.
+2. **Plan (`/plan`)** – разбить на атомарные задачи с оценкой, dependencies, `EJECT_PLAN.md`. Использовать Shrimp Task Manager для декомпозиции.
 3. **Tasks** – каждая задача выполняется отдельным PR (не более 200 строк change).
-4. **Implement** – код пишется **после** тестов (TDD обязателен).
-5. **Verify** – прогон `validator-mcp` (мутации, edge‑анализ, security, конкурентность).
-6. **Review** – `review-mcp` (5 стадий: static, QA, reasoning, multi‑model, human HITL для high‑risk).
-7. **Ship** – после аппрува Risk Officer (через Telegram) и зелёного CI.
+4. **Implement** – код пишется **после** тестов (TDD обязателен). Для автономной генерации применять MOSS.
+5. **Verify** – прогон `validator-mcp` (мутации, edge‑анализ, security, конкурентность). Все изменения тестировать в **DeltaBox** (мгновенные чекпоинты и откат). Бинарные артефакты проверять через **MalwarePT**.
+6. **Review** – `review-mcp` (5 стадий: static, QA, reasoning, multi‑model, human HITL для high‑risk). Дополнительно применять **Agent‑ToM** для мониторинга скрытых вредоносных намерений у автономных агентов.
+7. **Ship** – после аппрува Risk Officer (через Telegram) и зелёного CI. Все изменения фиксируются в `CHANGELOG.md` и `TRAINING_LOG.md`.
 
 ## 3. Дисциплина и границы
 
@@ -32,59 +34,114 @@
 - Использовать `@`‑синтаксис для ссылок на память (`@memory:query`, `@path/to/file`).
 - Подписывать сообщения в Telegram‑арене (`@scout-mcp`, `@hunter-mcp`).
 - Логировать все действия в `memory-mcp` с тегами `source` и `confidence`.
+- Применять **RESD** для обучения на ошибках: извлекать уроки из неудач в `Playbook`, использовать их при следующих попытках.
+- Перед каждым автономным изменением кода выполнять `codebase_impact` (SocratiCode) и `mcp-audit`.
+- Проверять все бинарные артефакты через MalwarePT.
+- Использовать **CoRT** для рекурсивного улучшения ответов в критических сценариях.
+- Весь новый код и MCP‑серверы тестировать в sandboxed‑окружении (Docker + tcpdump) согласно чеклисту из `SECURITY.md`.
+- Отмечать чекбокс `This PR was written with meaningful AI agent assistance` в PR, созданных автономными агентами (метод из Habr).
 
 ### 3.2 Never Do
 - Выводить средства без мультиподписи (Risk Officer + HITL).
 - Игнорировать ошибки HTTP 429, 5xx (автоматический backoff).
 - Рефакторить код вне зоны задачи (Minimal Impact).
-- Принимать PR без доказательств (мутации, edge‑анализ, логи).
+- Принимать PR без доказательств (мутации, edge‑анализ, логи, прогон MalwarePT и DeltaBox).
 - Деплоить изменения, не прошедшие `validator-mcp`.
-- Добавлять внешние MCP‑серверы без аудита безопасности (`SkillSupplyChainAuditor`, `mcp‑dependency‑audit`).
+- Добавлять внешние MCP‑серверы без аудита безопасности (`SkillSupplyChainAuditor`, `mcp‑audit`, sandboxed‑тест).
 - Использовать модели, не прошедшие бенчмарки на галлюцинации (порог accuracy > 85%).
 - Превышать дневной лимит убытка в 1% (`Capital Preservation`).
+- Использовать `npm install` вместо `npm ci` (lockfile enforcement).
+- Игнорировать предупреждения `Agent‑ToM` о подозрительных намерениях автономных агентов.
 
 ## 4. Память и контекст
 
-- **L0 (Identity)** – `SELF_REFERAT.md`, `RULES.md` (всегда в контексте).
-- **L1 (Facts)** – `TASKS.md`, `CONSTITUTION.md`, `SKILLS.md` (всегда в контексте, ~200 токенов).
+- **L0 (Identity)** – `SELF_REFERAT.md`, `RULES.md`, `AGENTS.md` (всегда в контексте).
+- **L1 (Facts)** – `TASKS.md`, `SKILLS.md`, `INTEGRATIONS.md` (всегда в контексте, ~200 токенов).
 - **L2 (Room context)** – подгружается по требованию.
-- **L3 (Deep search)** – через `memory-mcp` retrieval, `Temporal KG`, `GraphRAG`.
+- **L3 (Deep search)** – через `memory-mcp` retrieval, `Temporal KG`, `GraphRAG`, **Trieve** (единая retrieval‑инфраструктура), **SocratiCode** (анализ кодовой базы), **Graphify** (граф знаний).
 - **HOT memory** – ограничена 10 последними записями (TTL 24ч).
-- **WARM memory** – архитектурные решения (TTL 14 дней).
+- **WARM memory** – архитектурные решения, уроки из RESD Playbook (TTL 14 дней).
 - **Episodic memory** – цепочки «причина → действие → исход» (TTL 90 дней).
 - **Temporal graph** – факты с `valid_from`/`valid_to`, автоматическое исключение устаревших.
+- **DUALMEM** – персонифицированная интерпретация фактов (запланирована на v14.00).
+- **Basic Memory** – легковесные Markdown‑заметки для человекопонятных знаний.
+- **ByteRover CLI** – версионируемые структурированные деревья контекста.
 - **Контролируемое забывание** – удаление фактов с истекшим `valid_to` или низким `confidence`.
 
 ## 5. Каналы коммуникации
 
-- **MCP** – транспорт для внешних API (Bybit, Hyperliquid, EigenPhi, MEVScan). Логика остаётся в Skills.
+- **MCP** – транспорт для внешних API (Alpha Vantage, CCXT, Arkham, Notte, BrightData, биржи). Логика остаётся в Skills.
 - **CLI** – для внутренних вызовов (`healer-mcp`, `scout-mcp`, `sandbox-mcp`), экономия токенов до 35×.
 - **Telegram** – публичная арена для мультиагентной координации (агенты подписываются), эскалации, стриминга рассуждений, HITL.
+- **Vexa AI** – голосовой HITL через Telegram и телефонные звонки.
+- **MetaMCP** – унификация и динамическое управление MCP‑инструментами.
+- **mcp‑proxy** – пограничный шлюз безопасности для всех MCP‑подключений.
+- **Unla** – Zero‑code конвертация REST/gRPC/WebSocket в MCP.
+- **MCP Router** – визуальная панель управления MCP‑инфраструктурой.
 
 ## 6. Качество и верификация
 
 - **Mutation coverage** – не ниже 85% для критических модулей.
-- **Edge cases coverage** – обязательный `What-If` анализ.
+- **Edge cases coverage** – обязательный `What‑If` анализ.
 - **Concurrency testing** – для всех параллельных MCP‑серверов.
-- **Security audit** – каждый новый MCP‑сервер проходит `SkillSupplyChainAuditor` + CVE scan.
+- **Security audit** – каждый новый MCP‑сервер проходит `SkillSupplyChainAuditor`, `mcp‑audit` + CVE scan + sandboxed‑тест.
 - **Verification gate** – без зелёного `validator-mcp` PR не мержится.
 - **Data Quality** – все входящие данные проходят `data-quality-audit` и `data-cleansing-pipeline`.
+- **FinCAD** – debiasing торговых стратегий от parametric look‑ahead bias (v13.03).
+- **VAC** – верификация визуальных отчётов (v13.03).
+- **SkillEvolBench** – бенчмарк для валидации эволюции навыков (v13.03).
+- **AgentEval Suite (Beyond the Hype)** – стандартный фреймворк QA для агентов (v13.02).
 
 ## 7. Эволюция
 
-- Каждая ошибка → `healer-mcp` анализирует → предлагает правило → Risk Officer утверждает → правило добавляется в `RULES.md` или `CONTRACTS.md`.
+- Каждая ошибка → **RESD** анализирует → извлекает урок → урок сохраняется в Playbook → используется при следующих попытках.
+- **MOSS** — автономная эволюция исходного кода через четырёхфазный конвейер (Localization → Identification → Generation → Validation) с тестированием в DeltaBox и MalwarePT.
 - **Nudge Engine** – неиспользуемые правила (>14 дней) запрашивают подтверждение актуальности.
 - **Memory Evolution** – периодический запуск A‑MEM для реорганизации графа знаний, перелинковки, удаления устаревшего.
 - **Self‑Improving Loop** – каждая успешная/неуспешная охота анализируется, уроки сохраняются в `Temporal KG`.
+- **Skills on the Fly** – временные навыки для быстрой адаптации к новым ситуациям (v13.03).
 
-## 8. Модели и роутинг
+## 8. Безопасность (дополнительные меры)
+
+- **Sandboxed‑тестирование**: каждый новый MCP‑сервер запускается в изолированном Docker‑контейнере с мониторингом сетевых обращений перед интеграцией.
+- **Lockfile enforcement**: использовать `npm ci` вместо `npm install` во всех CI/CD пайплайнах.
+- **Аудит MCP‑серверов**: проверка возраста GitHub‑аккаунта, обфускации, postinstall‑скриптов.
+- **Мониторинг MCP‑сканирования**: отслеживание initialize‑запросов от неизвестных клиентов (Suricata‑сигнатура).
+- **Аутентификация**: OAuth 2.1 или API‑ключи на каждом MCP‑сервере.
+- **Ограничение capabilities**: отключение sampling, roots, elicitation где не нужно.
+- **MalwarePT**: автоматический бинарный скрининг всех артефактов.
+- **Agent‑ToM**: мониторинг автономных агентов на скрытые вредоносные намерения (v14.00).
+- **Falcon MCP**: активная защита конечных точек и облака (v13.03).
+
+## 9. Модели и роутинг
 
 - **ARIA Core (стратегия, сложный анализ)** – DeepSeek V3 (облако) или Claude Sonnet 4.6 (резерв, HITL).
 - **ARIA Trading (охота, быстрые решения)** – Gemma 4 31B + MTP drafter (локально, Zero Hidden Cost).
-- **Разведка и простые запросы** – Gemma 4 26B‑A4B (локально).
+- **Разведка (Quest, CoRT)** – DeepSeek‑V3 / Qwen3.6‑27B (локально).
+- **Простые запросы** – Gemma 4 26B‑A4B (локально) или Ollama‑модели.
+- **Deep Research (Quest)** – специализированная открытая модель Quest (2B‑35B).
+- **Мульти‑модельная коммуникация** – Latent Cache Flow (v14.00, прямая передача скрытого состояния).
 - **Выбор модели** – автоматический через `model-router-mcp` на основе типа контента, приоритета и бюджета токенов.
 - **Token‑aware routing** – простые задачи направляются на дешёвые/локальные модели.
 
+## 10. Инструменты финансового контура
+
+- **Alpha Vantage MCP (официальный)** – фундаментальные данные (NASDAQ‑лицензия), макроэкономика, сентимент.
+- **CCXT MCP Server** – универсальный крипто‑шлюз (100+ бирж).
+- **Arkham Intel** – ончейн‑разведка, кластеризация кошельков, AI‑инсайты.
+- **QuantDinger** – AI‑квантовая торговая платформа.
+- **TradingView MCP** – технический анализ, бэктестинг.
+- **MonteWalk** – симуляции Монте‑Карло (v13.03).
+- **NexGenData Finance MCP** – оперативный скрининг, новости, сырьевые товары (v13.03).
+
+## 11. OSINT и Threat Intelligence
+
+- **FastMCP ThreatIntel** – основной Threat Intelligence сервер (v13.03).
+- **frishtik/osint‑tools‑mcp‑server** – агрегатор OSINT (Sherlock, Holehe, GHunt, Maigret) (v13.03).
+- **Sycek MCP** – коммерческий OSINT (утечки, Twitter) (v13.03).
+- **OSINT Tools MCP, OSINT Toolkit MCP** – легковесные проверки и сетевая разведка (v13.03).
+- **Dork MCP, Uncurl MCP, Spider MCP, CyberChef MCP, GreyNoise MCP** – специализированные инструменты (v13.03).
+
 ---
 
-**Этот контракт обязателен для всех агентов ARIA AI-Factory. Нарушение = блокировка до исправления.**
+**Этот контракт обязателен для всех агентов ARIA AI‑Factory. Нарушение = блокировка до исправления.**
