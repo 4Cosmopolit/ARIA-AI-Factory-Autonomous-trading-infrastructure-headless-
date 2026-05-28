@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "CoRT-chain-of-recursive-thinking": {
+      "command": "pipx",
+      "args": ["run", "cort-mcp", "--log=off"],
+      "env": {
+        "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY}"
+      }
+    }
+  }
+}
