@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "metamcp": {
+      "command": "npx",
+      "args": ["metamcp"]
+    }
+  }
+}
