@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sycek": {
+      "command": "uvx",
+      "args": ["sycek-mcp"],
+      "env": {
+        "SYCEK_API_KEY": "${SYCEK_API_KEY}"
+      }
+    }
+  }
+}
