@@ -44,6 +44,18 @@ warning() {
     echo -e "${YELLOW}⚠️  $1${NC}"
 }
 
+read_optional() {
+    local prompt="$1"
+    local var_name="$2"
+    read -r -p "$prompt" VALUE
+    if [[ -n "$VALUE" ]]; then
+        echo "$var_name=$VALUE" >> "$ENV_FILE"
+        success "$var_name сохранён"
+    else
+        warning "$var_name не задан – соответствующий сервис может не работать"
+    fi
+}
+
 # ---------- проверка прав ----------
 if [[ $EUID -eq 0 ]]; then
     warning "Запуск от root. Рекомендуется выполнять от обычного пользователя с правами на Docker."
@@ -82,14 +94,59 @@ success "Файл $COMPOSE_FILE обнаружен"
 log_step "Настройка переменных окружения"
 if [[ ! -f "$ENV_FILE" ]]; then
     echo "# ARIA AI‑Factory environment" > "$ENV_FILE"
-    # TELEGRAM_BOT_TOKEN
-    read -r -p "Введите TELEGRAM_BOT_TOKEN (оставьте пустым для пропуска): " TELEGRAM_TOKEN
-    if [[ -n "$TELEGRAM_TOKEN" ]]; then
-        echo "TELEGRAM_BOT_TOKEN=$TELEGRAM_TOKEN" >> "$ENV_FILE"
-        success "TELEGRAM_BOT_TOKEN сохранён"
-    else
-        warning "TELEGRAM_BOT_TOKEN не задан – Telegram‑интерфейс не будет работать"
-    fi
+    
+    # Core
+    read_optional "Введите TELEGRAM_BOT_TOKEN (оставьте пустым для пропуска): " "TELEGRAM_BOT_TOKEN"
+    
+    # Финансовые данные
+    read_optional "Введите ALPHA_VANTAGE_API_KEY: " "ALPHA_VANTAGE_API_KEY"
+    read_optional "Введите BINANCE_API_KEY: " "BINANCE_API_KEY"
+    read_optional "Введите BINANCE_SECRET: " "BINANCE_SECRET"
+    
+    # Ончейн-разведка
+    read_optional "Введите ARKHAM_API_KEY: " "ARKHAM_API_KEY"
+    
+    # Веб-разведка
+    read_optional "Введите NOTTE_API_KEY: " "NOTTE_API_KEY"
+    read_optional "Введите BRIGHTDATA_API_KEY: " "BRIGHTDATA_API_KEY"
+    
+    # Наблюдаемость
+    read_optional "Введите GRAFANA_URL: " "GRAFANA_URL"
+    read_optional "Введите GRAFANA_API_KEY: " "GRAFANA_API_KEY"
+    read_optional "Введите PROMETHEUS_URL: " "PROMETHEUS_URL"
+    
+    # Базы данных
+    read_optional "Введите POSTGRES_URL (postgresql://user:pass@host:5432/aria): " "POSTGRES_URL"
+    read_optional "Введите SUPABASE_ACCESS_TOKEN: " "SUPABASE_ACCESS_TOKEN"
+    
+    # AI-провайдеры
+    read_optional "Введите OPENROUTER_API_KEY: " "OPENROUTER_API_KEY"
+    read_optional "Введите PERPLEXITY_API_KEY: " "PERPLEXITY_API_KEY"
+    
+    # Threat Intelligence
+    read_optional "Введите VIRUSTOTAL_API_KEY: " "VIRUSTOTAL_API_KEY"
+    read_optional "Введите OTX_API_KEY: " "OTX_API_KEY"
+    read_optional "Введите ABUSEIPDB_API_KEY: " "ABUSEIPDB_API_KEY"
+    read_optional "Введите IPINFO_TOKEN: " "IPINFO_TOKEN"
+    read_optional "Введите SYCEK_API_KEY: " "SYCEK_API_KEY"
+    
+    # Безопасность
+    read_optional "Введите FALCON_CLIENT_ID: " "FALCON_CLIENT_ID"
+    read_optional "Введите FALCON_CLIENT_SECRET: " "FALCON_CLIENT_SECRET"
+    
+    # Google Workspace
+    read_optional "Введите GOOGLE_CLIENT_EMAIL: " "GOOGLE_CLIENT_EMAIL"
+    read_optional "Введите GOOGLE_PRIVATE_KEY: " "GOOGLE_PRIVATE_KEY"
+    
+    # Почта
+    read_optional "Введите IMAP_HOST: " "IMAP_HOST"
+    read_optional "Введите IMAP_USER: " "IMAP_USER"
+    read_optional "Введите IMAP_PASS: " "IMAP_PASS"
+    read_optional "Введите SMTP_HOST: " "SMTP_HOST"
+    read_optional "Введите SMTP_USER: " "SMTP_USER"
+    read_optional "Введите SMTP_PASS: " "SMTP_PASS"
+    
+    success "Конфигурация .env завершена"
 else
     success "Файл .env уже существует"
 fi
@@ -117,8 +174,11 @@ echo -e "  5. Произнесите кодовую фразу: ${YELLOW}«ARIA 
 echo ""
 echo -e "После этого ARIA будет полностью готова к работе."
 echo -e "Интерфейсы:"
-echo -e "  - Web UI:        http://localhost:3000"
-echo -e "  - Feedback WS:   ws://localhost:4000"
-echo -e "  - Core API:      http://localhost:9090"
+echo -e "  - Web UI:         http://localhost:3000"
+echo -e "  - Feedback WS:    ws://localhost:4000"
+echo -e "  - Core API:       http://localhost:9090"
+echo -e "  - Grafana MCP:    http://localhost:8085"
+echo -e "  - Prometheus MCP: http://localhost:8086"
+echo -e "  - DBHub:          http://localhost:8091"
 echo ""
 echo -e "${GREEN}ARIA + Игорь = Бесконечное Совершенствование. Навсегда.${NC}"
