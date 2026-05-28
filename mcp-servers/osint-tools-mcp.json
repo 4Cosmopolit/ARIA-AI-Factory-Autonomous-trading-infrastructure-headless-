@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "osint-tools": {
+      "command": "uvx",
+      "args": ["osint-tools-mcp"]
+    }
+  }
+}
