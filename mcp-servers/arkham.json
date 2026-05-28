@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "arkham": {
+      "command": "uv",
+      "args": ["--directory", "/opt/aria-factory/mcp-servers/arkham-mcp", "run", "arkham-mcp"],
+      "env": {
+        "ARKHAM_API_KEY": "${ARKHAM_API_KEY}",
+        "ARKHAM_BASE_URL": "https://api.arkm.com",
+        "ARKHAM_PROVIDER": "arkham"
+      }
+    }
+  }
+}
