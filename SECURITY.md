@@ -1,5 +1,11 @@
 # SECURITY.md — Политика безопасности ARIA AI‑Factory
 
+## Принципы
+- **Deny-first Security**: все ордера по умолчанию заблокированы до подтверждения
+- **Zero Trust внутри фабрики**: ни одно действие агента не считается безопасным без явной проверки
+- **Аппаратная изоляция**: критический код выполняется в Microsandbox (KVM) и DeltaBox
+- **Атомарная истина**: все решения верифицируемы и воспроизводимы
+
 ## Поддерживаемые версии
 
 | Версия | Поддержка |
@@ -17,4 +23,16 @@
 Для защиты вашего отчёта мы используем протокол шифрования **Age**. Используйте следующую команду, чтобы зашифровать ваш отчёт перед отправкой:
 
 ```bash
-age -r age1nv2n7q... -o report.age report.txt
+age -r age1nv2n7q... -o report.age report.md
+
+censys search 'services.http.response.body:"protocolVersion" AND services.http.response.body:"initialize"'
+
+alert http $EXTERNAL_NET any -> $HOME_NET any (
+  msg:"MCP Server Scan Detected";
+  content:"initialize";
+  content:"protocolVersion";
+  content:"clientInfo";
+  content:"jsonrpc";
+  sid:2026031001; rev:1;
+)
+
