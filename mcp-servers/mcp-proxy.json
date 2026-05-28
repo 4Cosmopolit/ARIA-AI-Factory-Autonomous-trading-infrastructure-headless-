@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-proxy": {
+      "command": "npx",
+      "args": ["@sparfenyuk/mcp-proxy"],
+      "env": {
+        "MCP_PROXY_AUTH": "oauth2",
+        "MCP_PROXY_RATE_LIMIT": "100"
+      }
+    }
+  }
+}
