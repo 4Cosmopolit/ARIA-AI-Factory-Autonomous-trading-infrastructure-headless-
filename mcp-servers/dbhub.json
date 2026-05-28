@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dbhub": {
+      "command": "npx",
+      "args": ["@bytebase/dbhub@latest", "--dsn", "file:///var/lib/aria/dbhub.toml"]
+    }
+  }
+}
