@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vexa": {
+      "command": "npx",
+      "args": ["vexa-mcp"]
+    }
+  }
+}
