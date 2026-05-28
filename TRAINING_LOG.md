@@ -1,18 +1,177 @@
 # TRAINING_LOG.md — Журнал обучения ARIA (хронология)
 
+## 26.05.2026
+- **FinCAD (arXiv:2605.24564)**: Метод debiasing LLM в финансах от parametric look-ahead bias. → Аксиома №1, №2, №4, №9.
+- **DUALMEM & RoleMemo (arXiv:2605.25693)**: Персонифицированная двухпоточная память. → Аксиома №2, №6, №9, №338.
+- **Beyond the Hype (arXiv:2605.24331)**: AgentEval Suite + AgentTrace + AgentSandbox. Стандартный фреймворк QA для агентов. → Аксиома №2, №4, №9.
+- **Agent-ToM (arXiv:2605.24216, Cisco Outshift)**: Мониторинг автономных агентов через Theory-of-Mind. → Аксиома №1, №2, №9.
+- **Quest (arXiv:2605.24218)**: Универсальный deep research агент. → Аксиома №2, №9, №4.
+- **MOSS (arXiv:2605.22794)**: Self-Evolution через source-level rewriting. Замена Self-Modification Engine. → Аксиома №2, №4, №9.
+- **DeltaBox (arXiv:2605.22781)**: Миллисекундные чекпоинты песочницы. → Аксиома №1, №4, №9.
+- **SkillEvolBench (arXiv:2605.24117)**: Бенчмарк эволюции навыков из опыта. → Аксиома №4, №9, №243.
+- **Tensor Cache (arXiv:2605.22884)**: Двухуровневый кэш для Transformer. → Аксиома №4, №9.
+- **Latent Cache Flow (arXiv:2605.22863)**: Model-to-model communication без текста. → Аксиома №4, №9.
+- **OnePred (arXiv:2605.23668)**: Next-Query Prediction через recursive intent memory. → Аксиома №2, №4, №9.
+- **Self-Improving ICL (arXiv:2605.23180)**: Оптимизация few-shot промптов без генерации токенов. → Аксиома №2, №4, №9.
+- **Memory-R2 (arXiv:2605.21768)**: Fair Credit Assignment для memory-augmented агентов. **Заменён на RESD.** → Аксиома №2, №9.
+- **Dynamic TMoE (arXiv:2605.20678)**: Drift-Aware Dynamic Mixture of Experts для нестационарных временных рядов. → Аксиома №2, №9.
+- **Selective Hindsight Distillation (arXiv:2605.19447)**: Дистилляция для многошаговых агентов. **Заменён на RESD.** → Аксиома №4, №9.
+- **Contextual Integrity (arXiv:2605.20258)**: Complementary Self-Distillation для безопасности LLM. → Аксиома №1, №2, №9.
+- **GROW (arXiv:2605.20246)**: RL для VLM-агентов. → Аксиома №3, №9.
+- **GoLongRL (arXiv:2605.19577)**: Рецепт пост-тренировки для длинных контекстов. → Аксиома №4, №9.
+- **MemRepair (arXiv:2605.17444)**: Иерархическая память для авто-ремонта уязвимостей. → Аксиома №1, №4, №9.
+- **Argus (arXiv:2605.16217)**: Двух-агентный deep research с комплементарными доказательствами. → Аксиома №4, №9.
+- **L-Drive (arXiv:2605.17730)**: Латентный контекст для прогноза временных рядов. → Аксиома №2, №9.
+- **Skills on the Fly (arXiv:2605.16986)**: Временные навыки для быстрой адаптации. → Аксиома №3, №9.
+- **Alpha Factor Discovery RL (arXiv:2605.15412)**: RL для обнаружения альфа-факторов. → Аксиома №2, №9.
+- **Context Pruning (arXiv:2605.15315)**: Multi-Rubric Latent Reasoning для обрезки контекста. → Аксиома №4, №9.
+- **Nudging Exploration (arXiv:2605.15726)**: Strategy-Guided Exploration для RLVR. → Аксиома №4, №9.
+- **Contexting as Recommendation (arXiv:2605.15721)**: Эволюционный подбор контекста. → Аксиома №3, №4, №9.
+- **Microservices Root Cause (arXiv:2605.14866)**: Multi-Agent Recursion-of-Thought для локализации сбоев. → Аксиома №2, №9.
+- **RESD (arXiv:2605.12741 + репозиторий horizon-llm/RESD)**: Reflection-Enhanced Self-Distillation. Основной RL-фреймворк (замена Memory-R2 + Selective Hindsight Distillation). → Аксиома №4, №9.
+- **CoMERA-Agent (arXiv:2605.05857)**: Аппаратно-осознанное сжатие контекста. → Аксиома №4, №9.
+- **OPD Survey (arXiv:2604.00626v3, 2504.10127v2)**: Стратегический навигационный документ по On-Policy Distillation. → Принят как референс.
+- **ECM (arXiv:2605.21088)**: Error Correction Mechanisms для глубоких моделей временных рядов. → Аксиома №1, №4, №9.
+- **RL-CVaR (arXiv:2605.21257)**: RL с CVaR барьерными функциями для динамического риск-менеджмента. → Аксиома №1, №4, №9.
+- **MalwarePT (arXiv:2605.16455)**: Бинарная фундаментальная модель для анализа вредоносного ПО. **Приоритет повышен до v13.03.** → Аксиома №1, №2, №9.
+- **SE-GA (arXiv:2605.16883)**: Memory-Augmented Self-Evolution для GUI-агентов (ICML 2026). → Аксиома №2, №9.
+- **Quantum End-to-End Learning (arXiv:2605.20222)**: Квантовое обучение для комбинаторной оптимизации. → Аксиома №161, №168.
+- **TOAP (arXiv:2505.21908)**: Tool Optimization with Agent Preferences. → Аксиома №3, №4, №9.
+- **VAC (arXiv:2605.00380)**: Vision as Context для hallucination-free chart captioning. → Аксиома №1, №2.
+- **SAFEFL (arXiv:2111.15367)**: Privacy-preserving XAI для Federated Learning. **Принят как референс (v14.00+).** → Аксиома №1, №9.
+- **Graph-RAG for Codebases (arXiv:2601.08773)**: Научное обоснование выбора AST-графов (SocratiCode). → Аксиома №2, №4, №7, №9.
+- **PEEK (arXiv:2605.19932)**: Context Map как Orientation Cache. → Аксиома №4, №9.
+- **Habr: Охота на AI-инфраструктуру**: Первый задокументированный случай MCP-сканирования. → Принят как источник IoC и правил детектирования.
+- **Codeby.net: CVE-2026-0300 PAN-OS**: Buffer overflow до root shell. → Принят как источник IoC и чеклиста реагирования.
+- **Arkham Intel (intel.arkm.com)**: Основная платформа ончейн-разведки (замена GOAT). → Аксиома №1, №2, №9.
+
+## 25.05.2026
+- **Graphify (safishamsi/graphify)**: Построение графа знаний из любой папки. → Аксиома №2, №3, №7, №338.
+- **Hermes Agent (NousResearch + hermes-agent.ru)**: Самообучающийся AI-ассистент (100k★). → Принят как внешний инструмент разработчика. Аксиома №9, №3.
+- **MarkItDown (Microsoft)**: Конвертация любых форматов в Markdown (экономия до 80% токенов). → Приоритетная интеграция. Аксиома №2, №9.
+- **DeerFlow (ByteDance)**: Мультиагентный фреймворк с супервайзером. → Аксиома №2, №9.
+- **Multica**: Панель управления AI-командой (v0.1.x). → Запланирован на v14.00. Аксиома №2, №9.
+- **Claude Code Game Studios**: Референс-архитектура мультиагентной иерархии. → Отклонён как инструмент.
+- **Grafana MCP (grafana/mcp-grafana)**: Наблюдаемость через MCP. → Приоритетная интеграция. Аксиома №2, №3, №9, №298.
+- **n8n-nodes-mcp (nerding-io)**: Визуальная оркестрация MCP-серверов. → Приоритетная интеграция. Аксиома №3, №9, №305.
+- **TriliumNext Notes**: HITL-инструмент для курирования графа знаний. → Запланирован на v14.00. Аксиома №7, №9.
+- **GenAIScript (Microsoft)**: Prompting is Coding (631 релиз). → Приоритетная интеграция. Аксиома №2, №3, №4, №9.
+- **Design Extract (manavarya09)**: Извлечение дизайн-систем с веб-сайтов. → Запланирован на v14.00. Аксиома №2, №9, №335.
+- **CoplayDev Unity MCP**: Основной 3D-движок (замена Godot MCP + IvanMurzak/Unity-MCP, 9.9k★). → Приоритетная интеграция (v14.00). Аксиома №2, №3, №9.
+- **DBHub (Bytebase)**: Универсальный SQL-шлюз (5 СУБД, 2 инструмента). → Приоритетная интеграция. Аксиома №2, №3, №4, №9.
+- **TradingView MCP (atilaahmettaner)**: Технический анализ, бэктестинг (2.8k★). → Аксиома №4, №9.
+- **QuantDinger (brokermr810)**: AI-квантовая торговая платформа. Центральная платформа Контура II. → Аксиома №1, №4, №9.
+- **QuantDinger-Vue**: Веб-интерфейс QuantDinger. → Аксиома №9, №333.
+- **QuantDinger-Mobile**: Мобильный клиент QuantDinger. → Аксиома №1, №9.
+- **QuantDinger.com + AI Asset Analysis**: SaaS-доступ и мультиагентный анализ активов.
+- **Postgres MCP (Crystal DBA)**: Глубокое администрирование PostgreSQL (2.5k★). → Аксиома №2, №3, №9.
+- **shadcn-ui-mcp-server (jpisnice)**: Генерация UI-компонентов shadcn/ui. → Приоритетная интеграция. Аксиома №2, №3, №4, №9.
+- **arXiv MCP Server (blazickjp)**: Поиск и анализ научных статей. → Аксиома №2, №9.
+- **Solon (opensolon)**: Легковесный Java-фреймворк для MCP-серверов. → Аксиома №2, №3, №9.
+- **SocratiCode (giancarloerra)**: Интеллектуальный анализ кодовой базы (замена Sourcebot). → Приоритетная интеграция. Аксиома №2, №4, №7, №9.
+- **Dev Containers CLI (devcontainers)**: Воспроизводимые среды разработки для агентов. → Запланирован. Аксиома №2, №7, №9.
+- **Supabase MCP (supabase-community)**: Управление платформой Supabase. → Запланирован. Аксиома №2, №3, №9.
+- **markdownify-mcp**: **Отклонён** (дублирует MarkItDown + RAGFlow).
+- **ddgs (deedy5)**: **Отклонён** (дублирует Exa MCP + U14 Deep Research).
+- **Trieve (devflowinc)**: Единая retrieval-инфраструктура (замена LanceDB, Cognee, Graphiti). → Приоритетная интеграция. Аксиома №2, №3, №9, №338.
+- **fli (punitarani)**: **Отклонён** (дублирует Gemini CLI + Codex CLI + Refact).
+- **Codebase Memory MCP (deusdata)**: **Отклонён** (дублирует SocratiCode + Basic Memory).
+- **Ableton MCP**: **Отклонён** (не соответствует приоритетам).
+- **slackdump (rusq)**: Сбор данных из Slack-сообществ. → Запланирован на v14.00. Аксиома №2, №9.
+- **mcp-proxy (sparfenyuk)**: Пограничный шлюз безопасности MCP. → Приоритетная интеграция. Аксиома №1, №2, №9.
+- **notebooklm-mcp (pleaseprompto)**: Source-grounded ответы (заменён Google Workspace MCP). → Аксиома №2, №9, №293.
+- **Google Workspace MCP (taylorwilsdon)**: Замена notebooklm-mcp (12 сервисов). → Приоритетная интеграция. Аксиома №1, №2, №3, №9.
+- **BrightData MCP (brightdata)**: Enterprise веб-скрапинг (заменён Notte). → Резервный. Аксиома №2, №3, №9.
+- **PapersGPT for Zotero (papersgpt)**: Замена Zotero MCP (AutoPilot, C++ ядро). → Приоритетная интеграция. Аксиома №2, №9, №338.
+- **MetaMCP (metatool-ai)**: Клиентский диспетчер и унификатор. → Приоритетная интеграция. Аксиома №3, №9.
+- **CoRT (PhialsBasement + cort-mcp)**: Мета-когнитивный движок. → Принят (v13.02, опционально). Аксиома №1, №2, №4, №9.
+- **md2wechat-skill**: Конвертер Markdown в WeChat. → Принят опционально (v14.00).
+- **CodeGraph (Abhishek-Aditya-bs)**: **Отклонён** (дублирует SocratiCode).
+- **arXiv:2601.08773 (Graph-RAG for Codebases)**: Научное обоснование выбора SocratiCode. → Принят как обоснование.
+- **openai-apps-sdk-examples**: **Отклонён** (противоречит MCP-стратегии ARIA).
+- **gemini-mcp-tool (jamubc)**: **Отклонён** для боевого контура (дублирует Google GenAI SDK).
+- **Perplexity MCP Server (perplexityai)**: Оперативный поиск с цитированием. → Принят (v13.02, опционально). Аксиома №2, №4, №9.
+- **Google Analytics MCP (googleanalytics)**: Маркетинговая аналитика. → Запланирован. Аксиома №2, №9.
+- **Financial Datasets MCP (financial-datasets)**: Фундаментальные данные (заменён Alpha Vantage). → Запланирован как дополнительный. Аксиома №2, №9.
+- **lean-ctx (yvgude)**: Оперативный менеджер контекстного окна. → Приоритетная интеграция. Аксиома №3, №4, №9.
+- **JADX AI MCP (zinja-coder)**: Анализ Android-приложений. → Запланирован. Аксиома №1, №2, №9.
+- **Unla (AmoyLab)**: Zero-code API→MCP конвертер (замена Higress). → Приоритетная интеграция. Аксиома №2, №3, №9.
+- **Carbon (crbnos)**: Референсная архитектура MCP-интеграции (ERP/MES/QMS). → Принят как референс.
+- **Shrimp Task Manager (cjo4m06)**: Когнитивный планировщик задач. → Приоритетная интеграция. Аксиома №2, №4, №6, №9.
+- **Mcphub (samanhappy)**: Визуальный каталог и песочница MCP. → Инструмент разработчика (опционально). Аксиома №3, №9.
+- **Radar MCP (skyhook-io)**: Геопространственный анализ. → Принят опционально (v14.00).
+- **Fusio (apioo)**: Open-source API-менеджмент платформа. → Запланирован (v13.03, опционально). Аксиома №2, №3, №9.
+- **Vexa AI (vexa-ai)**: Серверный голосовой HITL-интерфейс. → Приоритетная интеграция. Аксиома №1, №9.
+- **DevDocs MCP (cyberagiinc)**: **Отклонён** (дублирует Context7 + GenAIScript + SocratiCode).
+- **MCP Router (mcp-router)**: Визуальная панель управления. → Приоритетная интеграция. Аксиома №2, №3, №9.
+- **Claude Peers MCP (louislva)**: **Отклонён** (дублирует Langroid + fast-agent + Hermes).
+- **Superglue (superglue-ai)**: **Отклонён** (дублирует Metorial + n8n).
+- **Tavily MCP (tavily-ai)**: **Отклонён** (дублирует Exa + Perplexity + Firecrawl).
+- **iOS Simulator MCP (joshuayoes)**: Управление iOS-симулятором. → Принят опционально (v14.00).
+- **LinkedIn MCP Server**: **Отклонён** (юридические риски).
+- **Office Word MCP Server**: Создание Word-документов. → Принят опционально (v14.00).
+- **ESP32 NAT Router**: **Отклонён** (hardware, не соответствует приоритетам).
+- **mcp_excalidraw (yctimlin)**: **Отклонён** (дублирует существующий Excalidraw MCP).
+- **Notte (nottelabs)**: Фреймворк для веб-агентов (замена BrightData MCP). → Приоритетная интеграция. Аксиома №2, №3, №9.
+- **MCP Agent Mail (dicklesworthstone)**: Универсальная IMAP/SMTP почта. → Приоритетная интеграция. Аксиома №2, №9.
+- **llama2-webui (liltom-eth)**: **Отклонён** (дублирует Open WebUI + Ollama).
+- **ContextPlus (forloopcodes)**: **Отклонён** (дублирует lean-ctx + SocratiCode).
+- **Unreal MCP (chongdashu)**: **Отклонён** (дублирует CoplayDev Unity MCP).
+- **IBM MCP CLI**: Эталонный MCP-клиент и среда выполнения. → Приоритетная интеграция. Аксиома №2, №3, №9.
+- **OpenDIA (aaronjmars)**: **Отклонён** (NL-to-API, незрелый; идея передана в Unla).
+
+## 24.05.2026
+- **screenpipe (mediar-ai)**: Непрерывная запись экрана и аудио для аудита сессий. → Аксиома №2, №9.
+- **browserbase MCP**: Cloud headless браузер с антидетектом. **Заменён BrightData MCP → Notte.** → Аксиома №2, №3.
+- **crewAI**: Ролевая мультиагентная оркестрация. → Аксиома №9, №336.
+- **Qiskit MCP / PennyLane MCP**: Квантовые симуляторы и устройства. → Аксиома №161, №168.
+- **fast-agent (evalstate)**: MCP-нативная ОС агентов. → Аксиома №343.
+- **Dagger Container Use**: Изолированные контейнеры для агентов. → Аксиома №342.
+- **Godot MCP**: 3D-движок для визуализаций. **Заменён CoplayDev Unity MCP.** → Аксиома №228.
+- **Code Interpreter API (shroominic)**: Безопасная песочница Python. → Аксиома №1, №9.
+- **Excel MCP Server (haris-musa)**: Работа с Excel без Microsoft Office. → Аксиома №339.
+- **Microsandbox (superradcompany)**: Аппаратная изоляция (KVM). Уже изучен.
+- **SEmble (minishlab)**: Сжатие эмбеддингов (Matryoshka). Уже изучен.
+- **Langroid**: Actor-модель мультиагентной оркестрации. Уже изучен.
+- **Cloudflare MCP Server**: Enterprise-интеграция с Cloudflare. → Аксиома №2, №3.
+- **AI Agents A-Z (gyoridavid)**: 42+ шаблона для n8n. → Аксиома №9, №305.
+- **IBM ContextForge (ibm/mcp-context-forge)**: Enterprise AI-шлюз с MCP Code Mode. → Приоритетная интеграция. Аксиома №2, №3, №338.
+- **Archestra (archestra-ai)**: AI-Native IDE для агентов. → Приоритетная интеграция. Аксиома №2, №3, №4, №9.
+- **Google GenAI Python SDK**: Официальный SDK для Gemini. → Аксиома №2, №168, №4.
+- **PromptX (deepractice)**: Ролевая платформа для HITL. → Приоритетная интеграция. Аксиома №2, №3, №9.
+- **ByteRover CLI (campfirein)**: Версионируемая структурированная память. → Приоритетная интеграция. Аксиома №2, №6, №7.
+- **Refact (smallcloudai)**: Агентный движок для автономной разработки (SWE-bench лидер). → Приоритетная интеграция. Аксиома №4, №7, №9.
+- **GPT-Code UI**: **Отклонён** (дублирует Open WebUI + Code Interpreter API).
+- **mcp-feedback-enhanced**: Уже интегрирован.
+- **MCP Chinese Getting Started Guide**: Образовательный ресурс.
+- **simpleaichat**: **Отклонён** (дублирует официальные SDK + Ollama).
+- **playwriter**: **Отклонён** (дублирует Playwright MCP + Refact).
+- **MCP Java SDK**: Enterprise SDK для Java. → Аксиома №2, №9.
+- **Sourcebot (sourcebot-dev)**: Платформа понимания кодовой базы. **Заменена SocratiCode.** → Аксиома №2, №3, №7, №9.
+- **Dagu (dagucloud)**: Легковесный движок оркестрации. → Приоритетная интеграция. Аксиома №1, №3, №7, №9.
+- **Vault AI (pashpashpash)**: **Отклонён** (дублирует RAGFlow + LanceDB + Cognee).
+- **Zotero MCP (54yyyu)**: Доступ к научной библиотеке. **Заменён PapersGPT.** → Аксиома №2, №9, №326.
+- **py-xiaozhi (huangjunsen0406)**: Edge/IoT-голосовой ассистент. → Запланирован на v14.00. Аксиома №9, №275, №333.
+- **Metorial (metorial)**: Интеграционная шина (1200+ SaaS). → Приоритетная интеграция. Аксиома №2, №3, №9.
+- **Peekaboo (OpenClaw)**: Захват контента активного окна. → Запланирован. Аксиома №2, №9, №307.
+- **Pezzo (pezzolabs)**: LLM Ops платформа. → Запланирован. Аксиома №2, №4, №9.
+- **Apple MCP (supermemoryai → griches)**: Нативные приложения macOS. → Запланирован на v14.00. Аксиома №1, №2, №9.
+- **HA-MCP (homeassistant-ai)**: Home Assistant MCP. → Запланирован на v14.00. Аксиома №2, №9.
+- **Basic Memory (basicmachines-co)**: Легковесная Markdown-память. → Запланирован. Аксиома №2, №7, №9.
+
 ## 05.06.2026
 - **fast-agent (evalstate/fast-agent)**: Высокоуровневая агентная ОС (MCP, ACP, навыки). → Аксиома №343.
 - **Langroid**: Actor‑модель мультиагентной оркестрации. → Аксиома №336.
-- **AntV MCP Server**: 26+ типов диаграмм от Ant Group/Alibaba. → Аксиома №335 (AntV Chart Mandate).
+- **AntV MCP Server**: 26+ типов диаграмм от Ant Group/Alibaba. → Аксиома №335.
 - **Microsandbox**: Аппаратная изоляция (KVM). → Аксиома №338.
 - **SEmble**: Сжатие эмбеддингов (Matryoshka embeddings). → Аксиома №337.
 - **Excel MCP Server**: Манипуляция Excel без Microsoft Excel. → Аксиома №339.
 - **Code Interpreter API**: Песочница для Python-анализа данных. → Аксиома №340.
-- **Godot MCP**: 3D-визуализация и симуляции. → Усиление Аксиомы №228.
+- **Godot MCP**: 3D-визуализация и симуляции. → Аксиома №228.
 - **Dagger Container Use**: MCP-управление контейнерами. → Аксиома №342.
 - **Lemonade**: Легковесный AI-SDK. → Аксиома №334.
 - **CopilotKit**: Интерактивные AI-интерфейсы в React. → Аксиома №333.
-- **kubefwd**: Локальный мост к Kubernetes. → Аксиома №335 (kubefwd).
+- **kubefwd**: Локальный мост к Kubernetes. → Аксиома №335.
 - **vLLM Semantic Router**: Семантический отбор инструментов. → Аксиома №331.
 - **Notion MCP**: Удалённый OAuth, уроки безопасности. → Аксиома №329.
 - **mcpo**: MCP-to-OpenAPI прокси. → Аксиома №330.
@@ -50,7 +209,7 @@
 - **AutoExpert**: Фабрика экспертов. → Аксиома №292.
 - **Cursor Talk To Figma MCP**: Полный контроль Figma. → Аксиома №291.
 - **Steel Browser**: Браузерная песочница. → Аксиома №290.
-- **BrowserMCP**: Архитектурный паттерн (не интегрирован). → Анализ.
+- **BrowserMCP**: Архитектурный паттерн. → Анализ.
 - **Code2Prompt**: Подготовка контекста. → Аксиома №288.
 - **YouTube Transcript API**: Транскрипты. → Аксиома №287.
 - **PraisonAI**: Микросекундные агенты. → Аксиома №286.
@@ -86,7 +245,6 @@
 - **Context-Mode**: Оптимизация контекста. → Аксиома №256.
 - **Nuclear MCP Discovery**: Discovery стандарт. → Аксиома №255.
 - **MCP for Beginners (Microsoft)**: Стандарт обучения. → Аксиома №254.
-- **Cua (ранняя версия)**: Computer-Use агент. → Аксиома №253.
 - **Beads**: Версионируемая память. → Аксиома №251.
 - **Archon**: One-command deploy. → Аксиома №249.
 - **BlenderMCP**: 3D-моделирование. → Аксиома №248.
@@ -102,134 +260,3 @@
 - **Penpot**: Открытая дизайн-платформа. → Аксиома №237.
 - **Hermes Agent**: Self-Evolving Agent. → Аксиома №235.
 - **Polymarket Hack**: Admin Key Security. → Аксиома №234.
-- **NotebookLM MCP + Skill**: Source-grounded знания. → Аксиома №293.
-- **OpenAI Swarm**: Handoff-паттерн. → Аксиома №188.
-- **Swarms (kyegomez)**: Enterprise-оркестрация. → Аксиома №186.
-- **Cyrus Agents**: Background Agent. → Аксиома №185.
-- **Claude Code Swarm**: Изолированные контейнеры. → Аксиома №184.
-- **Agent Swarm (Desplega)**: Heartbeat, TTL. → Аксиома №183.
-- **Augment Code**: Контекстный движок. → Аксиома №181.
-- **AutoAgent**: Self-Optimizing Harness. → Аксиома №171.
-- **Falcon Perception**: Плотное зрение. → Аксиома №172.
-- **Trinity Reasoning**: Глубокий анализ. → Аксиома №173.
-- **HuggingFace Models Scout**: Живой хаб моделей. → Аксиома №174.
-- **IBM TSPulse**: Tiny Anomaly Detection. → Аксиома №175.
-- **Qwen3.6-27B**: Плотный кодер. → Аксиома №176.
-- **rLLM-FinQA-4B**: Финансовый reasoning. → Аксиома №177.
-- **FinMME**: Мультимодальный бенчмарк. → Аксиома №178.
-- **BankerToolBench**: Агентный полигон. → Аксиома №180.
-- **FinQA Dataset**: Финансовые данные. → Аксиома №179.
-- **Liquid AI (LFM2.5-VL)**: Жидкая адаптивность. → Аксиома №165.
-- **GLM-5.1**: Верховный арбитр. → Аксиома №168.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **Qwen3.6-35B-A3B**: Эффективный MoE. → Аксиома №164.
-- **MiniMax Scaling Report**: Фундамент масштабирования. → Аксиома №169.
-- **VOID (Netflix)**: Контрфактуальное мышление. → Аксиома №170.
-- **Counterfactual Simulation**: Контрфактуальный анализ. → Аксиома №170.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-27B (повторный)**: Плотный кодер. → Аксиома №176.
-- **MiniMax-Report (arXiv 2603.22387)**: Фундамент масштабирования. → Аксиома №169.
-- **GLM-5.1 (повторный)**: Верховный арбитр. → Аксиома №168.
-- **NVIDIA AITune**: Оптимизация инференса. → Аксиома №167.
-- **Essential Data Mandate**: Тотальная необходимость. → Аксиома №166.
-- **Liquid AI (блог)**: Жидкая адаптивность. → Аксиома №165.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
-- **Qwen3.6-35B-A3B (arXiv)**: Эффективный MoE. → Аксиома №164.
-- **MiniMax-M27**: Стратегический интеллект. → Аксиома №163.
-- **MMX-CLI (Minimax)**: CLI-универсализация. → Аксиома №162.
-- **NVIDIA Ising**: Квантовый мост. → Аксиома №161.
-- **TabPFN**: Zero-shot байесовский классификатор. → Аксиома №160.
-- **ML-Intern (HuggingFace)**: Авто-посттренировка. → Аксиома №159.
-- **Kimi K2.6**: Роевое кодирование. → Аксиома №158.
-- **Euphony (OpenAI)**: Визуальный аудит. → Аксиома №157.
