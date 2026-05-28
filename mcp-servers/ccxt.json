@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ccxt": {
+      "command": "node",
+      "args": ["/opt/aria-factory/mcp-servers/ccxt-mcp-server/dist/index.js"],
+      "env": {
+        "BINANCE_API_KEY": "${BINANCE_API_KEY}",
+        "BINANCE_SECRET": "${BINANCE_SECRET}"
+      }
+    }
+  }
+}
