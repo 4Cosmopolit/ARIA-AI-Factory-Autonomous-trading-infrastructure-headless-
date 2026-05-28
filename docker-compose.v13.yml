@@ -168,19 +168,189 @@ services:
     command: standalone start --http-addr 0.0.0.0:4001 --grpc-addr 0.0.0.0:4002
 
   # ------------------------------------------------------------------
-  # (Опционально) Векторная база данных LanceDB
-  # Обычно работает как embedded, но можно поднять отдельно
+  # Alpha Vantage MCP (фундаментальные данные, NASDAQ-лицензия)
   # ------------------------------------------------------------------
-  # lancedb:
-  #   image: lancedb/lancedb:latest
-  #   container_name: lancedb
-  #   restart: unless-stopped
-  #   ports:
-  #     - "8080:8080"
-  #   volumes:
-  #     - lancedb_data:/data
-  #   networks:
-  #     - aria-net
+  alphavantage-mcp:
+    image: ghcr.io/alphavantage/marketdata-mcp-server:latest
+    container_name: alphavantage-mcp
+    restart: unless-stopped
+    environment:
+      - ALPHA_VANTAGE_API_KEY=${ALPHA_VANTAGE_API_KEY}
+    ports:
+      - "8084:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # Grafana MCP (наблюдаемость и дашборды)
+  # ------------------------------------------------------------------
+  grafana-mcp:
+    image: grafana/mcp-grafana:latest
+    container_name: grafana-mcp
+    restart: unless-stopped
+    environment:
+      - GRAFANA_URL=${GRAFANA_URL}
+      - GRAFANA_API_KEY=${GRAFANA_API_KEY}
+    ports:
+      - "8085:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # Prometheus MCP (метрики Prometheus)
+  # ------------------------------------------------------------------
+  prometheus-mcp:
+    image: prometheus-community/prometheus-mcp:latest
+    container_name: prometheus-mcp
+    restart: unless-stopped
+    environment:
+      - PROMETHEUS_URL=${PROMETHEUS_URL}
+    ports:
+      - "8086:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # CCXT MCP Server (универсальный крипто-шлюз, 100+ бирж)
+  # ------------------------------------------------------------------
+  ccxt-mcp:
+    image: node:18-alpine
+    container_name: ccxt-mcp
+    restart: unless-stopped
+    working_dir: /opt/ccxt-mcp
+    command: ["node", "dist/index.js"]
+    environment:
+      - BINANCE_API_KEY=${BINANCE_API_KEY}
+      - BINANCE_SECRET=${BINANCE_SECRET}
+    volumes:
+      - ./mcp-servers/ccxt:/opt/ccxt-mcp
+    ports:
+      - "8087:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # Arkham Intel MCP (ончейн-разведка)
+  # ------------------------------------------------------------------
+  arkham-mcp:
+    image: python:3.11-slim
+    container_name: arkham-mcp
+    restart: unless-stopped
+    working_dir: /opt/arkham-mcp
+    command: ["uv", "run", "arkham-mcp"]
+    environment:
+      - ARKHAM_API_KEY=${ARKHAM_API_KEY}
+      - ARKHAM_BASE_URL=https://api.arkm.com
+      - ARKHAM_PROVIDER=arkham
+    volumes:
+      - ./mcp-servers/arkham:/opt/arkham-mcp
+    ports:
+      - "8088:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # Notte MCP (фреймворк для сложной веб-разведки)
+  # ------------------------------------------------------------------
+  notte-mcp:
+    image: python:3.11-slim
+    container_name: notte-mcp
+    restart: unless-stopped
+    command: ["uvx", "notte-mcp"]
+    environment:
+      - NOTTE_API_KEY=${NOTTE_API_KEY}
+    ports:
+      - "8089:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # CoRT MCP (мета-когнитивный движок)
+  # ------------------------------------------------------------------
+  cort-mcp:
+    image: python:3.11-slim
+    container_name: cort-mcp
+    restart: unless-stopped
+    command: ["pipx", "run", "cort-mcp", "--log=off"]
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # Perplexity MCP (оперативный поиск с цитированием)
+  # ------------------------------------------------------------------
+  perplexity-mcp:
+    image: python:3.11-slim
+    container_name: perplexity-mcp
+    restart: unless-stopped
+    command: ["uvx", "perplexity-mcp"]
+    environment:
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - PERPLEXITY_MODEL=sonar-pro
+    ports:
+      - "8090:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # DBHub (универсальный SQL-шлюз, 5 СУБД)
+  # ------------------------------------------------------------------
+  dbhub:
+    image: node:18-alpine
+    container_name: dbhub
+    restart: unless-stopped
+    command: ["npx", "@bytebase/dbhub@latest", "--dsn", "file:///var/lib/aria/dbhub.toml"]
+    volumes:
+      - ./mcp-servers/dbhub:/var/lib/aria
+    ports:
+      - "8091:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # Postgres MCP (глубокое администрирование PostgreSQL)
+  # ------------------------------------------------------------------
+  postgres-mcp:
+    image: node:18-alpine
+    container_name: postgres-mcp
+    restart: unless-stopped
+    command: ["npx", "@crystaldba/postgres-mcp"]
+    environment:
+      - DATABASE_URL=${POSTGRES_URL}
+    ports:
+      - "8092:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # MetaMCP (клиентский диспетчер и унификатор MCP-подключений)
+  # ------------------------------------------------------------------
+  metamcp:
+    image: node:18-alpine
+    container_name: metamcp
+    restart: unless-stopped
+    command: ["npx", "metamcp"]
+    ports:
+      - "8093:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
+  # mcp-proxy (пограничный шлюз безопасности)
+  # ------------------------------------------------------------------
+  mcp-proxy:
+    image: node:18-alpine
+    container_name: mcp-proxy
+    restart: unless-stopped
+    command: ["npx", "@sparfenyuk/mcp-proxy"]
+    environment:
+      - MCP_PROXY_AUTH=oauth2
+      - MCP_PROXY_RATE_LIMIT=100
+    ports:
+      - "8094:8080"
+    networks:
+      - aria-net
 
 # ============================================================
 # Тома для персистентности данных
