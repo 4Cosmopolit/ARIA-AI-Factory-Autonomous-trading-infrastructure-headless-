@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "radar": {
+      "command": "npx",
+      "args": ["@skyhook-io/radar-mcp"]
+    }
+  }
+}
