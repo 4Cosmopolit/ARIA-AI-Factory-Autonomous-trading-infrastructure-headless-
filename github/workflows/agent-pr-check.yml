@@ -1,11 +1,17 @@
-name: AI Agent PR Check
+name: AI Agent PR Check & Security Audit
+
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, edited, synchronize]
 
 jobs:
+  # ----------------------------------------------------------
+  # 1. Проверка на AI-ассистированность и верификация авторства
+  # ----------------------------------------------------------
   check-agent-pr:
     runs-on: ubuntu-latest
+    outputs:
+      agent_assisted: ${{ steps.check.outputs.agent_assisted }}
     steps:
       - name: Check for agent-assisted checkbox
         id: check
@@ -17,8 +23,8 @@ jobs:
             if (isAgentAssisted) {
               core.setOutput('agent_assisted', 'true');
             }
-      
-      - name: Label and notify
+
+      - name: Label, notify, and request evidence
         if: steps.check.outputs.agent_assisted == 'true'
         uses: actions/github-script@v6
         with:
@@ -27,11 +33,71 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              labels: ['maybe-automated']
+              labels: ['maybe-automated', 'needs-manual-review']
             });
             github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: '🤖 Этот PR отмечен как AI-ассистированный. Бот проверит его в течение 3 дней. Если автор не подтвердит своё авторство, PR будет автоматически закрыт.'
+              body: '🤖 **Этот PR отмечен как AI-ассистированный.**\n\nВ соответствии с нашей политикой безопасности (см. `AGENTS.md` и `SECURITY.md`), автор PR должен подтвердить своё авторство, предоставив **логи тестирования и верификации** из изолированной среды (`DeltaBox` / `Microsandbox`). Без этого подтверждения PR будет автоматически закрыт через 72 часа.'
             });
+
+  # ----------------------------------------------------------
+  # 2. Аудит безопасности (SAST, секреты, инъекции)
+  # ----------------------------------------------------------
+  security-audit:
+    runs-on: ubuntu-latest
+    needs: check-agent-pr
+    steps:
+      - uses: actions/checkout@v4
+
+      # Сканирование секретов
+      - name: Secret scanning
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config: .github/gitleaks.toml
+
+      # Проверка MCP-серверов на Prompt Injection
+      - name: Run MCP prompt injection scanner
+        uses: aniketkarne/aco-prompt-shield@v1
+        with:
+          scan_path: mcp-servers/
+
+      # Проверка на известные уязвимости MCP
+      - name: Run MCP security audit
+        run: |
+          npx @unit42/mcp-security-tools audit --path mcp-servers/
+
+  # ----------------------------------------------------------
+  # 3. Автоматическое тестирование в изолированной среде
+  # ----------------------------------------------------------
+  sandbox-tests:
+    runs-on: ubuntu-latest
+    needs: security-audit
+    container:
+      image: 4cosmopolit/aria-sandbox:latest  # наш образ с DeltaBox
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run agent tests in sandbox
+        run: |
+          deltabox run --snapshot -- \
+            ./scripts/run_agent_tests.sh --check-pr
+
+  # ----------------------------------------------------------
+  # 4. Проверка целостности зависимостей (Supply Chain)
+  # ----------------------------------------------------------
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lockfile enforcement
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          elif [ -f yarn.lock ]; then
+            yarn install --frozen-lockfile
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt --require-hashes
+          fi
+      - name: Check npm package integrity
+        run: npx audit-ci --moderate
