@@ -100,7 +100,7 @@ if [[ ! -f "$ENV_FILE" ]]; then
     
     # Финансовые данные
     read_optional "Введите ALPHA_VANTAGE_API_KEY: " "ALPHA_VANTAGE_API_KEY"
-    read_optional "Введите BINANCE_API_KEY: " "BINANCE_API_KEY"
+    read_optional "Введите BINANCE_API_KEY (для CCXT MCP): " "BINANCE_API_KEY"
     read_optional "Введите BINANCE_SECRET: " "BINANCE_SECRET"
     
     # Ончейн-разведка
@@ -108,7 +108,7 @@ if [[ ! -f "$ENV_FILE" ]]; then
     
     # Веб-разведка
     read_optional "Введите NOTTE_API_KEY: " "NOTTE_API_KEY"
-    read_optional "Введите BRIGHTDATA_API_KEY: " "BRIGHTDATA_API_KEY"
+    read_optional "Введите BRIGHTDATA_API_KEY (резервный канал): " "BRIGHTDATA_API_KEY"
     
     # Наблюдаемость
     read_optional "Введите GRAFANA_URL: " "GRAFANA_URL"
@@ -120,17 +120,18 @@ if [[ ! -f "$ENV_FILE" ]]; then
     read_optional "Введите SUPABASE_ACCESS_TOKEN: " "SUPABASE_ACCESS_TOKEN"
     
     # AI-провайдеры
-    read_optional "Введите OPENROUTER_API_KEY: " "OPENROUTER_API_KEY"
+    read_optional "Введите OPENROUTER_API_KEY (для CoRT MCP): " "OPENROUTER_API_KEY"
     read_optional "Введите PERPLEXITY_API_KEY: " "PERPLEXITY_API_KEY"
     
-    # Threat Intelligence
+    # Threat Intelligence и OSINT
     read_optional "Введите VIRUSTOTAL_API_KEY: " "VIRUSTOTAL_API_KEY"
-    read_optional "Введите OTX_API_KEY: " "OTX_API_KEY"
+    read_optional "Введите OTX_API_KEY (AlienVault): " "OTX_API_KEY"
     read_optional "Введите ABUSEIPDB_API_KEY: " "ABUSEIPDB_API_KEY"
     read_optional "Введите IPINFO_TOKEN: " "IPINFO_TOKEN"
     read_optional "Введите SYCEK_API_KEY: " "SYCEK_API_KEY"
+    read_optional "Введите SHODAN_API_KEY (для OSINT Toolkit): " "SHODAN_API_KEY"
     
-    # Безопасность
+    # Безопасность (EDR)
     read_optional "Введите FALCON_CLIENT_ID: " "FALCON_CLIENT_ID"
     read_optional "Введите FALCON_CLIENT_SECRET: " "FALCON_CLIENT_SECRET"
     
@@ -145,6 +146,9 @@ if [[ ! -f "$ENV_FILE" ]]; then
     read_optional "Введите SMTP_HOST: " "SMTP_HOST"
     read_optional "Введите SMTP_USER: " "SMTP_USER"
     read_optional "Введите SMTP_PASS: " "SMTP_PASS"
+    
+    # Научные исследования (Zotero / PapersGPT)
+    read_optional "Введите ZOTERO_API_KEY (для синхронизации, опционально): " "ZOTERO_API_KEY"
     
     success "Конфигурация .env завершена"
 else
