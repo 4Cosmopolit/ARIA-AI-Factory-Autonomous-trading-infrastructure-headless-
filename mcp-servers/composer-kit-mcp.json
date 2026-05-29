@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "composer-kit": {
+      "command": "uvx",
+      "args": ["composer-kit-mcp"]
+    }
+  }
+}
