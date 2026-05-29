@@ -1,4 +1,4 @@
-# AXIOMS.md — Полный Нерушимый Кодекс ARIA AI‑Factory v13.01
+# AXIOMS.md — Полный Нерушимый Кодекс ARIA AI‑Factory v13.01 (updated 29.05.2026)
 
 ## Категория 0: Квантовая Природа Рынка (Первоаксиома)
 0. **Quantum Market Hypothesis** — Рынки проявляют квантово‑подобные свойства. Адекватное моделирование возможно только на квантовых компьютерах (Lloyd, 1996).
@@ -121,4 +121,98 @@
 235. **Hermes Self‑Evolving Agent** — Замкнутый цикл самообучения.
 336. **Langroid Actor Mandate** — Actor‑модель мультиагентной оркестрации.
 
-**Всего аксиом: 345**
+---
+
+## Категория X: Безопасность MCP и Prompt Injection (новые аксиомы v13.01)
+346. **Prompt Injection Defense** — Все MCP‑серверы должны проходить проверку на tool poisoning и prompt injection; обязательное использование песочниц и валидации входных данных.
+347. **Zero Trust MCP** — Ни один MCP‑сервер не считается доверенным по умолчанию; вся коммуникация подлежит валидации, аутентификации и авторизации.
+348. **Tool Shadowing Prevention** — Имена инструментов всех MCP‑серверов должны проверяться на уникальность для предотвращения атак подмены.
+349. **MCP Audit Mandate** — Каждый MCP‑сервер перед интеграцией проходит статический анализ безопасности (MCP Audit) и динамическое тестирование (claude‑cowork‑prompt‑injection, mcp‑security‑tools).
+350. **MCP Transport Security** — Для всех MCP‑подключений обязательно использование TLS 1.3 или выше; отказ от plaintext‑коммуникаций.
+351. **MCP Defense‑in‑Depth** — Защита MCP должна быть эшелонированной: транспортный уровень, шлюз безопасности (mcp‑proxy), фильтрация контента (ACO Prompt Shield, prompt‑guard), песочницы (Microsandbox/DeltaBox).
+352. **MCP Incident Response** — Каждый инцидент, связанный с prompt injection или компрометацией MCP‑сервера, должен быть задокументирован в SECURITY.md и проанализирован для улучшения защиты.
+
+## Категория XI: Финансовые Данные и Трейдинг
+353. **Alpha Vantage Mandate** — Фундаментальные, макроэкономические и сентимент‑данные получать только через официальный Alpha Vantage MCP Server (NASDAQ‑лицензия).
+354. **Arkham Intel Mandate** — Ончейн‑разведка и кластеризация кошельков через Arkham Intel MCP; GOAT заменён.
+355. **BrightData/Notte Web Intelligence** — Сложная веб‑разведка через BrightData (резерв) и Notte (основной); Browserbase заменён.
+356. **CoRT Reasoning** — Рекурсивное мета‑когнитивное мышление для критических решений; интеграция с Pre‑Flight Gate.
+357. **CCXT Universal Crypto Gateway** — Унифицированный доступ к 100+ криптобиржам через CCXT MCP Server (jcwleo).
+358. **QuantDinger Platform** — Централизованная AI‑квантовая торговая платформа для полного цикла (исследование → бэктест → исполнение).
+359. **MonteWalk Stochastic Modeling** — Симуляции Монте‑Карло для VaR/CVaR и стресс‑тестирования.
+360. **TradingView MCP Analysis** — Технический анализ (30+ индикаторов) и бэктестинг через TradingView MCP.
+
+## Категория XII: Память и Контекст
+361. **MemQ Provenance Learning** — Управление ценностью воспоминаний через TD(λ)‑обучение на Provenance DAG.
+362. **HeLa‑Mem Associative Memory** — Хеббовское обучение и ассоциативная память для LLM‑агентов; улучшение retrieval через связи совместного использования.
+363. **AssistRAG Proactive Memory** — Проактивное управление памятью с интеллектуальным ассистентом, который решает, что сохранять и когда извлекать.
+364. **Dual‑Trace Memory Encoding** — Каждое воспоминание сохраняется как факт + сцена (narrative reconstruction) для улучшения cross‑session recall.
+365. **Graphify Knowledge Graph** — Автоматическое построение графа знаний из любой папки (код, документы, медиа).
+
+## Категория XIII: Наблюдаемость и Мониторинг
+366. **Grafana MCP Observability** — Централизованный доступ к дашбордам, метрикам, логам и алертам через Grafana MCP.
+367. **Prometheus MCP Metrics** — Сбор и анализ метрик через Prometheus MCP; интеграция с Grafana.
+
+## Категория XIV: Инфраструктура и CI/CD
+368. **DBHub Universal SQL Gateway** — Единый MCP‑интерфейс для всех операций с базами данных (5 СУБД).
+369. **Postgres MCP Deep Admin** — Глубокое администрирование PostgreSQL (RLS, роли, конфигурация).
+370. **Supabase MCP Management** — Управление проектами Supabase (базы данных, edge‑functions, хранилище).
+371. **MetaMCP Client Unification** — Унификация и динамическое управление MCP‑подключениями на стороне клиента.
+372. **mcp‑proxy Security Gateway** — Пограничный шлюз безопасности для всех MCP‑подключений с аутентификацией, rate limiting и трансформацией запросов.
+373. **Shrimp Task Manager** — Когнитивный планировщик задач с CoT, рефлексией и декомпозицией; интеграция с Dagu.
+374. **Unla Zero‑Code API‑to‑MCP** — Преобразование REST/gRPC/WebSocket в MCP без написания кода; замена Higress.
+375. **SocratiCode Codebase Intelligence** — Интеллектуальный анализ кодовой базы (гибридный поиск, impact analysis); замена Sourcebot.
+376. **Dagu Workflow Orchestration** — Оркестрация рабочих процессов через легковесный Dagu с YAML‑описанием и встроенным HITL.
+377. **lean‑ctx Context Manager** — Оперативное управление контекстным окном: файлы, команды, переменные.
+378. **MOSS Self‑Evolution** — Автономная эволюция кода через source‑level rewriting (замена Self‑Modification Engine).
+379. **RESD Reflection‑Enhanced Learning** — Обучение на ошибках через Reflection‑Enhanced Self‑Distillation (замена Memory‑R2 и Selective Hindsight Distillation).
+380. **DeltaBox Sandbox Rollback** — Мгновенные чекпоинты и откат состояния песочницы для безопасного тестирования изменений.
+381. **MalwarePT Binary Screening** — Автоматический бинарный скрининг всех артефактов ARIA на вредоносность.
+382. **Agent‑ToM Monitoring** — Мониторинг безопасности автономных агентов через Theory‑of‑Mind (обнаружение скрытых вредоносных намерений).
+
+## Категория XV: Коммуникации и HITL
+383. **MCP Agent Mail** — Универсальный почтовый клиент (IMAP/SMTP) для агентов.
+384. **Office Word MCP** — Создание и редактирование Word‑документов через MCP.
+385. **PapersGPT for Zotero** — Автономный обзор научной литературы через AutoPilot; замена Zotero MCP.
+386. **Google Workspace MCP** — Централизованная интеграция с Google Workspace (Gmail, Drive, Calendar, Docs, Sheets, Slides); замена notebooklm‑mcp.
+387. **Vexa AI Voice HITL** — Серверный голосовой HITL‑интерфейс через Telegram, веб и телефонные звонки; дополнение к py‑xiaozhi.
+
+## Категория XVI: OSINT и Threat Intelligence
+388. **FastMCP ThreatIntel** — Приоритетный Threat Intelligence сервер с AI‑анализом и отчётностью; замена IoC Research MCP.
+389. **CrowdStrike Falcon MCP** — Корпоративная защита, EDR, Threat Intelligence и реагирование.
+390. **Wazuh IOC Hunter MCP** — Обогащение индикаторов компрометации из алертов Wazuh.
+391. **OSINT Tools MCP, OSINT Toolkit MCP, Sycek MCP** — Легковесные и коммерческие инструменты OSINT‑разведки (поиск по утечкам, сетевая разведка, анализ Twitter).
+392. **JADX Android Reversing** — Специализированный анализ Android‑приложений (APK/DEX).
+
+## Категория XVII: 3D‑Моделирование и Симуляции
+393. **CoplayDev Unity MCP** — Основной 3D‑движок для визуализации и симуляций; замена Godot MCP и IvanMurzak/Unity‑MCP.
+
+## Категория XVIII: Научные Работы и Методологии
+394. **FinCAD Debiasing** — Методология debiasing торговых стратегий от parametric look‑ahead bias.
+395. **DUALMEM Personified Memory** — Персонифицированная двухпоточная память для HITL.
+396. **Beyond the Hype QA Framework** — Стандартный фреймворк для тестирования и отладки AI‑агентов (AgentEval Suite, AgentTrace, AgentSandbox).
+397. **Quest Deep Research Agent** — Универсальный автономный исследовательский агент; замена разрозненных поисковых инструментов.
+398. **SkillEvolBench Benchmark** — Бенчмарк для валидации эволюции навыков из эпизодического опыта.
+399. **ECM Error Correction** — Механизмы коррекции ошибок для глубоких моделей временных рядов.
+400. **RareCP Conformal Prediction** — Адаптивная калибровка неопределённости с учётом режимов рынка.
+401. **VCRD Calibrated Distillation** — Дистилляция с калибровкой по локальной валидности (замена равномерной имитации).
+402. **CaOPD Calibration** — Калибровка уверенности модели после On‑Policy Distillation (решение проблемы "illusion of certainty").
+403. **GraphReAct Graph Investigation** — Пошаговое исследование графов через ReAct‑парадигму.
+404. **CoCoDA Tool Co‑evolution** — Ко‑эволюция библиотеки инструментов и планировщика; автоматическая композиция инструментов.
+405. **GRAFT Graph Tool Planning** — Графовое планирование цепочек инструментов с учётом зависимостей.
+406. **TOAP Tool Preference Learning** — Обучение предпочтениям инструментов для MetaMCP.
+407. **TipPFN Early Warning** — Предсказание критических переходов (tipping points) через in‑context learning.
+408. **GuardRAG Prompt Injection Defense** — Двухуровневая защита RAG от вредоносных инъекций (Knowledge Base Firewall + Response‑Level Agent).
+409. **TradingBench Financial Evaluation** — Основной бенчмарк для оценки и A/B‑тестирования финансовых агентов.
+410. **StreamingRAG Real‑Time Retrieval** — Потоковый retrieval для live‑новостей и тиков цен.
+411. **Agent Reward Benchmark** — Полигон для динамического тестирования агентов в реалистичных средах.
+412. **WebWalker Web Traversal Benchmark** — Бенчмарк для оценки веб‑навигационных способностей агентов.
+413. **π‑Play Self‑Evolution Framework** — Автономная эволюция агентов через privileged self‑distillation без внешних данных.
+414. **CogAgent Visual Perception** — Высокоточное визуальное восприятие для GUI‑агентов (dual‑resolution inputs).
+415. **GUI‑R1 Reasoning GUI Agent** — R1‑style reasoning‑first подход для GUI‑агентов.
+416. **UI‑Copilot Memory Decoupling** — Разделение памяти и контекста для долгосрочных GUI‑задач.
+417. **Mobile‑Agent Reliable Execution** — Надёжное выполнение и рефлексия для мобильных GUI‑агентов.
+418. **EchoTrail‑GUI Actionable Memory** — Межсессионное накопление и переиспользование GUI‑опыта.
+419. **UFO Hierarchical GUI Architecture** — Трёхслойная архитектура (HostAgent → AppAgent → Application) для GUI‑автоматизации.
+
+**Всего аксиом: 420**
