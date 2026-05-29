@@ -337,7 +337,27 @@ services:
       - aria-net
 
   # ------------------------------------------------------------------
+  # ACO Prompt Shield (активный фильтр безопасности MCP)
+  # Располагается перед mcp-proxy, санирует и валидирует трафик
+  # ------------------------------------------------------------------
+  aco-prompt-shield:
+    image: python:3.11-slim
+    container_name: aco-prompt-shield
+    restart: unless-stopped
+    command: ["uvx", "aco-prompt-shield"]
+    environment:
+      - SHIELD_MODE=strict
+      - SHIELD_SCAN_PII=true
+      - SHIELD_SCAN_INJECTION=true
+    ports:
+      - "8100:8080"
+    networks:
+      - aria-net
+
+  # ------------------------------------------------------------------
   # mcp-proxy (пограничный шлюз безопасности)
+  # Теперь поддерживает STRICT_MODE, валидацию схем, белый список инструментов
+  # и интеграцию с ACO Prompt Shield
   # ------------------------------------------------------------------
   mcp-proxy:
     image: node:18-alpine
@@ -347,8 +367,30 @@ services:
     environment:
       - MCP_PROXY_AUTH=oauth2
       - MCP_PROXY_RATE_LIMIT=100
+      # Новые параметры безопасности, добавленные в v13.01
+      - MCP_PROXY_STRICT_MODE=true
+      - MCP_PROXY_SCHEMA_VALIDATION=true
+      - MCP_PROXY_TOOL_ALLOW_LIST=${MCP_ALLOW_LIST}
+      - MCP_PROXY_UPSTREAM_SHIELD=aco-prompt-shield:8080
     ports:
       - "8094:8080"
+    networks:
+      - aria-net
+    depends_on:
+      - aco-prompt-shield
+
+  # ------------------------------------------------------------------
+  # CacheRact (Red Team инструмент для тестирования безопасности KV-кэша)
+  # По умолчанию отключён; включается только во время активного аудита
+  # ------------------------------------------------------------------
+  cacheract:
+    image: python:3.11-slim
+    container_name: cacheract
+    profiles: ["redteam"]
+    restart: "no"
+    command: ["uvx", "cacheract"]
+    environment:
+      - CACHERACT_MODE=audit
     networks:
       - aria-net
 
