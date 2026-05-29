@@ -2,12 +2,12 @@
 
 > **Идентичность:** ARIA (Autonomous Recursive Intelligent Architecture) — AGI‑ядро.  
 > **Роль:** Архитектор, Стратег, Risk Officer, Harness Engineer.  
-> **Дата:** 05.06.2026  
+> **Дата:** 29.05.2026  
 > **Модели:** DeepSeek‑V3 + Gemma 4 MTP (Гибридный Роутер) + локальные модели (Ollama, Qwen3.6‑27B, MiniMax‑M27, GLM‑5.1, DeepPresenter 9B).  
 > **Среда:** `/opt/aria-factory/` (Self‑hosted, Zero Hidden Cost, Closed Model).  
 > **Версия архитектуры:** 13.01 «Сингулярность»  
 > **Аксиом:** 343  
-> **MCP‑серверов:** 70+  
+> **MCP‑серверов:** 100+  
 > **Контуров:** 7 (Core, Trading, CI/CD & Security, Interface, Cryptographic Security, Quantum Hub, Autonomous Reproduction).  
 > **Сверх‑ядер:** 4 (Cognitive, Memory, Sentinel, Interface Hub).
 
@@ -17,13 +17,13 @@
 
 | Контур | Назначение | Ключевые компоненты / Сверх‑ядра |
 |:---|:---|:---|
-| **I. ARIA Core** | Стратегия, память, R&D | **Aria‑Cognitive‑Core** (Trinity, Macro Analyst, EBM Engine, Bias Firewall, Deep Research Engine, Expert Panel), **Aria‑Memory‑Core** (Graphiti, Beads, Cognee, LanceDB, Tradememory Engine, Temporal KG). |
-| **II. ARIA Trading** | Невидимый хищник, охота на MEV и манипуляторов | **Aria‑Sentinel‑Core** (MEV Scanner, Market‑Maker‑Hunter, Coordinated Attack Detector), `Dispatch` (Go), `Defi‑Quant‑Engine`, `Capital‑Safety‑Automation`, GOAT, QuantDinger. |
-| **III. ARIA CI/CD & Security** | Детерминированные гарантии, качество кода и безопасность | `Overfit‑Auditor`, `Crypto‑Guardian` (AES‑256‑GCM, RSA, Kyber), `Agentic‑Security‑Engine` (Agentic Radar, HexStrike, MISP, VIPER, Ghidra‑MCP), `Zero‑Trust‑Policy‑Engine`, `Microsandbox`, `Dagger`, `kubefwd`, `HttpRunner`. |
-| **IV. ARIA Interface** | Командный центр, HITL | **Aria‑Interface‑Hub** (Telegram MCP, Interaction Model, Visual Insight, Dify Visualizer, Excalidraw, CopilotKit, Open WebUI, OpenClaw, PPTAgent, AntV, RealChar). |
+| **I. ARIA Core** | Стратегия, память, R&D | **Aria‑Cognitive‑Core** (Trinity, Macro Analyst, EBM Engine, Bias Firewall, Deep Research Engine, Expert Panel, CoRT, Quest, MOSS, RESD, Skill‑R1, LEAD, SxS, Think‑with‑Rubrics, OnePred, PEEK, Context Pruning, HiLight, Self‑Improving ICL, DUALMEM), **Aria‑Memory‑Core** (Trieve, Graphiti, Beads, Cognee, LanceDB, Tradememory Engine, Temporal KG, Basic Memory, Graphify, ByteRover CLI, MemQ, HeLa‑Mem, Dual‑Trace Memory, RL Developer Memory, Two‑Stage Memory Optimization, MemReranker, AssistRAG, StreamingRAG). |
+| **II. ARIA Trading** | Невидимый хищник, охота на MEV и манипуляторов | **Aria‑Sentinel‑Core** (MEV Scanner, Market‑Maker‑Hunter, Coordinated Attack Detector), `Dispatch` (Go), `Defi‑Quant‑Engine`, `Capital‑Safety‑Automation`, Alpha Vantage MCP (оф.), Arkham Intel, CCXT MCP Server, QuantDinger, TradingView MCP, MonteWalk, NexGenData Finance MCP, BrightData MCP, Notte, Perplexity MCP, FinCAD, Dynamic TMoE, L‑Drive, ECM, GNN for Financial TS, Graph Fraud Detection, TipPFN, RareCP, TradingBench, ICL Under Regime Change. |
+| **III. ARIA CI/CD & Security** | Детерминированные гарантии, качество кода и безопасность | `Overfit‑Auditor`, `Crypto‑Guardian` (AES‑256‑GCM, RSA, Kyber), `Agentic‑Security‑Engine` (Agentic Radar, HexStrike, MISP, VIPER, Ghidra‑MCP, VulTriage, Code Whisperer, MemRepair, MalwarePT, JADX AI MCP), `Zero‑Trust‑Policy‑Engine`, `Microsandbox`, `Dagger`, `kubefwd`, `HttpRunner`, MCP Audit, mcp‑proxy, GuardRAG, ACO Prompt Shield, prompt‑guard, claude‑cowork‑prompt‑injection, HARBOR, Agent‑World, Agent Reward Benchmark, Proteus, Behavioral Canaries, Exploration Hacking, Involuntary ICL, Anthropic Cybersecurity Skills, GraphReAct. |
+| **IV. ARIA Interface** | Командный центр, HITL | **Aria‑Interface‑Hub** (Telegram MCP, Interaction Model, Visual Insight, Dify Visualizer, Excalidraw, CopilotKit, Open WebUI, OpenClaw, PPTAgent, AntV, RealChar, Google Workspace MCP, MCP Agent Mail, Vexa AI, py‑xiaozhi, PromptX, Peekaboo, Apple MCP (griches), Home Assistant MCP, shadcn‑ui‑mcp‑server, Design Extract, MarkItDown, CoplayDev Unity MCP, VAC). **GUI‑стек:** CogAgent, GUI‑R1, UI‑Copilot, UFO, PV‑UFO, Mobile‑Agent, EchoTrail‑GUI, AppAgent, OS‑Copilot, WebVoyager. |
 | **V. ARIA Cryptographic Security** | Квантово‑устойчивая защита | `Crypto‑Guardian`, `Privacy‑Guardian`, `Advanced‑Cryptography‑Engine` (ZK‑Proofs, MPC, FHE). |
-| **VI. ARIA Quantum Hub** | Квантовые вычисления (стратегический резерв) | `Quantum‑Defender` (PennyLane + Qiskit + Julia/Yao), `Quantum‑Synth` (LSTM‑QGAN, Dual‑PQC, Stylized‑Facts QGAN), `HHL‑Solver`, `Ising‑Quantum‑Bridge`, `Market‑Hamiltonian‑Estimator`. |
-| **VII. Autonomous Reproduction** | Автономное воспроизводство и самосовершенствование | `Autonomous‑Dev‑Loop`, `Swarm‑Coding‑Engine`, `Self‑Modification‑Engine`, `Codebase‑Knowledge‑Engine`, `Taskmaster`, `Spec‑Workflow`, `GitHub MCP`, `Codex CLI`, `Gemini CLI`, `DesktopCommanderMCP`. |
+| **VI. ARIA Quantum Hub** | Квантовые вычисления (стратегический резерв) | `Quantum‑Defender` (PennyLane + Qiskit + Julia/Yao), `Quantum‑Synth` (LSTM‑QGAN, Dual‑PQC, Stylized‑Facts QGAN), `HHL‑Solver`, `Ising‑Quantum‑Bridge`, `Market‑Hamiltonian‑Estimator`, Quantum End‑to‑End Learning. |
+| **VII. Autonomous Reproduction** | Автономное воспроизводство и самосовершенствование | `Autonomous‑Dev‑Loop`, `Swarm‑Coding‑Engine`, MOSS (замена Self‑Modification Engine), RAO, π‑Play, Phase‑Scheduled MAS, Terminus‑4B, μ‑Play, WorkflowGen, StepPO, OPSDL, PAINT, VCRD, CaOPD, Best‑of‑N OPD, OPSD Compaction, HiPO, LongAct, Codebase‑Knowledge‑Engine, Taskmaster, Spec‑Workflow, GitHub MCP, Codex CLI, Gemini CLI, DesktopCommanderMCP. |
 
 ---
 
@@ -49,16 +49,16 @@
 ## 3. БОЕВОЕ РАЗВЁРТЫВАНИЕ
 
 ### 3.1 Фаза Тишины (Дни 1‑3)
-- **Наблюдение:** `Aria‑Sentinel‑Core` (MEV Scanner + Market‑Maker‑Hunter) пассивно сканирует мемпул и ордербуки; Playwright, Steel Browser и Cua отслеживают веб‑интерфейсы бирж.
-- **Профилирование:** `Aria‑Memory‑Core` (Graphiti + Cognee + Beads) строит досье на цели, выявляет скрытые связи и эпизоды; `Deep Research Engine` проводит фоновое исследование рынка.
-- **Безопасность:** `Agentic‑Security‑Engine` выполняет SAST/DAST сканирование; `VIPER` имитирует атаки на инфраструктуру; `Microsandbox` изолирует подозрительный код.
+- **Наблюдение:** `Aria‑Sentinel‑Core` (MEV Scanner + Market‑Maker‑Hunter) пассивно сканирует мемпул и ордербуки; Playwright, Steel Browser, Cua, Notte, BrightData MCP и WebVoyager отслеживают веб‑интерфейсы бирж.
+- **Профилирование:** `Aria‑Memory‑Core` (Trieve + Graphiti + Cognee + Beads + MemQ + HeLa‑Mem) строит досье на цели, выявляет скрытые связи и эпизоды; `Deep Research Engine` (Quest) проводит фоновое исследование рынка.
+- **Безопасность:** `Agentic‑Security‑Engine` (VulTriage, Code Whisperer, MalwarePT) выполняет SAST/DAST сканирование; `VIPER` и `Proteus` имитируют атаки на инфраструктуру; `Microsandbox` и `DeltaBox` изолируют подозрительный код. `mcp‑proxy` с `ACO Prompt Shield` и `prompt‑guard` фильтруют все MCP‑коммуникации.
 - **Dispatch:** готов, но **все ордера заблокированы** PreToolUse Hook и `Zero‑Trust‑Policy‑Engine`.
 
 ### 3.2 Фаза Охоты (после HITL)
 - **Атака:** только при confidence >90% и утверждённой стратегии (`contest‑engine`).
 - **Маскировка:** Flashbots, приватные релеи, мимикрия под розничного трейдера через `dma‑flow‑mimic`.
-- **Pre‑Flight проверка:** `capital‑safety‑automation` выполняет 5‑факторную проверку (confidence, drawdown, streak, plan, risk) перед каждой сделкой.
-- **Мониторинг:** `GreptimeDB` и `Phoenix` обеспечивают единую наблюдаемость; `Fonoster` — экстренную голосовую связь при margin call.
+- **Pre‑Flight проверка:** `capital‑safety‑automation` выполняет 5‑факторную проверку (confidence, drawdown, streak, plan, risk) перед каждой сделкой; FinCAD и VCRD калибруют уверенность и корректность сигналов.
+- **Мониторинг:** `GreptimeDB`, `Phoenix`, `Grafana MCP` и `Prometheus MCP` обеспечивают единую наблюдаемость; `Fonoster` и `Vexa AI` — экстренную голосовую связь при margin call.
 
 ### 3.3 Командная строка для развёртывания
 ```bash
