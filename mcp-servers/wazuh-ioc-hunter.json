@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "wazuh-ioc-hunter": {
+      "command": "uvx",
+      "args": ["wazuh-ioc-hunter-mcp"],
+      "env": {
+        "WAZUH_API_URL": "${WAZUH_API_URL}",
+        "WAZUH_API_USER": "${WAZUH_API_USER}",
+        "WAZUH_API_PASS": "${WAZUH_API_PASS}"
+      }
+    }
+  }
+}
