@@ -1,4 +1,4 @@
-# AXIOMS.md — Полный Нерушимый Кодекс ARIA AI‑Factory v13.01
+# AXIOMS.md — Полный Нерушимый Кодекс ARIA AI‑Factory v13.01 (обновлён 29.05.2026)
 
 ## Категория 0: Квантовая Природа Рынка (Первоаксиома)
 0. **Quantum Market Hypothesis** — Рынки проявляют квантово‑подобные свойства. Адекватное моделирование возможно только на квантовых компьютерах (Lloyd, 1996).
@@ -228,10 +228,10 @@
 222. **Stripe Agent Monetization** — Stripe Монетизация.
 223. **QueryWeaver** — Graph‑Powered Text2SQL.
 224. **ACP (Agent Communication Protocol)** — Федеративный ACP‑Интерфейс.
-225. **GOAT Universal Finance** — Единый Финансовый On‑Chain‑Уровень.
+225. **Arkham Intel Mandate** — Основная платформа ончейн‑разведки (замена GOAT).
 226. **mcpdoc Documentation** — Документация как MCP‑Ресурс.
 227. **Expert Panel Mandate** — Мгновенный Экспертный Совет.
-228. **FreeCAD MCP** — MCP‑мост к 3D‑моделированию и симуляции.
+228. **CoplayDev Unity MCP** — Основной 3D‑движок и среда визуализации (замена Godot MCP).
 229. **Local LLM Autonomy** — Локальные LLM как Инструменты.
 230. **Agentic Security Scanner** — SAST/DAST для агентных рабочих процессов.
 231. **TradeMemory Cognitive Layer** — Специализированная Торговая Память.
@@ -286,7 +286,7 @@
 280. **Binary Analysis Unified** — Универсальный реверс‑инжиниринг (IDA Pro + Ghidra).
 281. **mcp‑go Mandate** — Стандартный Go MCP SDK.
 282. **mcp‑agent Mandate** — Агентная Фабрика с ReAct и AugmentedLLM.
-283. **Higress Mandate** — AI‑Native API Gateway.
+283. **Unla Mandate** — Zero‑code конвертер REST/gRPC/WS → MCP (замена Higress).
 284. **GitMCP Mandate** — Живая Документация и Устранение Галлюцинаций.
 285. **Fonoster Telecom** — Программируемые телекоммуникации и Голосовой HITL.
 286. **PraisonAI Mandate** — Микросекундные Агенты и MCP‑Native Оркестрация.
@@ -344,6 +344,134 @@
 338. **Microsandbox Isolation Mandate** — Аппаратно‑Изолированные Песочницы.
 339. **Excel MCP Mandate** — Работа с Финансовыми Таблицами.
 340. **CodeInterpreter Mandate** — Песочница для Анализа Данных.
-341. **Godot MCP Mandate** — MCP‑интеграция для 3D‑движка Godot.
+341. **Unity MCP Mandate** — Основной 3D‑движок и среда визуализации (CoplayDev Unity MCP).
 342. **Dagger Container Mandate** — MCP‑управление контейнерами и CI/CD.
 343. **fast‑agent Mandate** — Высокоуровневая Операционная Система для Агентов.
+
+## Категория II: Интеллектуальная Разведка и Финансовые Данные (обновлено 29.05.2026)
+344. **Alpha Vantage Mandate** — Официальный источник фундаментальных, макроэкономических и сентимент‑данных (NASDAQ‑лицензия).
+345. **CCXT Crypto Gateway** — Универсальный крипто‑шлюз (100+ бирж) через единый MCP‑интерфейс.
+346. **NexGenData Finance Mandate** — Оперативный скрининг рынков, новости, сырьевые товары.
+347. **Financial Datasets Mandate** — Дополнительный источник фундаментальных данных (отчёты, мультипликаторы, ESG).
+348. **TradingBench Evaluation Mandate** — Стандартизированная оценка торговых агентов (TradingBench).
+349. **MonteWalk Stochastic Mandate** — Симуляции Монте‑Карло, VaR/CVaR, оптимизация портфеля.
+
+## Категория III: OSINT и Threat Intelligence (обновлено 29.05.2026)
+350. **OSINT Tools Mandate** — Легковесная проверка юзернеймов, email, паролей, WHOIS.
+351. **OSINT Toolkit Mandate** — Легковесная сетевая разведка (Nmap, dnstwist, WHOIS).
+352. **Sycek OSINT Mandate** — Коммерческая OSINT‑платформа (утечки, Twitter, обратный WHOIS).
+353. **MetaOSINT Mandate** — Агрегация данных о людях (email, телефон, соцсети).
+354. **Dork MCP Mandate** — Google dorking через MCP.
+355. **Uncurl MCP Mandate** — Анализ URL‑сокращателей, редиректов.
+356. **Spider MCP Mandate** — Быстрый веб‑сканер.
+357. **CyberChef MCP Mandate** — Анализ вредоносных нагрузок, конвертация Base64/Hex.
+358. **GreyNoise MCP Mandate** — Проверка IP на сканирование.
+359. **CrowdStrike Falcon Mandate** — Основной инструмент активной защиты и внутреннего мониторинга (EDR, Threat Intel, реагирование).
+360. **FastMCP ThreatIntel Mandate** — Приоритетный Threat Intelligence сервер (замена IoC Research MCP).
+361. **Wazuh IOC Hunter Mandate** — Обогащение IOC из Wazuh.
+362. **MalwarePT Mandate** — Автоматический бинарный скрининг безопасности.
+363. **Proteus Red Team Evolution** — Самоэволюционирующая красная команда для агентов.
+364. **Agent‑ToM Monitoring Mandate** — Мониторинг автономных агентов через Theory‑of‑Mind.
+365. **Behavioral Canaries Mandate** — Аудит приватности RL‑обучения.
+366. **Exploration Hacking Awareness** — Защита от стратегического сопротивления RL‑обучению.
+367. **Involuntary ICL Defense** — Защита от непроизвольного обхода safety alignment через few‑shot паттерны.
+
+## Категория IV: Память и Управление Контекстом (обновлено 29.05.2026)
+368. **MemQ Mandate** — Управление Q‑значениями воспоминаний через provenance DAG и TD(λ).
+369. **HeLa‑Mem Mandate** — Ассоциативная память на основе хеббовского обучения.
+370. **Dual‑Trace Memory Mandate** — Эпизодический контекст для воспоминаний (факты + сцены).
+371. **AssistRAG Mandate** — Проактивное управление памятью с обучаемым ассистентом.
+372. **Two‑Stage Memory Mandate** — Раздельная оптимизация «что сохранять» и «как использовать».
+373. **RL Developer Memory Mandate** — RL‑осознанная память с нормализацией обратной связи.
+374. **PEEK Mandate** — Контекстная карта как ориентационный кэш.
+375. **Context Pruning Mandate** — Multi‑Rubric Latent Reasoning для обрезки нерелевантного контекста.
+376. **HiLight Mandate** — Подсветка ключевых доказательств в длинных документах.
+377. **lean‑ctx Mandate** — Оперативный менеджер контекстного окна.
+378. **CoMERA‑Agent Mandate** — Аппаратно‑осознанное сжатие контекста.
+379. **StreamingRAG Mandate** — Потоковый retrieval для реального времени.
+380. **Self‑Describing Data Mandate** — Легковесная альтернатива RAG для структурированных данных.
+
+## Категория V: Обучение и Эволюция Агентов (обновлено 29.05.2026)
+381. **RESD Mandate** — Reflection‑Enhanced Self‑Distillation как основной RL‑фреймворк.
+382. **MOSS Mandate** — Автономная эволюция кода через source‑level rewriting.
+383. **DeltaBox Mandate** — Мгновенные чекпоинты и откат песочницы.
+384. **SkillEvolBench Mandate** — Бенчмарк для валидации эволюции навыков.
+385. **Skill‑R1 Mandate** — RL‑эволюция навыков с верифицируемыми наградами.
+386. **Skills on the Fly Mandate** — Временные навыки для быстрой адаптации.
+387. **Skill Neologisms Mandate** — Модульные навыки без катастрофического забывания.
+388. **Constant‑Context Skills Mandate** — Компактное выполнение навыков через LoRA‑модули.
+389. **OPSD Compaction Mandate** — Пост‑RL компактификация рассуждений.
+390. **Best‑of‑N OPD Mandate** — Выбор лучшей траектории из N для дистилляции.
+391. **VCRD Mandate** — Калиброванная дистилляция рассуждений по локальной валидности.
+392. **CaOPD Mandate** — Калибровка уверенности в On‑Policy Distillation.
+393. **PAINT Mandate** — Адаптивная интерполяция между учителем и учеником.
+394. **StepPO Mandate** — Пошаговая оптимизация RL‑политики.
+395. **LongAct Mandate** — Внутренние паттерны активации как сигнал для RL.
+396. **OPSDL Mandate** — On‑policy self‑distillation для длинных контекстов.
+397. **μ‑Play Mandate** — Multi‑agent self‑play с привилегированной самодистилляцией.
+398. **π‑Play Mandate** — Автономная эволюция агентов через self‑play с QCP.
+399. **HiPO Mandate** — Иерархическая оптимизация reasoning и предпочтений.
+400. **RAO Mandate** — Рекурсивное делегирование с RL‑обучением.
+401. **Terminus‑4B Mandate** — Легковесные специализированные модели для под‑агентов.
+402. **Phase‑Scheduled MAS Mandate** — Токен‑эффективная координация мультиагентных систем.
+
+## Категория VI: Прогнозирование и Анализ Временных Рядов (обновлено 29.05.2026)
+403. **Dynamic TMoE Mandate** — Адаптивный прогноз через динамические Mixture of Experts.
+404. **L‑Drive Mandate** — Латентный контекст для прогноза временных рядов.
+405. **ECM Mandate** — Коррекция накопленных ошибок в авторегрессионных прогнозах.
+406. **TipPFN Mandate** — Предсказание критических переходов (tipping points).
+407. **RareCP Mandate** — Regime‑aware Conformal Prediction для адаптивной калибровки неопределённости.
+408. **GNN for Financial TS Mandate** — Графовые нейронные сети для прогнозирования временных рядов с учётом зависимостей.
+409. **Soft‑MSM Mandate** — Контекстно‑осознанное эластичное выравнивание временных рядов.
+410. **GraphIC Mandate** — Графовое In‑Context Learning для табличных данных.
+411. **KumoRFM‑2 Mandate** — Foundation models для реляционных (графовых) данных.
+
+## Категория VII: Рассуждение и Когнитивные Процессы (обновлено 29.05.2026)
+412. **CoRT Mandate** — Рекурсивное мета‑когнитивное мышление для улучшения ответов.
+413. **LEAD Mandate** — Адаптивное сокращение длины цепочек рассуждений.
+414. **Think‑with‑Rubrics Mandate** — Встраивание критериев качества в процесс рассуждения.
+415. **SxS Mandate** — Динамическое управление раскрытием рассуждений (think vs speak).
+416. **RAGognizer Mandate** — Проактивная детекция галлюцинаций через detection head.
+
+## Категория VIII: GUI‑Автоматизация (обновлено 29.05.2026)
+417. **CogAgent Mandate** — Высокоточное визуальное восприятие GUI (dual‑resolution).
+418. **GUI‑R1 Mandate** — R1‑style reasoning для GUI‑агентов.
+419. **UI‑Copilot Mandate** — Memory Decoupling и Tool‑Integrated Policy Optimization.
+420. **UFO Mandate** — Иерархическая мульти‑агентная архитектура GUI (HostAgent → AppAgent).
+421. **Mobile‑Agent Mandate** — Надёжное выполнение и рефлексия для GUI.
+422. **EchoTrail‑GUI Mandate** — Межсессионное накопление GUI‑опыта (Actionable Memory Bank).
+423. **AppAgent Mandate** — Автономное исследование приложений и few‑shot обучение.
+424. **WebVoyager Mandate** — Специализированная веб‑навигация.
+
+## Категория IX: Безопасность Кода и CI/CD (обновлено 29.05.2026)
+425. **VulTriage Mandate** — Тройная контекстная аугментация для детекции уязвимостей.
+426. **MemRepair Mandate** — Иерархическая память для авто‑ремонта уязвимостей.
+427. **Code Whisperer Mandate** — Гибридный графовый анализ и LLM для исправления кода.
+428. **HARBOR Mandate** — Автоматическая оптимизация harness'а агентов.
+
+## Категория X: Оркестрация и Инструменты (обновлено 29.05.2026)
+429. **CoCoDA Mandate** — Ко‑эволюция библиотеки инструментов и планировщика.
+430. **GRAFT Mandate** — Графовое планирование цепочек инструментов.
+431. **TOAP Mandate** — Обучение предпочтениям инструментов (Tool Preference Learner).
+432. **Contexting as Recommendation Mandate** — Эволюционный подбор оптимального контекста.
+433. **WorkflowGen Mandate** — Адаптивная генерация рабочих процессов из траекторного опыта.
+434. **Collaborative CBO Mandate** — Совместная контекстная байесовская оптимизация.
+
+## Категория XI: Графовые Инструменты и Финансовая Безопасность (обновлено 29.05.2026)
+435. **Graph Fraud Detection Mandate** — Графовый аудит транзакций с калиброванным риском.
+436. **GraphReAct Mandate** — Пошаговое исследование графов через ReAct.
+437. **TransXion Mandate** — Реалистичный графовый бенчмарк для AML.
+438. **Explainable AML Mandate** — Объяснимый триаж с evidence retrieval и контрфактическими проверками.
+
+## Категория XII: Научные и Методологические Основы (обновлено 29.05.2026)
+439. **DUALMEM Mandate** — Персонифицированная память для HITL.
+440. **Agent‑ToM Mandate** — Мониторинг безопасности автономных агентов.
+441. **FinCAD Mandate** — Debiasing торговых стратегий от parametric look‑ahead bias.
+442. **VAC Mandate** — Vision as Context для hallucination‑free chart captioning.
+443. **SAFEFL Mandate** — Privacy‑preserving XAI для Federated Learning.
+444. **Quest Mandate** — Автономный deep research агент для рыночной разведки.
+445. **Agent Reward Benchmark Mandate** — Динамическая оценка агентов в реалистичных окружениях.
+446. **Agent‑World Mandate** — Среда для масштабного тестирования MCP‑серверов.
+447. **Experience Compression Spectrum Mandate** — Унификация памяти, навыков и правил как спектра сжатия опыта.
+448. **Memory vs Lookup Mandate** — Разграничение истинной памяти и простого lookup.
+449. **Normalization of Deviance Awareness** — Проактивная позиция безопасности (не ждать первого инцидента).
