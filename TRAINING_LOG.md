@@ -1,4 +1,4 @@
-# TRAINING_LOG.md — Журнал обучения ARIA (хронология)
+это предыдущая версия TRAINING_LOG.md без учёта сегодняшней сессии.  # TRAINING_LOG.md — Журнал обучения ARIA (хронология)
 
 ## 26.05.2026
 - **FinCAD (arXiv:2605.24564)**: Метод debiasing LLM в финансах от parametric look-ahead bias. → Аксиома №1, №2, №4, №9.
