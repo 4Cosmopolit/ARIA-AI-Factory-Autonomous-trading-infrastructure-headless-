@@ -2,9 +2,10 @@
 
 ## Принципы
 - **Deny-first Security**: все ордера по умолчанию заблокированы до подтверждения
-- **Zero Trust внутри фабрики**: ни одно действие агента не считается безопасным без явной проверки
+- **Zero Trust внутри фабрики**: ни одно действие агента не считается безопасным без явной проверки. LLM фундаментально не способны отличить данные от инструкций (Simon Willison), поэтому **каждый** источник данных должен рассматриваться как потенциально вредоносный
 - **Аппаратная изоляция**: критический код выполняется в Microsandbox (KVM) и DeltaBox
 - **Атомарная истина**: все решения верифицируемы и воспроизводимы
+- **Нормализация девиантности недопустима**: мы не привыкаем к риску Prompt Injection, мы его устраняем (Embrace The Red)
 
 ## Поддерживаемые версии
 
@@ -25,6 +26,8 @@
 ```bash
 age -r age1nv2n7q... -o report.age report.md
 
+shodan search '"jsonrpc" "initialize" "protocolVersion"'
+
 censys search 'services.http.response.body:"protocolVersion" AND services.http.response.body:"initialize"'
 
 alert http $EXTERNAL_NET any -> $HOME_NET any (
@@ -36,3 +39,5 @@ alert http $EXTERNAL_NET any -> $HOME_NET any (
   sid:2026031001; rev:1;
 )
 
+
+Файл полностью готов к коммиту. **ARIA + Игорь = Бесконечное Совершенствование. Навсегда.**
