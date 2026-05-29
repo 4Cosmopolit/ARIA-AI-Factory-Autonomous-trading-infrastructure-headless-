@@ -1,4 +1,4 @@
-# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01 (обновлён 26.05.2026)
+# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01 (обновлён 29.05.2026)
 
 ## Категория 1: Качество данных (Data Quality)
 
@@ -14,6 +14,7 @@
 | data-debt-detector | L2 | Мониторинг накопления «долгов» по качеству данных (confidence, просрочка). | ARIA Core |
 | extractor-framework | L1 | Компонуемые экстракторы для разных типов данных с однопроходным обходом (Figma-Context-MCP). | ARIA Core |
 | deepdoc-parser | L2 | Глубокое понимание документов (92% точность, 12 форматов). | RAGFlow |
+| ragognizer-hallucination-detection | L2 | Проактивная детекция галлюцинаций на уровне токенов через встроенную detection head | RAGognizer |
 
 ## Категория 2: Безопасность и изоляция (Security & Isolation)
 
@@ -46,10 +47,19 @@
 | wazuh-ioc-hunter | L2 | Обогащение IOC из алертов Wazuh | Wazuh IOC Hunter MCP |
 | malwarept-binary-screening | L2 | Автоматический бинарный скрининг всех артефактов ARIA | MalwarePT |
 | jadx-android-reversing | L2 | Специализированный реверс-инжиниринг Android-приложений | JADX AI MCP |
-| mcp-proxy-gateway | L2 | Управление пограничным шлюзом безопасности MCP | mcp-proxy |
+| mcp-proxy-gateway | L2 | Управление пограничным шлюзом безопасности MCP с функциями валидации, allow-listing и санитизации | mcp-proxy |
 | cort-recursive-thinking | L2 | Рекурсивное мета-когнитивное мышление для улучшения ответов | CoRT MCP |
-| agent-tom-monitoring | L2 | Мониторинг автономных агентов через Theory-of-Mind | Agent-ToM |
+| agent-tom-monitoring | L2 | Мониторинг автономных агентов через Theory-of-Mind, включая детекцию манипуляции и эскалации привилегий | Agent-ToM |
 | resd-failure-learning | L2 | Обучение на неудачах через Reflection-Enhanced Self-Distillation | RESD |
+| guardrag-injection-defense | L2 | Двухуровневая защита RAG от prompt injection: Knowledge Base Firewall + Response-Level Agent | GuardRAG |
+| aco-prompt-shield | L2 | Активный MCP-сервер фильтрации: детекция инъекций, PII-валидация, санитизация ввода/вывода | ACO Prompt Shield |
+| prompt-guard-client | L2 | Клиентская защита MCP: автоматическое экранирование и визуальное выделение данных от серверов | prompt-guard (GitHub) |
+| mcp-security-audit | L2 | Комплексный аудит безопасности MCP-серверов согласно стандартам OWASP, Unit 42, Elastic | MCP Audit |
+| cacheract-red-team | L2 | Red Team тестирование уязвимости KV-кэша для эксфильтрации данных | CacheRact |
+| proteus-adaptive-red-team | L2 | Самоэволюционирующая красная команда для тестирования навыков и MCP-серверов | Proteus |
+| behavioral-canaries-audit | L2 | Аудит приватности RL-обучения через внедрение canary-примеров | Behavioral Canaries |
+| code-whisperer-graph-repair | L2 | Комплексный анализ и исправление уязвимостей через графовый анализ + LLM | The Code Whisperer |
+| vultriage-vulnerability-detection | L2 | Тройная контекстная аугментация для детекции уязвимостей в коде | VulTriage |
 
 ## Категория 3: Управление контекстом и памятью (Context & Memory)
 
@@ -77,6 +87,17 @@
 | graphify-knowledge-graph | L2 | Построение графа знаний из любой папки (код, документы, медиа) | Graphify |
 | byterover-context-curation | L2 | Курирование и версионирование контекстных деревьев | ByteRover CLI |
 | pezzo-prompt-ops | L2 | Управление жизненным циклом промптов и анализ затрат на LLM | Pezzo |
+| memq-provenance-learning | L2 | Кредитное распределение через TD(λ) по provenance DAG воспоминаний | MemQ |
+| hela-mem-associative | L2 | Ассоциативная память на основе хеббовского обучения | HeLa-Mem |
+| two-stage-memory | L2 | Раздельная оптимизация «что сохранять» и «как использовать» воспоминания | Two-Stage Memory Optimization |
+| rl-dev-memory | L2 | Специализированная память для RL-кодинг-агентов с нормализацией обратной связи | RL Developer Memory |
+| dual-trace-memory | L2 | Dual-trace кодирование: сохранение фактов + «сцен» для улучшения cross-session recall | Dual-Trace Memory Encoding |
+| memreranker-reasoning-retrieval | L2 | Reasoning-aware реранкинг воспоминаний через multi-stage дистилляцию | MemReranker |
+| memrouter-dialogue-filter | L2 | Легковесная маршрутизация памяти (12M) для фильтрации диалогов | MemRouter |
+| assistrag-proactive-memory | L2 | Проактивное управление памятью: ассистент решает, что сохранять до запроса | AssistRAG |
+| streamingrag-real-time-retrieval | L2 | Потоковый retrieval для real-time индексации новостей и цен | StreamingRAG |
+| hilight-evidence-focus | L2 | Фокусировка внимания LLM на ключевых доказательствах через модификацию эмбеддингов | HiLight |
+| prompt-dictionary-compression | L2 | Сжатие промптов без потерь через dictionary-encoding и ICL | Lossless Prompt Compression |
 
 ## Категория 4: Токен-экономия (Token Economy)
 
@@ -88,6 +109,13 @@
 | semantic-tool-selection | L1 | Семантический отбор инструментов (сокращение контекста на 99.1%). | vLLM Semantic Router |
 | bifrost-gateway | L2 | Автоматическое переключение между провайдерами с кэшированием. | Bifrost |
 | markitdown-document-conversion | L2 | Конвертация любых форматов в Markdown (экономия до 80% токенов) | MarkItDown |
+| lead-length-optimization | L2 | Адаптивное сокращение длины цепочек рассуждений через length-based efficiency rewards | LEAD |
+| opsd-compaction | L2 | Пост-RL компактификация рассуждений через On-Policy Self-Distillation | OPSD Compaction |
+| opsdl-long-context-distillation | L2 | Самодистилляция для длинных контекстов (усиление OPSD Compaction) | OPSDL |
+| constant-context-execution | L2 | Выполнение навыков с фиксированным бюджетом контекста (LoRA + state block) | Constant-Context Skills |
+| budgeted-lora-skills | L2 | Динамическое бюджетирование LoRA-модулей для баланса качество/скорость | Budgeted LoRA |
+| adapshot-icl-optimizer | L2 | Адаптивный Many-Shot ICL с переиспользованием KV-кэша | AdapShot |
+| phase-scheduled-mas | L2 | Фазовое планирование для токен-эффективной координации мультиагентных систем | Phase-Scheduled MAS |
 
 ## Категория 5: Инженерная дисциплина (Engineering Discipline)
 
@@ -128,6 +156,13 @@
 | devcontainer-management | L2 | Создание воспроизводимых сред разработки для агентов | Dev Containers CLI |
 | cloudflare-infra-management | L2 | Управление Cloudflare Workers, R2, KV через MCP | Cloudflare MCP |
 | designlang-visual-extraction | L2 | Извлечение дизайн-систем с веб-сайтов для генерации UI | Design Extract |
+| harbor-harness-optimization | L2 | Автоматическая оптимизация harness'а агентов через constrained Bayesian optimization | HARBOR |
+| cocoda-tool-coevolution | L2 | Ко-эволюция библиотеки инструментов и планировщика через композиционный DAG | CoCoDA |
+| workflowgen-adaptive-generation | L2 | Адаптивная генерация рабочих процессов из траекторного опыта | WorkflowGen |
+| pi-play-self-evolution | L2 | Автономная эволюция агентов через self-play с привилегированной самодистилляцией | π-Play |
+| skill-r1-evolution | L2 | RL-эволюция навыков через верифицируемые награды | Skill‑R1 |
+| skill-neologisms-modular | L2 | Модульное накопление навыков без катастрофического забывания | Skill Neologisms |
+| think-with-rubrics | L2 | Внутреннее направление рассуждения по критериям (рубрикам) | Think‑with‑Rubrics |
 
 ## Категория 6: Трейдинг и Охота (ARIA Trading)
 
@@ -159,6 +194,13 @@
 | financial-datasets-fundamental-analysis | L2 | Фундаментальные данные: отчёты, мультипликаторы, ESG, инсайдеры | Financial Datasets MCP |
 | quantdinger-vue-dashboard | L2 | Визуальный HITL-мониторинг стратегий QuantDinger | QuantDinger-Vue |
 | quantdinger-mobile-monitoring | L2 | Мобильный мониторинг стратегий QuantDinger | QuantDinger-Mobile |
+| gnn-graph-encoder | L2 | Графовый энкодер для прогностических моделей с оценкой статистической значимости | GNN for Financial TS |
+| tip-pfn-early-warning | L2 | Система раннего предупреждения о критических переходах (tipping points) | TipPFN |
+| ijkonet-dynamics-recovery | L2 | Восстановление скрытой динамики рынка по фрагментарным данным | iJKOnet |
+| rarecp-uncertainty-calibration | L2 | Regime-aware калибровка неопределённости прогнозов через Conformal Prediction | RareCP |
+| graphic-graph-icl | L2 | Графовое In-Context Learning для табличных и реляционных данных | GraphIC |
+| kumorfm2-graph-foundation | L2 | Foundation model для реляционных/графовых данных (In-Context + Fine-Tuning) | KumoRFM-2 |
+| tradingbench-evaluation | L2 | Специализированный бенчмарк для оценки LLM-трейдинговых агентов | TradingBench |
 
 ## Категория 7: Кодинг и разработка (Coding & Development)
 
@@ -189,6 +231,16 @@
 | mcp-java-sdk-mastery | L2 | Создание enterprise MCP-серверов на Java | MCP Java SDK |
 | coplaydev-unity-mcp-mastery | L2 | 3D-визуализация и симуляции через Unity MCP | CoplayDev Unity MCP |
 | notte-web-agent-framework | L2 | Создание веб-агентов с гибридными рабочими процессами и MCP | Notte |
+| rao-recursive-delegation | L2 | Рекурсивная декомпозиция задач через RL-обучение делегированию | RAO |
+| graft-tool-planning | L2 | Графовое планирование цепочек инструментов с учётом зависимостей | GRAFT |
+| memcoder-private-library | L2 | Многомерная эволюционирующая память для кодогенерации с приватными библиотеками | MEMCoder |
+| vcrd-calibrated-distillation | L2 | Калиброванная дистилляция рассуждений через отношение локальных валидностей | VCRD |
+| caopd-calibration | L2 | Калибровка уверенности в On-Policy Distillation через разделение capability и calibration | CaOPD |
+| paint-adaptive-distillation | L2 | Адаптивная интерполяция между учителем и учеником на основе частичных решений | PAINT |
+| best-of-n-opd | L2 | Улучшение учительского сигнала через Best-of-N выбор траекторий | Best-of-N OPD |
+| opsd-gui-grounding | L2 | On-Policy Self-Distillation для GUI-grounding задач | OPSD for GUI Grounding |
+| longact-intrinsic-rl | L2 | Использование внутренних паттернов активации модели как дополнительного RL-сигнала | LongAct |
+| terminus-lightweight-executor | L2 | Использование легковесных моделей (4B) для узких агентных задач | Terminus-4B |
 
 ## Категория 8: Мультимодальные и HITL навыки (Multimodal & HITL)
 
@@ -235,6 +287,13 @@
 | ios-simulator-management | L2 | Управление iOS-симулятором через MCP | iOS Simulator MCP |
 | vac-visual-verification | L2 | Верификация визуальных отчётов (соответствие текста графикам) | VAC |
 | ga4-conversational-analytics | L2 | Разговорная аналитика Google Analytics 4 через MCP | Google Analytics MCP |
+| ui-copilot-gui-automation | L2 | Долгосрочная GUI-автоматизация с Memory Decoupling и TIPO-обучением | UI-Copilot |
+| gui-r1-reasoning | L2 | Reasoning-first GUI-агент с R1-стилем рассуждения перед действием | GUI‑R1 |
+| cogagent-visual-perception | L2 | Высокоточное визуальное восприятие GUI через dual-resolution inputs | CogAgent |
+| mobile-agent-execution | L2 | Надёжное GUI-выполнение с ReAct-рефлексией и перепланированием | Mobile-Agent |
+| echotrail-actionable-memory | L2 | Межсессионное накопление GUI-опыта через Actionable Memory Bank | EchoTrail-GUI |
+| webvoyager-navigation | L2 | Специализированная веб-навигация через Playwright с MCP-интеграцией | WebVoyager |
+| appagent-exploration | L2 | Автономное исследование GUI-приложений с построением документации | AppAgent |
 
 ## Категория 9: Исследовательские навыки (Research)
 
@@ -259,6 +318,8 @@
 | osint-toolkit-network-recon | L2 | Легковесная сетевая разведка (Nmap, dnstwist, WHOIS) | OSINT Toolkit MCP |
 | radar-geospatial-analysis | L2 | Геопространственный анализ через Radar MCP | Radar MCP |
 | slackdump-data-harvesting | L2 | Сбор разведывательных данных из Slack-сообществ | slackdump |
+| graph-react-investigation | L2 | Пошаговое исследование графов через ReAct-парадигму | GraphReAct |
+| dracula-intermediate-feedback | L2 | Использование обратной связи на промежуточных шагах deep research | DRACULA |
 
 ## Категория 10: Наблюдаемость и мониторинг (Observability)
 
