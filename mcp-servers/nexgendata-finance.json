@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "nexgendata-finance": {
+      "command": "uvx",
+      "args": ["nexgendata-finance-mcp"],
+      "env": {
+        "NEXGENDATA_API_KEY": "${NEXGENDATA_API_KEY}"
+      }
+    }
+  }
+}
