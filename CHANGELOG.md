@@ -18,6 +18,35 @@
 - Аксиомы (`AXIOMS.md`) актуализированы (343 аксиомы).
 - Архитектура (`ARCHITECTURE.md`) отражает 7 контуров и 4 сверх-ядра.
 
+### 🔄 Ключевые архитектурные замены (9)
+- Sourcebot → **SocratiCode**
+- Godot MCP + IvanMurzak/Unity‑MCP → **CoplayDev/unity‑mcp**
+- Browserbase MCP → **BrightData MCP** → **Notte**
+- Zotero MCP → **PapersGPT for Zotero**
+- notebooklm‑mcp → **Google Workspace MCP**
+- Higress → **Unla**
+- Financial Datasets MCP → **Alpha Vantage MCP (официальный)**
+- GOAT → **Arkham Intel**
+- Memory‑R2 + Selective Hindsight Distillation → **RESD**
+
+### 🛡️ Безопасность MCP (новый стандарт)
+- Приняты стандарты безопасности: OWASP MCP Tool Poisoning, Unit 42 (Palo Alto Networks), Elastic Security Labs, Tenable, Netskope, GitHub Security Lab, Practical DevSecOps.
+- Внедрены инструменты защиты: `mcp-proxy`, `ACO Prompt Shield`, `prompt-guard`, `claude-cowork-prompt-injection`.
+- Реализована политика Total Zero Trust для всех MCP-взаимодействий.
+- Добавлены кейсы реальных инцидентов: Microsoft Copilot exfiltration (PromptArmor), Google AntiGravity exfiltration (PromptArmor).
+- Принята концепция «Нормализации девиантности» (Embrace The Red) как культурный принцип безопасности.
+
+### 🖥️ GUI-стек (полный цикл)
+- CogAgent (CVPR 2024) — визуальное восприятие.
+- GUI‑R1 — reasoning‑first подход к GUI-задачам.
+- UI‑Copilot (Memory Decoupling + TIPO) — управление памятью и контекстом.
+- UFO (Microsoft) — HostAgent → AppAgent архитектура.
+- PV‑UFO — параллельное выполнение GUI-задач.
+- Mobile‑Agent — надёжное выполнение с рефлексией.
+- EchoTrail‑GUI — межсессионное накопление GUI-опыта.
+- AppAgent — автономное исследование приложений.
+- OS‑Copilot (FRIDAY) — саморазвивающийся агент (референс).
+
 ---
 
 ## v12.95 (Июнь 2026) — "Консолидация и Знание"
