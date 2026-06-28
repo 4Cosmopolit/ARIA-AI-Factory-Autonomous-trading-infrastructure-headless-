@@ -1,0 +1,32 @@
+import time
+from prometheus_client import Gauge
+
+vibe_score = Gauge('agent_vibe_score', 'Deviation from intended task (0=perfect, 1=derailed)')
+
+class VibeCheck:
+    def __init__(self, max_actions_per_task: int = 5, max_time_seconds: float = 60.0):
+        self.max_actions = max_actions_per_task
+        self.max_time = max_time_seconds
+        self.task_start_time: float = 0.0
+        self.action_count: int = 0
+
+    def start_task(self):
+        self.task_start_time = time.time()
+        self.action_count = 0
+
+    def check(self) -> bool:
+        self.action_count += 1
+        elapsed = time.time() - self.task_start_time
+        if self.action_count > self.max_actions:
+            vibe_score.set(0.8)
+            return False
+        if elapsed > self.max_time:
+            vibe_score.set(0.6)
+            return False
+        vibe_score.set(0.1)
+        return True
+
+    def suggest_correction(self) -> str:
+        if self.action_count > self.max_actions:
+            return "Simplify: reduce to core action only"
+        return "Timeout: abort and report to human"
