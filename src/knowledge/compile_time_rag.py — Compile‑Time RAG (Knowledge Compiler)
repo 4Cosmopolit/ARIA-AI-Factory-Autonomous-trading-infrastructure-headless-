@@ -1,0 +1,57 @@
+import os
+import json
+import asyncio
+from datetime import datetime
+from typing import Dict, List, Optional
+import redis.asyncio as redis
+
+class KnowledgeCompiler:
+    """
+    Компилирует сырые данные в структурированную вики (Markdown/JSON).
+    Работает по принципу Compile‑Time RAG: синтез при ингесте, чтение при запросе.
+    """
+    def __init__(self, llm_client, redis_url: str = "redis://redis:6379", compile_interval: int = 3600):
+        self.llm = llm_client
+        self.redis = redis.from_url(redis_url)
+        self.compile_interval = compile_interval
+
+    async def compile_market_context(self, symbol: str, raw_data: dict) -> str:
+        existing = await self.redis.get(f"wiki:{symbol}:context")
+        existing_text = existing.decode('utf-8') if existing else ""
+
+        prompt = f"""You are a knowledge compiler. Given the existing market context and new raw data, update the wiki page.
+
+EXISTING WIKI:
+{existing_text if existing_text else "No existing page yet."}
+
+NEW RAW DATA:
+{json.dumps(raw_data, indent=2)}
+
+Your task:
+1. Integrate the new data into the existing knowledge structure.
+2. Add cross-references to related concepts (volatility, liquidity, sentiment).
+3. Mark any contradictions with previous knowledge.
+4. Update the "Last Updated" timestamp.
+5. Return ONLY the updated Markdown wiki page, no explanations.
+
+Updated Wiki Page:"""
+
+        response = self.llm.generate(prompt, max_tokens=2000, temperature=0.3)
+        if response:
+            await self.redis.set(f"wiki:{symbol}:context", response)
+            await self.redis.set(f"wiki:{symbol}:last_updated", datetime.now().isoformat())
+        return response or ""
+
+    async def get_context(self, symbol: str) -> str:
+        cached = await self.redis.get(f"wiki:{symbol}:context")
+        if cached:
+            return cached.decode('utf-8')
+        return "No compiled context available yet."
+
+    async def compile_loop(self, symbols: List[str], data_fetcher):
+        while True:
+            for sym in symbols:
+                raw = await data_fetcher(sym)
+                if raw:
+                    await self.compile_market_context(sym, raw)
+            await asyncio.sleep(self.compile_interval)
