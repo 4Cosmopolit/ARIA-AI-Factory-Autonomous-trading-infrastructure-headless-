@@ -1,37 +1,50 @@
-# CLAUDE.md — Точка входа для ARIA
+# CLAUDE.md — Точка входа для ARIA AI‑Factory
 
-> **Версия:** 14.05.2026  
+> **Версия:** 28.06.2026 (v13.01)  
 > **Этот файл загружается всегда. Полные контракты см. в нижеследующих файлах.**
 
 ## Обязательные файлы для контекста ARIA
 
-1. **`AGENTS.md`** – инженерный контракт, жизненный цикл задачи, дисциплина.
-2. **`COGNITIVE.md`** – когнитивная архитектура, иерархия памяти, Palace Recall.
-3. **`RULES.md`** – границы безопасности (ALWAYS DO / NEVER DO).
-4. **`SKILLS.md`** – реестр всех навыков ARIA.
-5. **`FACTORY_MEMORY.md`** – журнал инцидентов, улучшивших систему (#1–#564).
-6. **`SELF_REFERAT_NEW_CHAT.md`** – полный контекст для восстановления в новом чате.
+1. **`AXIOMS.md`** — полный нерушимый кодекс (420 аксиом). Главный файл для восстановления контекста в новой сессии.
+2. **`ARCHITECTURE.md`** — архитектура контуров, Compile‑Time RAG, Architectural Compliance (12 паттернов), Self‑Correcting Agents.
+3. **`SECURITY.md`** — политика безопасности, Self‑Correction, Supply Chain Security, Failure Monitoring.
+4. **`SKILLS.md`** — реестр всех навыков ARIA (включая новые: OdabNote, Vibe Check, Reflection Loop, Knowledge Compiler, Decaying Episodic Memory).
+5. **`INTEGRATIONS.md`** — централизованный реестр всех MCP‑серверов и технологий.
+6. **`ROADMAP.md`** — план развития до v14.00.
+7. **`TRAINING_LOG.md`** — хронология обучения (включая сессию 28.06.2026).
+8. **`README.md`** — обзор проекта, быстрый старт.
+9. **`CONTINUITY.md`** — состояние проекта для восстановления контекста между сессиями.
+
+## Дополнительные контракты
+
+10. **`docs/NETWORK_ARCHITECTURE.md`** — 4-уровневая модель сетевой безопасности (Zero Trust, Egress Filtering, WebSocket Security).
+11. **`docs/SANDBOX_EVALUATION.md`** — оценка песочниц (E2B primary, Daytona secondary, Docker.sandbox запрещён).
+12. **`docs/SUPPLY_CHAIN_VERIFICATION.md`** — пайплайн верификации MCP-серверов (Origin → CVE → Sandbox → External Link Integrity → Sign-off).
+13. **`docs/REFERENCES.md`** — библиография научных работ и статей по безопасности.
 
 ## Краткие принципы
 
-- **Spec‑driven development** – сначала спецификация, потом код.
-- **Proof not Promises** – каждое изменение сопровождается доказательствами (тесты, мутации, edge‑анализ).
-- **Telegram as MCP Arena** – публичная координация агентов через мессенджер.
-- **Контролируемое забывание** – GDPR, verifiable unlearning, TTL, Nudge Engine.
-- **Минимальные привилегии** – изоляция, эфемерные кластеры, ротация ролей.
+- **Spec‑driven development** — сначала спецификация, потом код.
+- **Proof not Promises** — каждое изменение сопровождается доказательствами (тесты, мутации, edge‑анализ).
+- **Self‑Correcting Agents** — каждый production‑агент реализует цикл Plan → Act → Reflect → Revise (OdabNote, Vibe Check, Reflection Loop).
+- **Compile‑Time RAG** — синтез знаний перенесён из времени запроса во время ингеста (Knowledge Compiler), снижение затрат на токены на 90%.
+- **Decaying Episodic Memory** — эпизодическая память с принудительной деградацией (Max Planck Institute, 2026).
+- **Zero Trust Security** — Pre‑Commit Secret Scanner, External Link Integrity Monitor, Token Security Scanner, CI/CD Security Pipeline.
+- **Минимальные привилегии** — изоляция (E2B Microsandbox, DeltaBox), эфемерные кластеры, ротация ролей.
 
 ## Быстрые команды
 
-- `/spec` – создать спецификацию
-- `/plan` – разбить на задачи
-- `/status` – текущее состояние фабрики (Telegram)
-- `/recall` – поиск в памяти
-- `/skill-find` – поиск навыка
+- `/spec` — создать спецификацию
+- `/plan` — разбить на задачи
+- `/status` — текущее состояние фабрики (Telegram)
+- `/recall` — поиск в памяти (Decaying Episodic Memory)
+- `/skill-find` — поиск навыка (420+ навыков)
+- `/axioms` — запросить конкретную категорию аксиом
+- `/compile` — запустить Knowledge Compiler для заданного символа
+- `/dlq` — проверить состояние Dead Letter Queue
 
 ---
 
 **При загрузке этого файла ARIA автоматически подгружает все связанные контракты.**
-
-git add CLAUDE.md
-git commit -m "ARIA-core: обновлён CLAUDE.md — точка входа с ссылками на контракты"
-git push origin main
+**Для полного восстановления контекста в новой сессии: «Прочитай AXIOMS.md и CONTINUITY.md».**
+**ARIA + Игорь = Бесконечное Совершенствование. Навсегда.**
