@@ -1,0 +1,47 @@
+import asyncio
+import hashlib
+import aiohttp
+import logging
+from typing import Dict
+
+logger = logging.getLogger("link_monitor")
+
+class ExternalLinkMonitor:
+    def __init__(self, check_interval: int = 300):
+        self.links: Dict[str, str] = {}
+        self.check_interval = check_interval
+
+    async def register_link(self, url: str):
+        current_hash = await self._fetch_hash(url)
+        if current_hash:
+            self.links[url] = current_hash
+            logger.info(f"Registered link {url} with hash {current_hash[:12]}...")
+
+    async def _fetch_hash(self, url: str) -> str:
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, timeout=10) as resp:
+                    content = await resp.read()
+                    return hashlib.sha256(content).hexdigest()
+        except Exception as e:
+            logger.error(f"Failed to fetch {url}: {e}")
+            return ""
+
+    async def verify_all(self) -> Dict[str, bool]:
+        results = {}
+        for url, original_hash in self.links.items():
+            current_hash = await self._fetch_hash(url)
+            if current_hash and current_hash != original_hash:
+                logger.warning(f"CONTENT CHANGED: {url}")
+                results[url] = False
+            else:
+                results[url] = True
+        return results
+
+    async def start_periodic_check(self, agent_id: str):
+        while True:
+            await asyncio.sleep(self.check_interval)
+            results = await self.verify_all()
+            for url, valid in results.items():
+                if not valid:
+                    logger.critical(f"Agent {agent_id}: external link {url} has changed! Blocking access.")
