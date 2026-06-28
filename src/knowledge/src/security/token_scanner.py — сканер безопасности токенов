@@ -1,0 +1,29 @@
+import aiohttp
+import logging
+
+logger = logging.getLogger("token_scanner")
+
+class TokenSecurityScanner:
+    def __init__(self):
+        self.base_url = "https://api.gopluslabs.io/api/v1"
+
+    async def check_token(self, chain_id: str, token_address: str) -> dict:
+        url = f"{self.base_url}/token_security/{chain_id}"
+        params = {"contract_addresses": token_address}
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, params=params) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        result = data.get("result", {}).get(token_address.lower(), {})
+                        is_honeypot = result.get("is_honeypot", "0") == "1"
+                        is_scam = result.get("is_scam", "0") == "1"
+                        return {
+                            "is_safe": not is_honeypot and not is_scam,
+                            "is_honeypot": is_honeypot,
+                            "is_scam": is_scam,
+                            "risk_level": "HIGH" if (is_honeypot or is_scam) else "LOW"
+                        }
+        except Exception as e:
+            logger.error(f"Token scan failed: {e}")
+        return {"is_safe": True, "risk_level": "UNKNOWN"}
