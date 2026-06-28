@@ -1,0 +1,37 @@
+import numpy as np
+from collections import defaultdict
+from typing import Dict, List
+
+class DecayingEpisodicMemory:
+    def __init__(self, decay_days: int = 7, echo_buffer_size: int = 5):
+        self.decay_days = decay_days
+        self.echo_buffer: List[dict] = []
+        self.aggregated: Dict[str, dict] = defaultdict(lambda: {"count": 0, "avg_pnl": 0.0, "strike_range": [float('inf'), float('-inf')]})
+        self.max_echo = echo_buffer_size
+
+    def add(self, trade: dict):
+        self.echo_buffer.append(trade)
+        if len(self.echo_buffer) > self.max_echo:
+            oldest = self.echo_buffer.pop(0)
+            self._aggregate(oldest)
+
+    def _aggregate(self, trade: dict):
+        key = trade.get("signal_type", "unknown")
+        stats = self.aggregated[key]
+        stats["count"] += 1
+        stats["avg_pnl"] = (stats["avg_pnl"] * (stats["count"] - 1) + trade.get("pnl", 0)) / stats["count"]
+        put = trade.get("put_strike", 0)
+        call = trade.get("call_strike", 0)
+        if put < stats["strike_range"][0]:
+            stats["strike_range"][0] = put
+        if call > stats["strike_range"][1]:
+            stats["strike_range"][1] = call
+
+    def get_context(self) -> str:
+        context = "Recent trades (exact):\n"
+        for t in self.echo_buffer:
+            context += f"- {t['signal_type']}: PnL={t.get('pnl', 0):.2f}\n"
+        context += "\nAggregated history:\n"
+        for key, stats in self.aggregated.items():
+            context += f"- {key}: {stats['count']} trades, avg PnL={stats['avg_pnl']:.2f}, strikes {stats['strike_range']}\n"
+        return context
