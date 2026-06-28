@@ -1,0 +1,8 @@
+sweep:
+  enabled: true
+  n_qubits: [4, 6, 8, 12]
+  latent_dim_follows_qubits: true
+  feature_map: ["dense", "dense_no_ent"]
+  reps: [1, 2, 3]
+  seeds: [0, 1, 2]
+  output_dir: "runs/quantum_sweep"
