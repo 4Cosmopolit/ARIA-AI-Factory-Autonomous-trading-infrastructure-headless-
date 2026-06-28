@@ -1,4 +1,4 @@
-# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01 (обновлён 29.05.2026)
+# SKILLS.md — Реестр навыков ARIA AI‑Factory v13.01 (обновлён 28.06.2026)
 
 ## Категория 1: Качество данных (Data Quality)
 
@@ -60,6 +60,18 @@
 | behavioral-canaries-audit | L2 | Аудит приватности RL-обучения через внедрение canary-примеров | Behavioral Canaries |
 | code-whisperer-graph-repair | L2 | Комплексный анализ и исправление уязвимостей через графовый анализ + LLM | The Code Whisperer |
 | vultriage-vulnerability-detection | L2 | Тройная контекстная аугментация для детекции уязвимостей в коде | VulTriage |
+| precommit-secret-scanner | L1 | Автоматическое сканирование коммитов на приватные ключи, токены и опасные паттерны (gitleaks, bandit) | ARIA Core |
+| token-security-scanner | L2 | Проверка токенов и пулов перед взаимодействием через GoPlus Security API (honeypot, scam) | ARIA Core |
+| external-link-integrity-monitor | L2 | Периодическая проверка внешних ссылок на изменение контента после статического сканирования | ARIA Core |
+| odabnote-error-pattern-immunity | L2 | Иммунная система агента: сохранение паттернов ошибок и автоматическое предложение исправлений | ARIA Core |
+| vibe-check-metacognitive-control | L2 | Предотвращение перепроектирования и ухода агента от задачи, прерывание при избыточных действиях | ARIA Core |
+| reflection-loop-self-correction | L2 | Автоматический цикл Reflect → Revise: при ошибке агент сверяется с OdabNote и повторяет попытку | ARIA Core |
+| ai-dlq-handler | L2 | Автоматическая классификация сообщений из Dead Letter Queue (retry/discard/escalate) через LLM | ARIA Core |
+| failure-clustering | L2 | Автоматическая группировка ошибок ордеров и аномалий в кластеры по первопричине (DBSCAN + TF‑IDF) | ARIA Core |
+| flaky-detector | L2 | Обнаружение нестабильного поведения агента (дисперсия PnL, Win Rate) с автоматической эскалацией | ARIA Core |
+| decaying-episodic-memory | L2 | Принудительная деградация эпизодической памяти: точные значения заменяются скользящими средними и диапазонами | ARIA Core |
+| knowledge-compiler-ct-rag | L2 | Компиляция сырых данных в структурированную вики (Compile‑Time RAG) для снижения затрат на токены на 90% | ARIA Core |
+| nvidia-nim-integration | L2 | Анализ рыночного контекста и оценка торговых сигналов через Llama‑3.1‑Nemotron‑Ultra‑253B‑v1 | Nvidia NIM |
 
 ## Категория 3: Управление контекстом и памятью (Context & Memory)
 
@@ -201,6 +213,11 @@
 | graphic-graph-icl | L2 | Графовое In-Context Learning для табличных и реляционных данных | GraphIC |
 | kumorfm2-graph-foundation | L2 | Foundation model для реляционных/графовых данных (In-Context + Fine-Tuning) | KumoRFM-2 |
 | tradingbench-evaluation | L2 | Специализированный бенчмарк для оценки LLM-трейдинговых агентов | TradingBench |
+| hunter6-options-strangle | L2 | Автономный арбитраж волатильности: Long Strangle с дельта‑хеджированием и управлением по TP/SL | ARIA Core |
+| hunter6-theta-shield | L2 | Автоматическая защита от тета‑распада при боковике | ARIA Core |
+| hunter6-adaptive-strikes | L2 | Адаптивная селекция страйков на основе силы перекоса волатильности | ARIA Core |
+| hunter6-rlhf-filter | L2 | Фильтр торговых сигналов с обратной связью от человека (Telegram‑бот) | ARIA Core |
+| hunter6-context-analyzer | L2 | Анализ рыночного контекста через Nvidia NIM перед входом в позицию | ARIA Core |
 
 ## Категория 7: Кодинг и разработка (Coding & Development)
 
@@ -331,6 +348,8 @@
 | context-integrity-daemon | L1 | (см. Категорию 3) Фоновая проверка целостности ключевых параметров сессии. | ARIA Core |
 | auto-memory-audit | L2 | (см. Категорию 3) Ежедневный аудит памяти. | ARIA Core |
 | grafana-mcp-observability | L2 | Доступ к дашбордам, метрикам, логам и алертам Grafana через MCP | Grafana MCP |
+| failure-clustering-monitoring | L2 | Автоматическая группировка сбоев по первопричине с визуализацией в Grafana | ARIA Core |
+| flaky-detector-monitoring | L2 | Мониторинг нестабильности агента с алертами в Telegram при превышении порога | ARIA Core |
 
 ---
 
