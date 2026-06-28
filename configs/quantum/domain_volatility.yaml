@@ -1,0 +1,27 @@
+seed: 42
+output_dir: "runs/quantum/volatility"
+
+domain:
+  adapter: "volatility"
+  lookback: 30
+  n_train: 1000
+  n_test: 5000
+  anomaly_ratio: 0.05
+  symbols: ["BTCUSDT", "ETHUSDT"]
+  timeframe: "1h"
+
+encoder:
+  kind: "pca"
+  latent_dim: 8
+  standardize: true
+
+quantum:
+  backend: "lightning.qubit"
+  n_qubits: 8
+  feature_map: "dense"
+  reps: 2
+  nu: 0.1
+
+baselines:
+  - "rbf_ocsvm"
+  - "isolation_forest"
