@@ -1,0 +1,23 @@
+# Основные настройки
+max_cycles: null              # бесконечно
+cycle_interval_sec: 60        # 1 минута
+dry_run: true                 # сначала симуляция
+use_quantum: true
+quantum_config: "configs/quantum/base.yaml"
+
+# Параметры риска
+max_daily_loss: 0.01          # 1%
+take_profit: 0.50             # +50%
+stop_loss: -0.30              # -30%
+
+# Параметры детекторов
+contamination: 0.05
+threshold: -0.5
+quantum_threshold: -0.5
+
+# Настройки биржи (для реального режима)
+exchange:
+  name: "bybit"
+  testnet: true
+  api_key: ${BYBIT_API_KEY}
+  api_secret: ${BYBIT_API_SECRET}
