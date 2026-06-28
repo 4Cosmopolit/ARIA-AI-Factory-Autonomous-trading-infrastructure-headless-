@@ -1,0 +1,27 @@
+Установка зависимостей
+bash
+cd ARIA-AI-Factory
+pip install pennylane pennylane-lightning
+# Если есть GPU:
+# pip install pennylane-lightning-gpu
+Тестирование квантового ядра
+bash
+python -m aria.quantum.test_kernel
+Запуск обучения на исторических данных
+bash
+python -m aria.quantum.run --config configs/quantum/domain_volatility.yaml
+(Скрипт run.py нужно создать отдельно — он загружает данные через Alpha Vantage/CCXT, вызывает AnomalyEngine и сохраняет метрики.)
+
+Интеграция с Hunter 6.0
+bash
+python -m aria.hunters.hunter6 --quantum --simulate --config configs/quantum/base.yaml
+15. Что дальше?
+Скопируйте все файлы в соответствующие каталоги проекта.
+
+Создайте скрипт aria/quantum/run.py для запуска экспериментов (я могу предоставить его по запросу).
+
+Настройте доступ к данным: укажите API-ключи Bybit Testnet и Alpha Vantage в .env.
+
+Запустите тестовый прогон и сравните квантовый AUC с классическими бейзлайнами.
+
+Статус: Код предоставлен. Ожидаю подтверждения копирования и первого запуска. Если нужны дополнительные утилиты (run.py, интеграция с Telegram-уведомлениями, визуализация) — сообщите.
