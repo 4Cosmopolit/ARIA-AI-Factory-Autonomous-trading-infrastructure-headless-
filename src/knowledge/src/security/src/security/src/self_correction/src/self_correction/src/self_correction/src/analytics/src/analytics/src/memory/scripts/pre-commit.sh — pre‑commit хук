@@ -1,0 +1,43 @@
+#!/bin/bash
+echo "🔍 Scanning for secrets and dangerous patterns..."
+
+SECRETS=(
+  "0x[0-9a-fA-F]{64}"
+  "sk-[a-zA-Z0-9]{48}"
+  "api_key.*=.*[a-zA-Z0-9]{32}"
+  "BEGIN (RSA|EC|DSA) PRIVATE KEY"
+)
+
+DANGEROUS=(
+  "eval\s*\("
+  "exec\s*\("
+  "password\s*=\s*[\"'][^\"']+[\"']"
+  "SELECT.*FROM.*WHERE.*=.*['\"]\s*\+"
+  "os\.system\s*\("
+)
+
+FOUND=0
+
+for pattern in "${SECRETS[@]}"; do
+  if git diff --cached --name-only | xargs grep -E "$pattern" 2>/dev/null; then
+    echo "❌ SECRET DETECTED: $pattern"
+    FOUND=1
+  fi
+done
+
+for pattern in "${DANGEROUS[@]}"; do
+  if git diff --cached --name-only | xargs grep -E "$pattern" 2>/dev/null; then
+    echo "⚠️ DANGEROUS PATTERN DETECTED: $pattern"
+    echo "   This may be an AI-generated code vulnerability."
+    FOUND=1
+  fi
+done
+
+if [ $FOUND -eq 1 ]; then
+  echo ""
+  echo "⛔ Commit blocked. Fix the issues before committing."
+  exit 1
+fi
+
+echo "✅ No secrets or dangerous patterns found."
+exit 0
