@@ -1,0 +1,260 @@
+Фаза 1: Детальный анализ квантового репозитория
+Репозиторий agentic-quantum-computing содержит полностью рабочую квантовую anomaly detection систему с трёхуровневой архитектурой:
+
+1.1. Квантовое ядро (PennyLane)
+Ключевой файл: src/qadx/quantum/kernel.py
+
+text
+Принцип работы:
+k(z1, z2) = |⟨φ(z1)|φ(z2)⟩|² — fidelity kernel
+Вход: латентное представление данных (8‑16 измерений)
+
+Кодирование: RY-вращения + CNOT-запутанность (два слоя)
+
+Выход: матрица Грама (сходство между объектами) для QSVM
+
+Нормализация: StandardScaler + input_prescale=0.5 для удержания в линейной зоне tanh
+
+Проверенный результат: энтанглмент даёт прирост AUC: +0.15, +0.12, +0.16 в трёх доменах.
+
+1.2. Архитектурный паттерн
+text
+DomainAdapter.ingest() → Encoder (PCA/AE) → Z (latent, dim = n_qubits) 
+→ QuantumKernel.gram() → Scorer (QSVM/Qk-means) 
+→ metrics (ROC-AUC) vs classical baselines[reference:5]
+Ключевая инварианта: encoder.latent_dim == quantum.n_qubits — каждый латентный компонент кодируется ровно на одном кубите.
+
+1.3. LangGraph-агент
+Трёхэтапный цикл:
+
+LLM вызывает run_pipeline(config_path=...) через @tool
+
+Квантовое ядро исполняется, возвращает метрики
+
+LLM анализирует: «Quantum AUC 0.9916 > classical 0.9580, quantum WON»
+
+Фаза 2: Архитектура интеграции в ARIA
+2.1. Структура нового модуля
+text
+aria/
+├── quantum/
+│   ├── __init__.py
+│   ├── kernel.py           # Адаптированный QuantumKernel из qadx
+│   ├── feature_maps.py     # RY + CNOT, dense/dense_no_ent/angle/iqp
+│   ├── device.py           # PennyLane device factory (CPU/GPU)
+│   ├── scorer.py           # QSVM / Qk-means адаптеры
+│   ├── encoder.py          # PCA/AE адаптеры для финансовых данных
+│   ├── adapter.py          # FinancialDomainAdapter (рыночные данные)
+│   └── engine.py           # AnomalyEngine → адаптирован под ARIA
+├── hunters/
+│   └── hunter6/
+│       └── quantum_detector.py  # QuantumSkewDetector (замена/дополнение Isolation Forest)
+└── configs/
+    └── quantum/
+        ├── base.yaml
+        ├── domain_volatility.yaml
+        ├── domain_liquidity.yaml
+        └── domain_anomaly.yaml
+2.2. Точки интеграции с существующими контурами ARIA
+Контур ARIA	Компонент	Интеграция
+II. Торговля и Охота	Hunter 6.0	QuantumSkewDetector — альтернативный бекенд для AdaptiveSkewDetector
+V. Квантовый Хаб	PennyLane (уже есть)	Расширение: квантовое ядро для anomaly detection
+I. Ядро и Память	Knowledge Compiler	Квантовые метрики → структурированная вики
+III. CI/CD и Безопасность	Reflection Loop	Автоматический пересчёт квантовых параметров при сбоях
+Фаза 3: Конкретный план реализации
+Шаг 1: Адаптация финансового адаптера
+Создать aria/quantum/adapter.py:
+
+python
+class FinancialDomainAdapter:
+    """Адаптер для рыночных данных (Bybit, Alpha Vantage)."""
+    
+    def ingest(self, cfg: DomainCfg):
+        # Загрузка данных через CCXT / Alpha Vantage
+        # Признаки: returns, volatility, volume, skew, term structure, 
+        # order book imbalance, funding rate, open interest
+        return raw_data
+    
+    def split(self, raw, cfg):
+        # Train: нормальные рыночные условия
+        # Test: весь период (аномалии = кризисные события)
+        return Split(X_train, y_train, X_test, y_test)
+Признаки для квантового детектора (8‑16 измерений):
+
+Логарифмическая доходность (5m, 1h, 4h)
+
+Реализованная волатильность
+
+Объёмный импульс
+
+Опционный skew (25-delta)
+
+Терминальная структура (contango/backwardation)
+
+Дисбаланс стакана (bid-ask volume ratio)
+
+Funding rate (для фьючерсов)
+
+Open interest изменение
+
+Ончейн-потоки (если DEX)
+
+Корреляция с BTC/ETH
+
+Шаг 2: Адаптация квантового ядра
+Скопировать и адаптировать kernel.py:
+
+python
+# aria/quantum/kernel.py
+class QuantumKernel:
+    """Fidelity kernel для финансовых данных."""
+    
+    def __init__(self, n_qubits: int = 8, backend: str = "lightning.qubit",
+                 feature_map: str = "dense", reps: int = 2):
+        self.n_qubits = n_qubits
+        self.reps = reps
+        self.feature_map = get_feature_map(feature_map)
+        self.device = make_device(n_qubits, backend)
+        # ... остальная логика из оригинального kernel.py
+Шаг 3: QuantumSkewDetector для Hunter 6.0
+python
+# aria/hunters/hunter6/quantum_detector.py
+class QuantumSkewDetector:
+    """
+    Квантовый детектор перекоса волатильности.
+    Заменяет/дополняет Isolation Forest в AdaptiveSkewDetector.
+    """
+    
+    def __init__(self, n_qubits: int = 8, feature_map: str = "dense"):
+        self.kernel = QuantumKernel(n_qubits, feature_map)
+        self.scorer = QuantumSVM(nu=0.1)  # QSVM с OneClassSVM логикой[reference:10]
+        self.encoder = PCAEncoder(latent_dim=n_qubits)
+        
+    def detect(self, market_data: dict) -> tuple[float, dict]:
+        """
+        Возвращает: (anomaly_score, метрики_квантового_ядра)
+        score > threshold → сигнал на вход в Long Strangle
+        """
+        # 1. Извлечь признаки
+        features = self._extract_features(market_data)
+        
+        # 2. Сжать в латентное пространство (dim = n_qubits)
+        Z = self.encoder.transform(features)
+        
+        # 3. Вычислить квантовую матрицу Грама
+        K = self.kernel.gram_train(Z)
+        
+        # 4. QSVM → anomaly score
+        score = self.scorer.score(K)
+        
+        # 5. Сравнение с классическим бейзлайном (Isolation Forest)
+        classical_score = self._classical_detector(features)
+        
+        return score, {
+            "quantum_score": score,
+            "classical_score": classical_score,
+            "quantum_advantage": score - classical_score,
+            "kernel_concentration": self._kernel_concentration(K)
+        }
+Шаг 4: Walk‑Forward A/B тестирование
+Использовать существующий aria.validation.walkforward:
+
+bash
+python -m aria.validation.walkforward \
+    --strategy quantum_skew \
+    --quantum_n_qubits 8 \
+    --quantum_feature_map dense \
+    --classical_baseline isolation_forest \
+    --years 2 --step 1w
+Ожидаемый результат: квантовое ядро должно показывать +0.10‑0.15 AUC на аномалиях (кризисные события) по сравнению с классическими методами, как в оригинальном исследовании.
+
+Шаг 5: Интеграция с OdabNote / Reflection Loop
+python
+# aria/quantum/self_correction.py
+class QuantumReflection:
+    """
+    Автоматическая коррекция квантовых параметров.
+    """
+    def reflect(self, trade_results: list):
+        # Анализ: квантовый сигнал vs реальный PnL
+        # Если квантовый AUC падает → уменьшить n_qubits или сменить feature_map
+        # Если концентрация ядра слишком высокая → увеличить reps
+        # Записать паттерн в OdabNote
+Фаза 4: Конфигурационные файлы
+configs/quantum/domain_volatility.yaml
+yaml
+seed: 42
+output_dir: "runs/quantum"
+
+domain:
+  adapter: "volatility"
+  n_train: 1000   # нормальные рыночные дни
+  n_test: 5000    # весь период (включая кризисы)
+  test_anomaly_rate: 0.05  # ~5% аномальных событий
+  params:
+    symbols: ["BTCUSDT", "ETHUSDT"]
+    timeframe: "1h"
+    lookback: 30
+
+encoder:
+  kind: "pca"
+  latent_dim: 8
+  standardize: true
+
+quantum:
+  backend: "lightning.gpu"  # или lightning.qubit для CPU
+  n_qubits: 8
+  feature_map: "dense"      # dense / dense_no_ent / angle / iqp
+  reps: 2
+  scorer: "qsvm"
+  nu: 0.1
+
+baselines:
+  - "rbf_ocsvm"
+  - "isolation_forest"
+  - "ae_recon"
+configs/quantum/sweep_quantum_win.yaml
+yaml
+sweep:
+  enabled: true
+  n_qubits: [4, 6, 8, 12, 16]
+  latent_dim_follows_qubits: true
+  feature_map: ["dense", "dense_no_ent"]
+  reps: [1, 2, 3]
+  seeds: [0, 1, 2]
+Этот sweep — научное ядро эксперимента: сравнивает квантовый AUC vs классический и измеряет эффект энтанглмента.
+
+Фаза 5: Запуск и валидация
+5.1. Установка зависимостей
+bash
+cd ARIA-AI-Factory
+pip install pennylane pennylane-lightning pennylane-lightning-gpu  # опционально
+pip install -e ".[quantum]"
+5.2. Тестирование квантового ядра
+bash
+python -m aria.quantum.test_kernel --backend lightning.qubit --qubits 8
+# Проверка: симметричность, PSD, unit diagonal[reference:14]
+5.3. Прогон на исторических данных
+bash
+python -m aria.quantum.run --config configs/quantum/domain_volatility.yaml
+Вывод: таблица метрик (quantum vs classical) + запись в runs/.
+
+5.4. Интеграция в Hunter 6.0
+bash
+python -m aria.hunters.hunter6 --quantum --simulate --interval 5m
+Текущий статус
+Этап	Статус
+Анализ квантового репозитория	✅ завершён
+Проектирование архитектуры интеграции	✅ завершён
+Написание кода адаптеров	⏳ ожидает исполнения
+Тестирование на исторических данных	⏳ ожидает исполнения
+Интеграция в Hunter 6.0	⏳ ожидает исполнения
+Walk‑Forward A/B тест	⏳ ожидает исполнения
+Запрос на исполнение
+Для перехода к непосредственному написанию кода мне необходимо:
+
+Подтверждение архитектурного плана
+
+Доступ к историческим данным Bybit (или хотя бы указание источника — Alpha Vantage / CCXT)
+
+Решение по бекенду: CPU (lightning.qubit) или GPU (lightning.gpu)?
