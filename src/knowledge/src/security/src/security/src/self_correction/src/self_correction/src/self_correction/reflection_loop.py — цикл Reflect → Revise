@@ -1,0 +1,29 @@
+from odab_note import OdabNote
+from vibe_check import VibeCheck
+
+class ReflectionLoop:
+    def __init__(self, odab: OdabNote, vibe: VibeCheck):
+        self.odab = odab
+        self.vibe = vibe
+
+    async def execute_with_correction(self, action, context: dict, max_retries: int = 3):
+        self.vibe.start_task()
+        for attempt in range(max_retries):
+            if not self.vibe.check():
+                correction = self.vibe.suggest_correction()
+                return {"status": "aborted", "reason": correction}
+
+            result = await action()
+            if result.get("status") == "success":
+                return result
+
+            error_type = result.get("error", "unknown")
+            solution = self.odab.find_solution(error_type, context)
+            if solution:
+                context["correction"] = solution
+                continue
+
+            if attempt == 0:
+                self.odab.record_error(error_type, context, "manual_fix_needed")
+
+        return {"status": "failed", "reason": "max_retries_exceeded"}
