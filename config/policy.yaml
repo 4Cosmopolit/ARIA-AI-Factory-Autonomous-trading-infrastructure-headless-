@@ -1,0 +1,79 @@
+# policy.yaml — Agent Policy Manifest ARIA AI‑Factory v13.01
+
+# =============================================================================
+# Базовые ограничения агентов
+# =============================================================================
+inline_subagents_allowed: false
+requires_explicit_user_spawn_request: true
+
+# =============================================================================
+# Параллелизм и оркестрация
+# =============================================================================
+parallelism:
+  default: parallel
+  sequential_allowed_reasons: ["dependency_not_met", "single_stream_only", "budget_constraint"]
+
+# =============================================================================
+# Acceptance Gate (Completion vs Acceptance)
+# =============================================================================
+acceptance:
+  require_verification_evidence: true
+  require_orchestrator_review: true
+  max_retries: 3
+  block_on_empty_diff: true
+
+# =============================================================================
+# Self‑Correcting Agents (v13.01)
+# =============================================================================
+self_correction:
+  enabled: true
+  odab_note_enabled: true          # Иммунная система: сохранение паттернов ошибок и решений
+  vibe_check_enabled: true         # Мета‑когнитивный контроль: предотвращение перепроектирования
+  reflection_loop_enabled: true    # Цикл Plan → Act → Reflect → Revise
+  max_actions_per_task: 5
+  max_time_seconds: 60.0
+  correction_retries: 3
+
+# =============================================================================
+# Compile‑Time RAG (Knowledge Compiler)
+# =============================================================================
+compile_time_rag:
+  enabled: true
+  compile_interval_seconds: 3600   # Раз в час
+  cache_ttl_seconds: 300           # 5 минут
+  token_reduction_target: 0.9      # Снижение затрат на 90%
+
+# =============================================================================
+# Память (Decaying Episodic Memory)
+# =============================================================================
+memory:
+  decay_days: 7                    # Точные данные деградируют через 7 дней
+  echo_buffer_size: 5              # Последние 5 сделок с точными данными
+  aggregated_only_after_decay: true
+
+# =============================================================================
+# Безопасность цепочки поставок
+# =============================================================================
+supply_chain:
+  pre_commit_secret_scan: true     # Блокировка коммитов с приватными ключами и токенами
+  external_link_integrity_check: true  # Периодическая проверка внешних ссылок
+  token_security_scan: true        # Проверка токенов на honeypot/scam перед взаимодействием
+  ci_cd_security_pipeline: true    # Автоматический запуск gitleaks, bandit, safety
+
+# =============================================================================
+# Мониторинг и аналитика сбоев
+# =============================================================================
+monitoring:
+  failure_clustering: true         # Группировка ошибок по первопричине (DBSCAN)
+  flaky_detector: true             # Обнаружение нестабильности агентов
+  ai_dlq_handler: true             # Автоматическая обработка Dead Letter Queue через LLM
+  flaky_threshold: 50              # Порог нестабильности (0-100)
+
+# =============================================================================
+# Безопасность
+# =============================================================================
+security:
+  confirm_dangerous_ops: true
+  allow_network: false             # Агент не имеет сетевого доступа, если не разрешено явно
+  max_daily_loss_pct: 1.0
+  pre_flight_check: true
