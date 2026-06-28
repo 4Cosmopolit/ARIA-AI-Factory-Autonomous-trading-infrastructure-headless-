@@ -1,0 +1,28 @@
+name: Security Audit
+
+on: [push, pull_request]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Secret Scanning
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: .gitleaks.toml
+      - name: Python Security Analysis
+        run: |
+          pip install bandit
+          bandit -r src/ -f json -o bandit-report.json
+      - name: Dependency Check
+        run: |
+          pip install safety
+          safety check -r requirements.txt --json > safety-report.json
+      - name: Upload Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: |
+            bandit-report.json
+            safety-report.json
