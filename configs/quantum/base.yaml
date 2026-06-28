@@ -1,0 +1,19 @@
+seed: 42
+output_dir: "runs/quantum"
+
+encoder:
+  kind: "pca"           # pca | ae
+  latent_dim: 8
+  standardize: true
+
+quantum:
+  backend: "lightning.qubit"   # или lightning.gpu
+  n_qubits: 8
+  feature_map: "dense"         # dense | dense_no_ent | angle | iqp
+  reps: 2
+  nu: 0.1
+
+baselines:
+  - "rbf_ocsvm"
+  - "isolation_forest"
+  - "ae_recon"
