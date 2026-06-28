@@ -75,6 +75,14 @@
 - **AgentStore** (arXiv:2410.19609): Agent Store for Autonomous Web Interaction (референсная архитектура).
 - **RAG Survey** (arXiv:2504.14603): A Survey on Retrieval-Augmented Generation — Knowledge Enhancement and Beyond.
 
+## Архитектурные паттерны и методологии
+
+- **Self-Correcting Agents with MCP** (Sachin Kasana, 2026): Цикл Plan → Act → Reflect → Revise как обязательный паттерн для production-агентов. OdabNote, Vibe Check, Reflection Loop.
+- **Compile-Time RAG** (Jaroslaw Wasowski / Andrej Karpathy, 2026): Перенос синтеза знаний из времени запроса во время ингеста. Снижение затрат на токены на 90%.
+- **12 Data Architecture Patterns Every Data Engineer Should Master in 2026** (Rohan Mistry): Medallion, Lakehouse, Lambda, Kappa, Data Mesh, Data Vault, Data Fabric, DataOps, Multi-Cloud.
+- **Max Planck Institute – Forgetting as Advantage** (2026): Принудительная деградация эпизодической памяти (decay\_rate, эхо-буфер).
+- **AI Test Failure Analyzer** (QA Pulse, 2026): Failure Clustering, Log Intelligence, Flaky Detection, Root Cause Suggestions, Risk Prioritization.
+
 ## Статьи по безопасности
 
 - **Codeby.net: Атаки на AI-инструменты разработчиков** (2025). Malvertising, supply chain, infostealer.
@@ -111,6 +119,12 @@
 - **Embrace The Red: Cross-Agent Privilege Escalation** (2025). Вектор атаки на мультиагентные системы.
 - **Tim Kellogg: On Colors and the Threat of LLM Agents** (2025). Философское обоснование для Agent‑ToM.
 - **Pillar Security: The Security Risks of MCP** (2026). Основной практический референс и чек-лист безопасности MCP.
+
+### Новые инциденты безопасности (2026)
+- **Taiko Bridge Hack ($1.7M)**: Приватный ключ в публичном репозитории GitHub. Урок: Pre‑Commit Secret Scanner, CI/CD Security Pipeline.
+- **AIR Fake Skill Attack (26,000 agents)**: Подмена контента по внешней ссылке после статического сканирования. Урок: External Link Integrity Monitor.
+- **jaredfromsubway.eth MEV Exploit ($7.5M)**: Бот «одобрил» собственное ограбление через поддельные токены. Урок: Token Security Scanner.
+- **Bob Starr SQL Injection**: Уязвимость AI-кодинга. Урок: Pre‑Commit Secret Scanner дополнен детектором опасных паттернов (eval, exec, raw SQL).
 
 ## Архитектурные референсы и GUI-агенты
 
